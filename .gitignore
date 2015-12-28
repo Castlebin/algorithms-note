@@ -1,0 +1,33 @@
+.gradle
+build/
+
+target/
+
+*~
+
+.idea
+bin
+dependency-reduced-pom.xml
+target
+*.DS_Store
+*.iml
+*.ipr
+*.iws
+*.pyc
+*.swp
+*.xcuserdatad
+*.xcuserstate
+*.bak
+
+test-output
+
+# rebel
+rebel.xml
+
+# eclipse
+.settings
+.project
+.classpath
+
+*.log
+
