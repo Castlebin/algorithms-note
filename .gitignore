@@ -30,4 +30,4 @@ rebel.xml
 .classpath
 
 *.log
-
+*.out
