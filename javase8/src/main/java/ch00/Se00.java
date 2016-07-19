@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.Random;
 
-public class se00 {
+public class Se00 {
     public static void main(String[] args) throws InterruptedException, IOException {
         Random r = new Random();
         for (int i=0; i<1000; i++) {
