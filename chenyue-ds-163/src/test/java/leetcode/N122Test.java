@@ -1,4 +1,4 @@
-package ch01.se03;
+package leetcode;
 
 import ch00.TimeCountExecutor;
 import org.junit.Before;
@@ -9,12 +9,13 @@ import java.util.Random;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
-public class MaxSubSeqTest {
+public class N122Test {
+
     private static final Logger log = Logger.getGlobal();
 
-    private TimeCountExecutor<Long> executor = new TimeCountExecutor<>();
-    private static final int maxSize = 8;
-    private MaxSubSeq maxSubSeq;
+    private final TimeCountExecutor<Integer> executor = new TimeCountExecutor<>();
+    private static final int maxSize = 10;
+    private N122 n122;
     private MyRandom r = new MyRandom(40);
 
     private class MyRandom {
@@ -26,20 +27,20 @@ public class MaxSubSeqTest {
         }
 
         int nextInt() {
-            return r.nextInt(bound) / 2 - bound/4;
+            return r.nextInt(bound) / 2;
         }
     }
 
     @Before
     public void setUp() throws Exception {
         Integer[] arr = Stream.generate(r::nextInt).limit(maxSize).toArray(Integer[]::new);
-        maxSubSeq = new MaxSubSeq(arr);
+        n122 = new N122(arr);
         log.info("arr: " + Arrays.toString(arr));
     }
 
     @Test
-    public void onlineMaxSubSeq() throws Exception {
-        log.info("MaxSubSeqSum->onlineMaxSubSeq: " + executor.timeLog(maxSubSeq::onlineMaxSubSeq));
+    public void process() throws Exception {
+        log.info("n122 result: " + executor.timeLog(n122::process));
     }
 
 }
