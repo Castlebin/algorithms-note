@@ -12,35 +12,34 @@ import java.util.stream.Stream;
 public class MaxSubSeqTest {
     private static final Logger log = Logger.getGlobal();
 
-    private final TimeCountExecutor<Long, int[]> executor = new TimeCountExecutor<>();
-    int maxSize;
-    private Integer[] arr;
+    private final TimeCountExecutor<Long> executor = new TimeCountExecutor<>();
+    private static final int maxSize = 10;
+    private MaxSubSeq maxSubSeq;
+    private MyRandom r = new MyRandom(40);
 
-    private MaxSubSeq maxSubSeq = new MaxSubSeq();
-
-    public class MyRandom {
+    private class MyRandom {
         private int bound;
         private Random r = new Random();
-        public MyRandom(int bound) {
+
+        MyRandom(int bound) {
             this.bound = bound;
         }
+
         int nextInt() {
-            return r.nextInt(20)/2 - 5;
+            return r.nextInt(bound) / 2 - bound/4;
         }
     }
 
     @Before
     public void setUp() throws Exception {
-        maxSize = 10;
-        MyRandom r = new MyRandom(20);
-        arr = Stream.generate(r::nextInt).limit(maxSize).toArray(Integer[]::new);
-        System.out.println(Arrays.toString(arr));
+        Integer[] arr = Stream.generate(r::nextInt).limit(maxSize).toArray(Integer[]::new);
+        maxSubSeq = new MaxSubSeq(arr);
+        log.info("arr: " + Arrays.toString(arr));
     }
 
     @Test
     public void onlineMaxSubSeq() throws Exception {
-        long maxSubSeqSum = maxSubSeq.onlineMaxSubSeq(arr);
-        System.out.println(maxSubSeqSum);
+        log.info("MaxSubSeqSum->onlineMaxSubSeq: " + executor.timeLog(maxSubSeq::onlineMaxSubSeq));
     }
 
 }
