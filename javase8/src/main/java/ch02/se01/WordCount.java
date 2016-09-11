@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 public class WordCount {
     private Logger log = Logger.getGlobal();
@@ -29,6 +30,12 @@ public class WordCount {
     @Test
     public void testParallelStream() throws IOException {
         long count = words.parallelStream().filter(w -> w.length() > 12).count();
+        log.info("count: " + count);
+    }
+
+    @Test
+    public void testStreamOf() throws IOException {
+        long count = Stream.of(content.split("[\\P{L}+]")).filter(w -> w.length() > 12).count();
         log.info("count: " + count);
     }
 
