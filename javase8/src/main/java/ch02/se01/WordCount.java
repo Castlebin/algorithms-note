@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 public class WordCount {
     private Logger log = Logger.getGlobal();
@@ -22,14 +23,38 @@ public class WordCount {
 
     @Test
     public void testStream() throws IOException {
+        long begin = System.nanoTime();
         long count = words.stream().filter(w -> w.length() > 12).count();
-        log.info("count: " + count);
+        long end = System.nanoTime();
+        log.info("count: " + count+", time: " + (end - begin));
     }
 
+    // parallelStream耗时更长，哭死！Why?
     @Test
     public void testParallelStream() throws IOException {
+        long begin = System.nanoTime();
         long count = words.parallelStream().filter(w -> w.length() > 12).count();
-        log.info("count: " + count);
+        long end = System.nanoTime();
+        log.info("count: " + count+", time: " + (end - begin));
+    }
+
+    private Stream<String> stream = words.stream();
+    private Stream<String> parallelStream = words.parallelStream();
+    @Test
+    public void testStream2() throws IOException {
+        long begin = System.nanoTime();
+        long count = stream.filter(w -> w.length() > 12).count();
+        long end = System.nanoTime();
+        log.info("count: " + count+", time: " + (end - begin));
+    }
+
+    // parallelStream耗时仍旧更长，哭死！Why?
+    @Test
+    public void testParallelStream2() throws IOException {
+        long begin = System.nanoTime();
+        long count = parallelStream.filter(w -> w.length() > 12).count();
+        long end = System.nanoTime();
+        log.info("count: " + count+", time: " + (end - begin));
     }
 
 }
