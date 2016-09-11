@@ -51,6 +51,8 @@ public class WordCount {
     // parallelStream耗时仍旧更长，哭死！Why?
     // 猜测是没有限制线程数量，线程之间切换导致耗时严重
     // 所以，不要迷信多线程和并行处理
+    // 其实应该还是要看操作的，这里的操作存在竞争条件，多个线程共享一个count变量，所以导致并行处理速度反而更慢？
+    // 对，这个猜测很有道理
     @Test
     public void testParallelStream2() throws IOException {
         long begin = System.nanoTime();
