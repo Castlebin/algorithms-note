@@ -49,6 +49,8 @@ public class WordCount {
     }
 
     // parallelStream耗时仍旧更长，哭死！Why?
+    // 猜测是没有限制线程数量，线程之间切换导致耗时严重
+    // 所以，不要迷信多线程和并行处理
     @Test
     public void testParallelStream2() throws IOException {
         long begin = System.nanoTime();
