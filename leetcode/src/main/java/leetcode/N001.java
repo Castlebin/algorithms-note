@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-public class N1 {
+public class N001 {
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
@@ -23,7 +23,7 @@ public class N1 {
         int[] nums = new int[]{3, 2, 4};
         int target = 6;
 
-        int[] result = new N1().twoSum(nums, target);
+        int[] result = new N001().twoSum(nums, target);
         System.out.println(Arrays.toString(result));
     }
 
