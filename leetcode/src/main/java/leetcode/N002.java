@@ -1,11 +1,11 @@
 package leetcode;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class N002 {
 
-    public BigDecimal getNumOfListNode(ListNode listNode) {
-        return new BigDecimal(getNumStrOfListNode(listNode));
+    public BigInteger getNumOfListNode(ListNode listNode) {
+        return new BigInteger(getNumStrOfListNode(listNode));
     }
 
     public String getNumStrOfListNode(ListNode listNode) {
@@ -21,8 +21,8 @@ public class N002 {
         }
     }
 
-    public ListNode createListNodeFromNum(BigDecimal num) {
-        String numReverseStr = new StringBuilder(num.toPlainString()).reverse().toString();
+    public ListNode createListNodeFromNum(BigInteger num) {
+        String numReverseStr = new StringBuilder(num.toString()).reverse().toString();
 
         char[] chars = numReverseStr.toCharArray();
         ListNode result = new ListNode(new Integer(chars[0]+""));
@@ -42,8 +42,8 @@ public class N002 {
 
     public static void main(String[] args) {
         N002 n002 = new N002();
-        ListNode l1 = n002.createListNodeFromNum(new BigDecimal("999999999999999"));
-        ListNode l2 = n002.createListNodeFromNum(new BigDecimal("99999999999999999999999991"));
+        ListNode l1 = n002.createListNodeFromNum(new BigInteger("999999999999999"));
+        ListNode l2 = n002.createListNodeFromNum(new BigInteger("99999999999999999999999991"));
 
         ListNode result = n002.addTwoNumbers(l1, l2);
         System.out.println(n002.getNumOfListNode(result));
