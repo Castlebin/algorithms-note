@@ -13,7 +13,7 @@ public class TestSet {
         set.add("1");
         set.add("1");
         set.add("1");
-        set.add("1");// 会覆盖掉原来的值，不会抛出异常
+        set.add("1");// 不会成功添加进去，返回值为false
     }
 
 }
