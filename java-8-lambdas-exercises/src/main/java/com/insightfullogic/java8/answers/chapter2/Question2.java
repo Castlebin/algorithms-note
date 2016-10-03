@@ -6,7 +6,7 @@ import javax.swing.text.DateFormatter;
 
 public class Question2 {
 
-     public final static ThreadLocal<DateFormatter> formatter = ThreadLocal.withInitial(() -> new DateFormatter(new SimpleDateFormat("dd-MMM-yyyy")));
+    public final static ThreadLocal<DateFormatter> formatter = ThreadLocal.withInitial(() -> new DateFormatter(new SimpleDateFormat("dd-MMM-yyyy")));
 
 }
 
@@ -16,5 +16,5 @@ class Question3 {
 }
 
 interface IntPred {
-     boolean test(Integer value);
+    boolean test(Integer value);
 }
