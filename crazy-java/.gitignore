@@ -1,0 +1,18 @@
+# Eclipse settings
+.settings
+
+# Idea settings
+.idea
+*.iml
+
+# global settings
+bin
+target
+logs
+*~
+*.log
+*.bak
+
+*.class
+
+Thumbs.db
