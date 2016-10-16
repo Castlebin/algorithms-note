@@ -1,4 +1,4 @@
-package ch16.se06.sync.Account;
+package ch16.se06.sync.wait;
 
 // 取款线程
 public class DrawThread extends Thread {
