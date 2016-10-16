@@ -22,3 +22,9 @@
       take(): 尝试从BlockingQueue中取出元素，如果该队列为空，则线程阻塞
 
 ## 16.7 线程组和未处理的异常
+    简单
+    
+    - ThreadGroup的使用方法
+    - 为Thread注册异常处理Handler
+
+## 16.8 线程池
