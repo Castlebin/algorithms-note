@@ -1,34 +1,18 @@
-.gradle
-build/
+# Eclipse settings
+.settings
 
-target/
-
-*~
-
+# Idea settings
 .idea
-bin
-dependency-reduced-pom.xml
-target
-*.DS_Store
 *.iml
-*.ipr
-*.iws
-*.pyc
-*.swp
-*.xcuserdatad
-*.xcuserstate
+
+# global settings
+bin
+target
+logs
+*~
+*.log
 *.bak
 
-test-output
+*.class
 
-# rebel
-rebel.xml
-
-# eclipse
-.settings
-.project
-.classpath
-
-*.tmp
-*.log
-*.out
+Thumbs.db
