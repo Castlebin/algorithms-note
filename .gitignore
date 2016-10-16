@@ -29,5 +29,6 @@ rebel.xml
 .project
 .classpath
 
+*.tmp
 *.log
 *.out
