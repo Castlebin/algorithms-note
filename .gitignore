@@ -14,5 +14,5 @@ logs
 *.bak
 
 *.class
-
+*.tmp
 Thumbs.db
