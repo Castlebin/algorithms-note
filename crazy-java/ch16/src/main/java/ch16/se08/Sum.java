@@ -27,7 +27,6 @@ class CalTask extends RecursiveTask<Integer> {
             for (int i = start; i < end; i++) {
                 sum += arr[i];
             }
-
             return sum;
         } else {
             // 分解任务
