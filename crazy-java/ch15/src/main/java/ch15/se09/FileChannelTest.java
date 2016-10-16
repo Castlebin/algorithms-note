@@ -12,10 +12,10 @@ public class FileChannelTest {
         try (
                 // 创建FileInputStream，以该文件输入流创建FileChannel
                 FileChannel inputChannel = new FileInputStream(new File(".gitignore")).getChannel();
-                // 同理，创建输出用的outChannel
+                // 同理，创建输出用的outputChannel
                 FileChannel outputChannel = new FileOutputStream(new File(".gitigore.tmp")).getChannel();
         ) {
-            // 将inChannel里的全部数据映射为ByteBuffer
+            // 将inputChannel里的全部数据映射为ByteBuffer
             MappedByteBuffer buffer = inputChannel.map(FileChannel.MapMode.READ_ONLY, 0, inputChannel.size());
 
             // 直接将buffer中的数据全部输出
