@@ -13,6 +13,9 @@
     
     1. 使用wait()和notfify()/notifyAll()来实现线程通信
     2. 使用Condition控制线程通信
+      使用Lock和Condition，使用Condition类的await()和sign()/signAll()方法
+      类似传统方式中同步监视器, wait()和notify()/notifyAll()方法
+      使用方式完全类似
     3. 使用阻塞队列（BlockingQueue）控制线程通信 (太方便了！)
       BlockingQueue主要用来做线程通信使用，提供两个阻塞方法，分别是put()和take()
       put(E e): 尝试将元素放入BlockingQueue中，如果该队列已满，则线程阻塞
