@@ -8,6 +8,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
 
+// 使用NIO时也可以像传统方式一段一段的读取数据内容
+// 在文件很大时可以采取这种方式
 public class ReadFile {
     public static void main(String[] args) {
         try (
