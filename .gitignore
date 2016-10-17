@@ -1,5 +1,7 @@
 # Eclipse settings
 .settings
+.classpath
+.project
 
 # Idea settings
 .idea
