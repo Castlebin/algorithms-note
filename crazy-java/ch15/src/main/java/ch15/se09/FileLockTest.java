@@ -13,8 +13,10 @@ public class FileLockTest {
         ) {
             // 使用非阻塞的方式(tryLock)获取文件锁
             FileLock fileLock = outputChannel.tryLock();
+
             // 休眠10s。因为获取了文件锁，所以在这10s中其他线程是不能修改该文件的
             Thread.sleep(10000);
+
             // 释放文件锁
             fileLock.release();
         } catch (IOException | InterruptedException e) {
