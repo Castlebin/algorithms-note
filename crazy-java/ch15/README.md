@@ -20,3 +20,5 @@
     - Path, Paths和Files核心API
     - 使用FileVistor遍历文件和目录
     - 使用WatchService监控文件变化
+    - Java 7的NIO.2在java.nio.file.attribute包下提供了大量的工具类，方便的来访问和修改文件属性
+    
