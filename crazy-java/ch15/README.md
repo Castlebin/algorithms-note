@@ -16,6 +16,7 @@
         Java 7 新增的包java.nio.file及子包
     2. 基于异步Channel的IO
         Java 7的java.nio.channels包下新增了多个以Asynchronous开头的Channel接口和类
-        
     
-    
+    - Path, Paths和Files核心API
+    - 使用FileVistor遍历文件和目录
+    - 使用WatchService监控文件变化
