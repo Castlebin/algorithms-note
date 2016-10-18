@@ -15,19 +15,15 @@ import java.util.concurrent.Executors;
 public class AIOServer {
     static final int PORT = 30000;
     final static String UTF_8 = "utf-8";
-    static List<AsynchronousSocketChannel> channelList
-            = new ArrayList<>();
+    static List<AsynchronousSocketChannel> channelList = new ArrayList<>();
 
-    public void startListen() throws InterruptedException,
-            Exception {
+    public void startListen() throws InterruptedException, Exception {
         // 创建一个线程池
         ExecutorService executor = Executors.newFixedThreadPool(20);
         // 以指定线程池来创建一个AsynchronousChannelGroup
-        AsynchronousChannelGroup channelGroup = AsynchronousChannelGroup
-                .withThreadPool(executor);
+        AsynchronousChannelGroup channelGroup = AsynchronousChannelGroup.withThreadPool(executor);
         // 以指定线程池来创建一个AsynchronousServerSocketChannel
-        AsynchronousServerSocketChannel serverChannel
-                = AsynchronousServerSocketChannel.open(channelGroup)
+        AsynchronousServerSocketChannel serverChannel = AsynchronousServerSocketChannel.open(channelGroup)
                 // 指定监听本机的PORT端口
                 .bind(new InetSocketAddress(PORT));
         // 使用CompletionHandler接受来自客户端的连接请求
