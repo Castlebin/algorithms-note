@@ -12,7 +12,10 @@ public class TryCatchTest {
          */
         System.out.println(new TryCatchTest().testTryFinally());
 
-
+        // 输出 为：(finally块因为JVM被强制中止，所以没有执行)
+        /** try
+            catch
+         */
         System.out.println(new TryCatchTest().testTryFinally2());
     }
 
