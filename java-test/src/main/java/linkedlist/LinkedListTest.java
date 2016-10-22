@@ -1,9 +1,6 @@
 package linkedlist;
 
-import lombok.Data;
-
 // 定义好链表节点数据结构
-@Data
 class Node {
     int data;
     Node next;
@@ -13,6 +10,32 @@ class Node {
         if (next != null) {
             next.printNode();
         }
+    }
+
+    public static void printNode(Node node) {
+        while (node != null) {
+            System.out.println(node.data);
+            node = node.next;
+        }
+    }
+
+    public static Node deepCopy(Node node) {
+        if (node == null) {
+            return null;
+        }
+        Node newHead = new Node();
+        newHead.data = node.data;
+        Node lastNewNode = newHead;
+        Node currentNodeToCopy = node.next;
+        while (currentNodeToCopy != null) {
+            Node newNode = new Node();
+            newNode.data = currentNodeToCopy.data;
+            lastNewNode.next = newNode;
+            currentNodeToCopy = currentNodeToCopy.next;
+            lastNewNode = lastNewNode.next;
+        }
+
+        return newHead;
     }
 
     public Node deepCopy() {
@@ -37,12 +60,12 @@ class Node {
             return null;
         }
         Node head = new Node();
-        head.setData(0);
+        head.data = 0;
         Node lastNode = head;
         for (int i = 1; i < length; i++) {
             Node node = new Node();
-            node.setData(i);
-            lastNode.setNext(node);
+            node.data = i;
+            lastNode.next = node;
             lastNode = node;
         }
 
@@ -54,7 +77,11 @@ public class LinkedListTest {
     public static void main(String[] args) {
         Node linkedList1 = Node.buildTestListedList(5);
         linkedList1.printNode();
+        System.out.println("---------------------");
         Node linkedList2 = linkedList1.deepCopy();
         linkedList2.printNode();
+        System.out.println("---------------------");
+        Node linkedList3 = Node.deepCopy(linkedList1);
+        linkedList3.printNode();
     }
 }
