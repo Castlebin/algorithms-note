@@ -52,7 +52,7 @@ class Node {
 
 public class LinkedListTest {
     public static void main(String[] args) {
-        Node linkedList1 = Node.buildTestListedList(20);
+        Node linkedList1 = Node.buildTestListedList(5);
         linkedList1.printNode();
         Node linkedList2 = linkedList1.deepCopy();
         linkedList2.printNode();
