@@ -9,7 +9,7 @@ public class LinkedListWithAnotherPointTest {
 
 class NodeWithPoint {
     int data;
-    Node point;
+    NodeWithPoint point;
 }
 
 class LinkedListWithAnotherPoint {
