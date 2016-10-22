@@ -38,6 +38,25 @@ class Node {
         return newHead;
     }
 
+    public static Node deepCopy2(Node node) {
+        Node newHead = null;
+        Node lastNewNode = null;
+        Node currentNode = node;
+        while (currentNode != null) {
+            Node newNode = new Node();
+            newNode.data = currentNode.data;
+            if (lastNewNode != null) {
+                lastNewNode.next = newNode;
+            } else {
+                newHead = newNode;
+            }
+            currentNode = currentNode.next;
+            lastNewNode = newNode;
+        }
+
+        return newHead;
+    }
+
     public Node deepCopy() {
         Node head = new Node();
         head.data = data;
@@ -83,5 +102,8 @@ public class LinkedListTest {
         System.out.println("---------------------");
         Node linkedList3 = Node.deepCopy(linkedList1);
         linkedList3.printNode();
+        System.out.println("---------------------");
+        Node linkedList4 = Node.deepCopy2(linkedList1);
+        linkedList4.printNode();
     }
 }
