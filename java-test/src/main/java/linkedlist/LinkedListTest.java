@@ -56,6 +56,26 @@ class Node {
 
         return newHead;
     }
+    
+    public static Node reverseNode(Node head) {
+        if (head == null) {return null;}
+        if (head.next == null) {return head;}
+
+        Node lastCursor = null;
+        Node cursor = head;
+        Node cursorNext = head.next;
+        while (cursorNext != null) {
+            // 执行反转
+            cursor.next = lastCursor;
+            // 移动指针
+            lastCursor = cursor;
+            cursor = cursorNext;
+            cursorNext = cursorNext.next;
+        }
+        // 执行最后一次反转
+        cursor.next = lastCursor;
+        return cursor;
+    }
 
     public Node deepCopy() {
         Node head = new Node();
@@ -76,7 +96,7 @@ class Node {
 
     public static Node buildTestListedList(int length) {
         if (length <= 0) {
-            return null;
+            throw new  IllegalArgumentException("length must bigger then 0");
         }
         Node head = new Node();
         head.data = 0;
@@ -94,16 +114,15 @@ class Node {
 
 public class LinkedListTest {
     public static void main(String[] args) {
-        Node linkedList1 = Node.buildTestListedList(5);
-        linkedList1.printNode();
+        Node listedList = Node.buildTestListedList(4);
+        listedList.printNode();
         System.out.println("---------------------");
-        Node linkedList2 = linkedList1.deepCopy();
-        linkedList2.printNode();
+        listedList.deepCopy().printNode();
         System.out.println("---------------------");
-        Node linkedList3 = Node.deepCopy(linkedList1);
-        linkedList3.printNode();
+        Node.deepCopy(listedList).printNode();
         System.out.println("---------------------");
-        Node linkedList4 = Node.deepCopy2(linkedList1);
-        linkedList4.printNode();
+        Node.deepCopy2(listedList).printNode();
+        System.out.println("-----------------------");
+        Node.reverseNode(listedList).printNode();
     }
 }
