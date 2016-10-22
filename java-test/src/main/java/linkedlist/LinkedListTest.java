@@ -31,15 +31,6 @@ class Node {
 
         return last;
     }
-}
-
-public class LinkedListTest {
-    public static void main(String[] args) {
-        Node linkedList1 = buildTestListedList(5);
-        linkedList1.printNode();
-        Node linkedList2 = linkedList1.deepCopy();
-        linkedList2.printNode();
-    }
 
     public static Node buildTestListedList(int length) {
         if (length <= 0) {
@@ -56,5 +47,14 @@ public class LinkedListTest {
         }
 
         return head;
+    }
+}
+
+public class LinkedListTest {
+    public static void main(String[] args) {
+        Node linkedList1 = Node.buildTestListedList(20);
+        linkedList1.printNode();
+        Node linkedList2 = linkedList1.deepCopy();
+        linkedList2.printNode();
     }
 }
