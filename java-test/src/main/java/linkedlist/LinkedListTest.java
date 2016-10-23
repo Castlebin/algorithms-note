@@ -83,12 +83,12 @@ class Node {
         return deepCopy(head, next);
     }
 
-    public Node deepCopy(Node last, Node nowToCopy) {
-        if (nowToCopy != null) {
+    public Node deepCopy(Node last, Node cursor) {
+        if (cursor != null) {
             Node node = new Node();
-            node.data = nowToCopy.data;
+            node.data = cursor.data;
             last.next = node;
-            deepCopy(node, nowToCopy.next);
+            deepCopy(node, cursor.next);
         }
 
         return last;
