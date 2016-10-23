@@ -57,7 +57,7 @@ class Node {
         return newHead;
     }
     
-    public static Node reverseNode(Node head) {
+    public static Node reverse(Node head) {
         if (head == null) {return null;}
         if (head.next == null) {return head;}
 
@@ -123,6 +123,6 @@ public class LinkedListTest {
         System.out.println("---------------------");
         Node.deepCopy2(listedList).printNode();
         System.out.println("-----------------------");
-        Node.reverseNode(listedList).printNode();
+        Node.reverse(listedList).printNode();
     }
 }
