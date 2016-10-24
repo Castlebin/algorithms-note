@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
 public class ThreadWithTimeOut<T> {
     private Callable<T> callable;
     private int timeout;
+
     public ThreadWithTimeOut(Callable<T> callable, int timeout) {
         this.callable = callable;
         this.timeout = timeout;
@@ -25,4 +26,5 @@ public class ThreadWithTimeOut<T> {
             throw e;
         }
     }
+
 }
