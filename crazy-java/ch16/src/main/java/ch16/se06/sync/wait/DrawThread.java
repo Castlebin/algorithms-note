@@ -13,9 +13,11 @@ public class DrawThread extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
+        int i = 0;
+        for (; i < 5; i++) {
             account.draw();
         }
+        System.out.println("存款：" + i);
     }
 
 }

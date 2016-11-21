@@ -18,9 +18,11 @@ public class DepositThread extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
+        int i = 0;
+        for (; i < 5; i++) {
             account.deposit(amount);
         }
+        System.out.println("取款：" + i);
     }
 
 }
