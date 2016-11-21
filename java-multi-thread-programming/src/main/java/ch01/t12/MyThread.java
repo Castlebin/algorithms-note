@@ -1,4 +1,4 @@
-package ch01.t11;
+package ch01.t12;
 
 public class MyThread extends Thread {
     @Override

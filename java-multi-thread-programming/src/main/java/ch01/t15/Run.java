@@ -1,4 +1,4 @@
-package ch01.t11.t15;
+package ch01.t15;
 
 public class Run {
     public static void main(String[] args) {

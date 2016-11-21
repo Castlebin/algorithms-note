@@ -1,6 +1,4 @@
-package ch01.t11.t12;
-
-import ch01.t11.MyThread;
+package ch01.t12;
 
 public class Run {
     public static void main(String[] args) {
