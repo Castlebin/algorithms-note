@@ -2,7 +2,7 @@ package ch16.se06.sync.wait;
 
 import java.math.BigDecimal;
 
-// 实现一种特殊的需求，要求账户种一存入钱立马取出，不允许取钱操作或存钱操作连续执行，只允许交错执行
+// 实现一种特殊的需求，要求账户中一存入钱立马取出，不允许取钱操作或存钱操作连续执行，只允许交错执行
 public class Account {
     private String accountNo;
     private BigDecimal balance = BigDecimal.ZERO;
