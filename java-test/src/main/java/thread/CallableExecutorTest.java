@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 public class CallableExecutorTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService executor = Executors.newWorkStealingPool();
-
         List<Callable<String>> callables = Arrays.asList(
                 callable("task1", 2),
                 callable("task2", 1),
