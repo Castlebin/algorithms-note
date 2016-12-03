@@ -1,4 +1,4 @@
-package ch02.item1;
+package ch02.item01;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
