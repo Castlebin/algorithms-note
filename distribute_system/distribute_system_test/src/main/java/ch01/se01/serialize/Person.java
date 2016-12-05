@@ -1,4 +1,4 @@
-package serialize;
+package ch01.se01.serialize;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

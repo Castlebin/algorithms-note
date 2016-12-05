@@ -1,4 +1,4 @@
-package serialize;
+package ch01.se01.serialize;
 
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
