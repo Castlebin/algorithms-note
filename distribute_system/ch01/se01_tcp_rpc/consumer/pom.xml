@@ -3,15 +3,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.heller</groupId>
-    <artifactId>service_api</artifactId>
+    <artifactId>consumer</artifactId>
     <version>${project.version}</version>
 
-    <name>service_api</name>
+    <name>consumer</name>
 
     <parent>
         <groupId>com.heller</groupId>
         <artifactId>se01_tcp_rpc</artifactId>
         <version>0.0.1</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.heller</groupId>
+            <artifactId>service_api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
