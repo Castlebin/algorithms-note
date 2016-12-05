@@ -8,6 +8,12 @@
 
     <name>service_api_impl</name>
 
+    <parent>
+        <groupId>com.heller</groupId>
+        <artifactId>se01_tcp_rpc</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.heller</groupId>
