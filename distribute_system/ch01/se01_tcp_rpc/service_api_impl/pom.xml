@@ -3,9 +3,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.heller</groupId>
-    <artifactId>service_api</artifactId>
+    <artifactId>service_api_impl</artifactId>
     <version>${project.version}</version>
 
-    <name>service_api</name>
+    <name>service_api_impl</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.heller</groupId>
+            <artifactId>service_api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -11,6 +11,7 @@
 
     <modules>
         <module>service_api</module>
+        <module>service_api_impl</module>
     </modules>
 
     <properties>
