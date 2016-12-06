@@ -4,7 +4,7 @@
 
     <groupId>com.heller</groupId>
     <artifactId>service_api_impl</artifactId>
-    <version>${project.version}</version>
+    <version>${parent.version}</version>
 
     <name>service_api_impl</name>
 

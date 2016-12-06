@@ -12,6 +12,8 @@
     <modules>
         <module>service_api</module>
         <module>service_api_impl</module>
+        <module>provider</module>
+        <module>consumer</module>
     </modules>
 
     <properties>

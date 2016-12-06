@@ -4,7 +4,7 @@
 
     <groupId>com.heller</groupId>
     <artifactId>provider</artifactId>
-    <version>${project.version}</version>
+    <version>${parent.version}</version>
 
     <name>provider</name>
 
@@ -15,11 +15,6 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.heller</groupId>
-            <artifactId>service_api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.heller</groupId>
             <artifactId>service_api_impl</artifactId>

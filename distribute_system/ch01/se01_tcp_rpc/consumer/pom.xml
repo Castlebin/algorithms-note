@@ -4,7 +4,7 @@
 
     <groupId>com.heller</groupId>
     <artifactId>consumer</artifactId>
-    <version>${project.version}</version>
+    <version>${parent.version}</version>
 
     <name>consumer</name>
 
