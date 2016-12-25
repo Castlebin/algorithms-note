@@ -33,11 +33,12 @@ public class Worker {
                     doWork(message);
                 } finally {
                     System.out.println(" [x] Done");
+                    // 显式发送消息确认
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }
             }
         };
-        boolean autoAck = false;
+        boolean autoAck = false;// 关闭了消息自动确认
         channel.basicConsume(TASK_QUEUE_NAME, autoAck, consumer);
     }
 
