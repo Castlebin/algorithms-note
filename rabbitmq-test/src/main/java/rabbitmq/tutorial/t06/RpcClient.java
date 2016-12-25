@@ -31,14 +31,16 @@ public class RpcClient {
         channel.basicConsume(replyQueueName, true, consumer);
     }
 
-    public String call(String message) throws InterruptedException {
+    public String call(String message) throws InterruptedException, IOException {
+        String response;
         String corrId = UUID.randomUUID().toString();
-        BasicProperties props = new AMQP.BasicProperties()
-                .builder()
+
+        AMQP.BasicProperties props = new AMQP.BasicProperties
+                .Builder()
                 .correlationId(corrId)
                 .replyTo(replyQueueName)
                 .build();
-        String response;
+        channel.basicPublish("", RPC_QUEUE_NAME, props, message.getBytes());
         while (true) {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             if (delivery.getProperties().getCorrelationId().equals(corrId)) {
