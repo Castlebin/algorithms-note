@@ -1,20 +1,15 @@
 package ch05;
 
-import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 // 一个支持两个线程同时获取的锁
-public class TwinsLock implements Lock, Serializable {
-    private static final long serialVersionUID = 1919493472495628739L;
-
+public class TwinsLock implements Lock {
     private final Sync sync = new Sync(2);
 
     private static class Sync extends AbstractQueuedSynchronizer {
-        private static final long serialVersionUID = 6487507141725099983L;
-
         Sync(int count) {
             if (count <= 0) {
                 throw new IllegalArgumentException("count must large than zero.");
@@ -24,11 +19,10 @@ public class TwinsLock implements Lock, Serializable {
 
         @Override
         protected int tryAcquireShared(int reduceCount) {
-            for (;;) {
+            for (; ; ) {
                 int current = getState();
                 int newCount = current - reduceCount;
-                if (newCount <0 || compareAndSetState(current, newCount)) {
-                    System.out.println(newCount);// TODO 不懂啊!!
+                if (newCount < 0 || compareAndSetState(current, newCount)) {// TODO 不懂啊!! 为什么newCount < 0
                     return newCount;
                 }
             }
@@ -36,7 +30,7 @@ public class TwinsLock implements Lock, Serializable {
 
         @Override
         protected boolean tryReleaseShared(int returnCount) {
-            for (;;) {
+            for (; ; ) {
                 int current = getState();
                 int newCount = current + returnCount;
                 if (compareAndSetState(current, newCount)) {
@@ -58,7 +52,7 @@ public class TwinsLock implements Lock, Serializable {
 
     @Override
     public void unlock() {
-        sync.tryReleaseShared(1);
+        sync.releaseShared(1);
     }
 
     @Override
@@ -80,4 +74,5 @@ public class TwinsLock implements Lock, Serializable {
     public Condition newCondition() {
         return sync.new ConditionObject();
     }
+
 }
