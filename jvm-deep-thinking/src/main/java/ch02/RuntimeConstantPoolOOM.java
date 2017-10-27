@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * JDK 8 运行时常量池导致OOM
  * VM args:
- *      -XX:MetaspaceSize=2m -XX:MaxMetaspaceSize=5m -XX:+HeapDumpOnOutOfMemoryError
+ *      -XX:MetaspaceSize=2m -XX:MaxMetaspaceSize=5m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/admin/logs/java.hprof
  */
 public class RuntimeConstantPoolOOM {
     public static void main(String[] args) {

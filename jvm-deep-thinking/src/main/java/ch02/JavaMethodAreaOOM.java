@@ -1,15 +1,15 @@
 package ch02;
 
+import java.lang.reflect.Method;
+
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
-import java.lang.reflect.Method;
-
 /**
  * JDK 8 动态生成类导致方法区溢出（使用CGLib）
  * VM args:
- *      -XX:MetaspaceSize=2m -XX:MaxMetaspaceSize=5m -XX:+HeapDumpOnOutOfMemoryError
+ *      -XX:MetaspaceSize=2m -XX:MaxMetaspaceSize=5m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/admin/logs/java.hprof
  */
 public class JavaMethodAreaOOM {
     public static void main(String[] args) {
