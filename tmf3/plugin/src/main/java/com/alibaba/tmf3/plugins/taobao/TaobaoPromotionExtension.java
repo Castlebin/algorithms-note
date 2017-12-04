@@ -1,0 +1,20 @@
+package com.alibaba.tmf3.plugins.taobao;
+
+import com.alibaba.platform.delivery.DeliveryExtension;
+import com.alibaba.platform.delivery.DeliveryItem;
+import com.alibaba.platform.promotion.PromotionExtension;
+import com.alibaba.platform.promotion.PromotionItem;
+import com.alibaba.tmf3.core.BizCode;
+
+/**
+ * User: kuhe
+ * Date: 2017/7/7
+ * Time: PM4:55
+ */
+
+public class TaobaoPromotionExtension implements PromotionExtension {
+
+    public long getDiscount(PromotionItem item) {
+        return 10;
+    }
+}
