@@ -8,12 +8,18 @@
     <artifactId>tmf3</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>entry</module>
         <module>core</module>
         <module>platform</module>
         <module>plugin</module>
     </modules>
+
+    <properties>
+        <springframework.version>5.0.2.RELEASE</springframework.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -33,12 +39,6 @@
                 <artifactId>reflections</artifactId>
                 <version>0.9.11</version>
             </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring</artifactId>
-                <version>4.3.9.RELEASE</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
