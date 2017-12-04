@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
  * Time: PM6:59
  */
 
-
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE) //can use in method only.
 public @interface ProductCode {

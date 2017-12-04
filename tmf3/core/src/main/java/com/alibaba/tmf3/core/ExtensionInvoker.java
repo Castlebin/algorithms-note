@@ -13,16 +13,14 @@ public class ExtensionInvoker<Ext> {
         this.extClass = extClass;
     }
 
-    public <T extends BizInstance, R> R execute(T target,
-                                                ExtensionCallback<Ext, R> callback) {
-
+    public <T extends BizInstance, R> R execute(T target, ExtensionCallback<Ext, R> callback) {
         String bizCode = target.getBizCode();
 
         Ext point = ExtensionMappingBuilder
-                .getInstance()
-                .getExtPoint(this.extClass, bizCode);
+            .getInstance()
+            .getExtPoint(this.extClass, bizCode);
 
         return callback.apply(point);
-
     }
+
 }

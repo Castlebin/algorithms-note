@@ -6,7 +6,6 @@ import com.alibaba.platform.delivery.DeliveryItem;
 import com.alibaba.platform.promotion.PromotionExtension;
 import com.alibaba.platform.promotion.PromotionItem;
 import com.alibaba.tmf3.core.BizCode;
-import com.alibaba.tmf3.core.ExtensionFacade;
 import com.alibaba.tmf3.core.WithProduct;
 
 /**
@@ -18,7 +17,6 @@ import com.alibaba.tmf3.core.WithProduct;
 @BizCode("tmall")
 @WithProduct("juhuasuan")
 public class TmallTradeExtensionFacade extends TradeExtensionFacade {
-
 
     public DeliveryExtension getDeliveryExtension() {
         return new DeliveryExtension() {

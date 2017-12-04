@@ -1,10 +1,7 @@
 package com.alibaba.tmf3.plugins.taobao;
 
-import com.alibaba.platform.delivery.DeliveryExtension;
-import com.alibaba.platform.delivery.DeliveryItem;
 import com.alibaba.platform.promotion.PromotionExtension;
 import com.alibaba.platform.promotion.PromotionItem;
-import com.alibaba.tmf3.core.BizCode;
 
 /**
  * User: kuhe

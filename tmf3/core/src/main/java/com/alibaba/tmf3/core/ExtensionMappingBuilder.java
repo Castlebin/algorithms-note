@@ -1,19 +1,15 @@
 package com.alibaba.tmf3.core;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.MoreCollectors;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
-import org.reflections.Reflections;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import org.reflections.Reflections;
 
 /**
  * User: kuhe
@@ -27,26 +23,24 @@ public class ExtensionMappingBuilder {
     private ExtensionMappingBuilder() {
     }
 
-    private Map<Class, Multimap<String, ExtensionPoints>> extMap
-            = new HashMap<>();
-
-
+    private Map<Class, Multimap<String, ExtensionPoint>> extMap
+        = new HashMap<>();
 
     public void build() {
         Reflections platformReflections = new Reflections("com.alibaba.platform");
 
         //find all the extension point classes
-        Set<Class<? extends ExtensionPoints>> extPointClasses =
-                platformReflections.getSubTypesOf(ExtensionPoints.class);
+        Set<Class<? extends ExtensionPoint>> extPointClasses =
+            platformReflections.getSubTypesOf(ExtensionPoint.class);
 
         //find all the business plugins which implements the extension point
         Rebound rebound = new Rebound("com.alibaba.tmf3.plugins");
         Set<Class<? extends ExtensionFacade>> pluginFacades =
-                rebound.getSubClassesOf(ExtensionFacade.class);
+            rebound.getSubClassesOf(ExtensionFacade.class);
 
-        for (Class<? extends ExtensionPoints> pointClass : extPointClasses) {
+        for (Class<? extends ExtensionPoint> pointClass : extPointClasses) {
 
-            Multimap<String, ExtensionPoints> bizCodeExtMap = ArrayListMultimap.create();
+            Multimap<String, ExtensionPoint> bizCodeExtMap = ArrayListMultimap.create();
             for (Class<? extends ExtensionFacade> facade : pluginFacades) {
                 buildPluginMap(pointClass, facade, bizCodeExtMap);
             }
@@ -56,28 +50,27 @@ public class ExtensionMappingBuilder {
 
     }
 
-
-    private void buildPluginMap(Class<? extends ExtensionPoints> pointClass,
+    private void buildPluginMap(Class<? extends ExtensionPoint> pointClass,
                                 Class<? extends ExtensionFacade> facade,
-                                Multimap<String, ExtensionPoints> bizCodeExtMap) {
+                                Multimap<String, ExtensionPoint> bizCodeExtMap) {
 
         BizCode[] annotationsByType = facade.getAnnotationsByType(BizCode.class);
 
         if (annotationsByType != null
-                && annotationsByType.length > 0) {
+            && annotationsByType.length > 0) {
 
             BizCode bizCode = annotationsByType[0];
 
             //build the biz code and associated extension implement map
-            ExtensionPoints plugin = createExtInstance(facade, pointClass);
+            ExtensionPoint plugin = createExtInstance(facade, pointClass);
 
             bizCodeExtMap.put(bizCode.value(), plugin);
         }
 
     }
 
-    private ExtensionPoints createExtInstance(Class<? extends ExtensionFacade> facade,
-                                              Class<? extends ExtensionPoints> pointClass) {
+    private ExtensionPoint createExtInstance(Class<? extends ExtensionFacade> facade,
+                                             Class<? extends ExtensionPoint> pointClass) {
 
         Object points = null;
         try {
@@ -89,7 +82,7 @@ public class ExtensionMappingBuilder {
                 //find the method returns the extensionPoints object in the facade class
                 if (pointClass.isAssignableFrom(method.getReturnType())) {
                     try {
-                        return (ExtensionPoints) method.invoke(points);
+                        return (ExtensionPoint)method.invoke(points);
                     } catch (InvocationTargetException e) {
                         e.printStackTrace();
                     }
@@ -105,22 +98,19 @@ public class ExtensionMappingBuilder {
         return null;
     }
 
-
     public <Ext> Ext getExtPoint(Class<Ext> extClass,
                                  String bizCode) {
 
         //暂时先取第一个扩展实现
-        return (Ext) extMap.get(extClass).get(bizCode).iterator().next();
+        return (Ext)extMap.get(extClass).get(bizCode).iterator().next();
     }
-
 
     public <Ext> List<Ext> getExtPoints(Class<Ext> extClass,
-                                       String bizCode) {
+                                        String bizCode) {
 
         return null;
-//        return  extMap.get(extClass).get(bizCode);
+        //        return  extMap.get(extClass).get(bizCode);
     }
-
 
     public static ExtensionMappingBuilder getInstance() {
         return builder;

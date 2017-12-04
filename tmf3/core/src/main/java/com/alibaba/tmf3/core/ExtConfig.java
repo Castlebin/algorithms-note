@@ -10,7 +10,6 @@ import java.util.Map;
  */
 public class ExtConfig {
 
-
     private static final ExtConfig instance = new ExtConfig();
 
     public static ExtConfig getInstance() {
@@ -23,14 +22,12 @@ public class ExtConfig {
         return extensionPointMap.get(bizCode);
     }
 
-
-    public <T> void putExtPoint(String bizCode,
-                            T point) {
+    public <T> void putExtPoint(String bizCode, T point) {
         extensionPointMap.put(bizCode, point);
     }
-
 
     private ExtConfig() {
         this.extensionPointMap = new HashMap<String, Object>();
     }
+
 }

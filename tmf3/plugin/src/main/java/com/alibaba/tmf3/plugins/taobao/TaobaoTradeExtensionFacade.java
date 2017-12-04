@@ -4,8 +4,6 @@ import com.alibaba.platform.TradeExtensionFacade;
 import com.alibaba.platform.delivery.DeliveryExtension;
 import com.alibaba.platform.promotion.PromotionExtension;
 import com.alibaba.tmf3.core.BizCode;
-import com.alibaba.tmf3.plugins.tmall.TmallDeliveryExtension;
-import com.alibaba.tmf3.plugins.tmall.TmallPromotionExtension;
 
 /**
  * User: kuhe
@@ -16,10 +14,8 @@ import com.alibaba.tmf3.plugins.tmall.TmallPromotionExtension;
 @BizCode("taobao")
 public class TaobaoTradeExtensionFacade extends TradeExtensionFacade {
 
-
     public DeliveryExtension getDeliveryExtension() {
         return new TaobaoDeliveryExtension();
-
     }
 
     public PromotionExtension getPromotionExtension() {

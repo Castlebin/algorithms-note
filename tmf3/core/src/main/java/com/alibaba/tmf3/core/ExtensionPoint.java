@@ -5,5 +5,5 @@ package com.alibaba.tmf3.core;
  * Date: 2017/7/7
  * Time: PM3:37
  */
-public interface ExtensionPoints {
+public interface ExtensionPoint {
 }

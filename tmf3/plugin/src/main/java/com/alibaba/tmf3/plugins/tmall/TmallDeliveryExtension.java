@@ -2,8 +2,6 @@ package com.alibaba.tmf3.plugins.tmall;
 
 import com.alibaba.platform.delivery.DeliveryExtension;
 import com.alibaba.platform.delivery.DeliveryItem;
-import com.alibaba.tmf3.core.BizCode;
-import org.springframework.stereotype.Component;
 
 /**
  * User: kuhe
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Component;
  */
 
 public class TmallDeliveryExtension implements DeliveryExtension {
-
 
     public String getTransportMethod(DeliveryItem item) {
         return "oneDayExpress";

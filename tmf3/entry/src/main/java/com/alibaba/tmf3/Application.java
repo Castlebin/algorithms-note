@@ -1,16 +1,17 @@
 package com.alibaba.tmf3;
 
+import javax.inject.Inject;
+
 import com.alibaba.platform.delivery.DeliveryExtension;
 import com.alibaba.platform.delivery.DeliveryItem;
 import com.alibaba.platform.promotion.PromotionExtension;
 import com.alibaba.platform.promotion.PromotionItem;
 import com.alibaba.tmf3.core.ExtensionInvoker;
 import com.alibaba.tmf3.core.ExtensionMappingBuilder;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-
-import javax.inject.Inject;
 
 /**
  * User: kuhe
@@ -30,7 +31,6 @@ public class Application {
         // 这里会根据一些请求上下文来设定 bizCode
         item.setBizCode("tmall");
 
-
         String receiveMethod = deliveryExtension.getReceiveMethod(item);
         String transportMethod = deliveryExtension.getTransportMethod(item);
 
@@ -41,14 +41,13 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext context
-                = new AnnotationConfigApplicationContext(Application.class);
+            = new AnnotationConfigApplicationContext(Application.class);
 
         Application app = context.getBean(Application.class);
 
         app.runWithFacade();
 
     }
-
 
     @Inject
     private EntryService service;
@@ -64,21 +63,19 @@ public class Application {
         item.setBizCode("tmall");
 
         ExtensionInvoker<DeliveryExtension> invoker =
-                new ExtensionInvoker<>(DeliveryExtension.class);
+            new ExtensionInvoker<>(DeliveryExtension.class);
 
         String transportMethod = invoker.execute(item,
-                p -> p.getTransportMethod(item));
+            p -> p.getTransportMethod(item));
 
         String receiveMethod = invoker.execute(item,
-                p -> p.getReceiveMethod(item));
+            p -> p.getReceiveMethod(item));
 
-
-        ExtensionInvoker<PromotionExtension> invoker2=
-                new ExtensionInvoker<>(PromotionExtension.class);
+        ExtensionInvoker<PromotionExtension> invoker2 =
+            new ExtensionInvoker<>(PromotionExtension.class);
 
         PromotionItem promotionItem = new PromotionItem();
         promotionItem.setBizCode("tmall");
-
 
         Long discount = invoker2.execute(item, p -> p.getDiscount(promotionItem));
 
@@ -87,7 +84,6 @@ public class Application {
 
         System.out.println(discount);
     }
-
 
     private void runWithFacade() {
 
@@ -98,16 +94,16 @@ public class Application {
         item.setBizCode("tmall");
 
         ExtensionInvoker<DeliveryExtension> invoker =
-                new ExtensionInvoker<>(DeliveryExtension.class);
+            new ExtensionInvoker<>(DeliveryExtension.class);
 
         String transportMethod = invoker.execute(item,
-                p -> p.getTransportMethod(item));
+            p -> p.getTransportMethod(item));
 
         String receiveMethod = invoker.execute(item,
-                p -> p.getReceiveMethod(item));
+            p -> p.getReceiveMethod(item));
 
-        ExtensionInvoker<PromotionExtension> invoker2=
-                new ExtensionInvoker<>(PromotionExtension.class);
+        ExtensionInvoker<PromotionExtension> invoker2 =
+            new ExtensionInvoker<>(PromotionExtension.class);
 
         PromotionItem promotionItem = new PromotionItem();
         promotionItem.setBizCode("tmall");
@@ -120,20 +116,17 @@ public class Application {
         System.out.println(discount);
     }
 
-
-
-//    public static void main(String[] args) {
-//        ApplicationContext context
-//                = new AnnotationConfigApplicationContext(Application.class);
-//
-//        EntryService service = context.getBean(EntryService.class);
-//
-//
-//        service.run();
-//
-//       // invokerExtension();
-//
-//    }
-
+    //    public static void main(String[] args) {
+    //        ApplicationContext context
+    //                = new AnnotationConfigApplicationContext(Application.class);
+    //
+    //        EntryService service = context.getBean(EntryService.class);
+    //
+    //
+    //        service.run();
+    //
+    //       // invokerExtension();
+    //
+    //    }
 
 }

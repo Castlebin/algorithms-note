@@ -1,6 +1,6 @@
 package com.alibaba.platform.promotion;
 
-import com.alibaba.tmf3.core.ExtensionPoints;
+import com.alibaba.tmf3.core.ExtensionPoint;
 
 /**
  * User: kuhe
@@ -10,7 +10,7 @@ import com.alibaba.tmf3.core.ExtensionPoints;
 
 
 
-public interface PromotionExtension extends ExtensionPoints {
+public interface PromotionExtension extends ExtensionPoint {
 
     long getDiscount(PromotionItem item);
 }

@@ -2,7 +2,6 @@ package com.alibaba.tmf3.plugins.tmall;
 
 import com.alibaba.platform.promotion.PromotionExtension;
 import com.alibaba.platform.promotion.PromotionItem;
-import com.alibaba.tmf3.core.BizCode;
 
 /**
  * User: kuhe

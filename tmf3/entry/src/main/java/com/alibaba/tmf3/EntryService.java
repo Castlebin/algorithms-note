@@ -2,10 +2,8 @@ package com.alibaba.tmf3;
 
 import com.alibaba.platform.delivery.DeliveryExtension;
 import com.alibaba.platform.delivery.DeliveryItem;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
+import org.springframework.stereotype.Service;
 
 /**
  * User: kuhe
@@ -19,9 +17,8 @@ public class EntryService {
     //@Inject
     private DeliveryExtension deliveryExtension;
 
-
-    public void run(){
-        DeliveryItem item=new DeliveryItem();
+    public void run() {
+        DeliveryItem item = new DeliveryItem();
 
         String transportMethod = deliveryExtension.getTransportMethod(item);
         String receiveMethod = deliveryExtension.getReceiveMethod(item);
@@ -29,4 +26,5 @@ public class EntryService {
         System.out.println(transportMethod);
         System.out.println(receiveMethod);
     }
+
 }

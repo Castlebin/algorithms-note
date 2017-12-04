@@ -13,7 +13,7 @@ import com.alibaba.tmf3.plugins.tmall.TmallDeliveryExtension;
  * Time: PM3:36
  */
 @ProductCode("juhuasuan")
-public class JhsProduct extends TradeExtensionFacade{
+public class JhsProduct extends TradeExtensionFacade {
 
     @Override
     public DeliveryExtension getDeliveryExtension() {

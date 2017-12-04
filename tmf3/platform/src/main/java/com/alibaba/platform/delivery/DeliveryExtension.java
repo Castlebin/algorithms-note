@@ -1,6 +1,6 @@
 package com.alibaba.platform.delivery;
 
-import com.alibaba.tmf3.core.ExtensionPoints;
+import com.alibaba.tmf3.core.ExtensionPoint;
 
 /**
  * User: kuhe
@@ -9,7 +9,7 @@ import com.alibaba.tmf3.core.ExtensionPoints;
  */
 
 
-public interface DeliveryExtension extends  ExtensionPoints{
+public interface DeliveryExtension extends ExtensionPoint {
 
     String getTransportMethod(DeliveryItem item);
 
