@@ -1,13 +1,15 @@
-package com.heller.tmf;
+package com.heller.tmf.entry;
 
+import com.heller.tmf.core.ExtensionInvoker;
+import com.heller.tmf.core.ExtensionMappingBuilder;
+import com.heller.tmf.platform.delivery.DeliveryExtension;
+import com.heller.tmf.platform.delivery.DeliveryItem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan
 public class Application {
-
-    private DeliveryExtension deliveryExtension;
 
     private void run() {
         //构建扩展点接口与业务实现之间的关系。
@@ -19,12 +21,10 @@ public class Application {
         ExtensionInvoker<DeliveryExtension> invoker = new ExtensionInvoker<>(DeliveryExtension.class);
 
         String transportMethod = invoker.execute(item, p -> p.getTransportMethod(item));
-
         String receiveMethod = invoker.execute(item, p -> p.getReceiveMethod(item));
 
         System.out.println(transportMethod);
         System.out.println(receiveMethod);
-
     }
 
     public static void main(String[] args) {

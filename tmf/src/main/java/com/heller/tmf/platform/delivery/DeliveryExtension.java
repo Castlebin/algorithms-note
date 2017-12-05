@@ -1,4 +1,4 @@
-package com.heller.tmf.platform;
+package com.heller.tmf.platform.delivery;
 
 import com.heller.tmf.core.ExtensionPoint;
 
