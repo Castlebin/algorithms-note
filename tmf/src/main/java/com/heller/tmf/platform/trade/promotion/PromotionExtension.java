@@ -2,7 +2,6 @@ package com.heller.tmf.platform.trade.promotion;
 
 import com.heller.tmf.core.ExtensionPoint;
 
-@ExtensionPoint
-public interface PromotionExtension {
+public interface PromotionExtension extends ExtensionPoint {
     long getDiscount(PromotionItem item);
 }

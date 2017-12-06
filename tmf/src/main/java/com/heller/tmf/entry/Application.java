@@ -32,6 +32,9 @@ public class Application {
         item2.setBizCode("taobao");
         ExtensionInvoker<PromotionExtension> invoker2 = new ExtensionInvoker<>(PromotionExtension.class);
         invoker2.execute(item, p -> p.getDiscount(item2));
+
+        Long discount = invoker2.execute(item, p -> p.getDiscount(item2));
+        System.out.println(discount);
     }
 
     public static void main(String[] args) {
