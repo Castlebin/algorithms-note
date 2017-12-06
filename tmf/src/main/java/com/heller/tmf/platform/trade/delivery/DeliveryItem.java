@@ -1,4 +1,4 @@
-package com.heller.tmf.platform.delivery;
+package com.heller.tmf.platform.trade.delivery;
 
 import com.heller.tmf.core.BizInstance;
 

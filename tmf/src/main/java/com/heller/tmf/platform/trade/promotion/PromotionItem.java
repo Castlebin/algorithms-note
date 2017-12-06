@@ -1,4 +1,4 @@
-package com.heller.tmf.platform.promotion;
+package com.heller.tmf.platform.trade.promotion;
 
 import com.heller.tmf.core.BizInstance;
 

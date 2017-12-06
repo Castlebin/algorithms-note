@@ -2,8 +2,10 @@ package com.heller.tmf.entry;
 
 import com.heller.tmf.core.ExtensionInvoker;
 import com.heller.tmf.core.ExtensionMappingBuilder;
-import com.heller.tmf.platform.delivery.DeliveryExtension;
-import com.heller.tmf.platform.delivery.DeliveryItem;
+import com.heller.tmf.platform.trade.delivery.DeliveryExtension;
+import com.heller.tmf.platform.trade.delivery.DeliveryItem;
+import com.heller.tmf.platform.trade.promotion.PromotionExtension;
+import com.heller.tmf.platform.trade.promotion.PromotionItem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,6 +27,11 @@ public class Application {
 
         System.out.println(transportMethod);
         System.out.println(receiveMethod);
+
+        PromotionItem item2 = new PromotionItem();
+        item2.setBizCode("taobao");
+        ExtensionInvoker<PromotionExtension> invoker2 = new ExtensionInvoker<>(PromotionExtension.class);
+        invoker2.execute(item, p -> p.getDiscount(item2));
     }
 
     public static void main(String[] args) {

@@ -1,8 +1,8 @@
-package com.heller.tmf.plugin;
+package com.heller.tmf.plugin.taobao.trade.delivery;
 
 import com.heller.tmf.core.BizCode;
-import com.heller.tmf.platform.delivery.DeliveryExtension;
-import com.heller.tmf.platform.delivery.DeliveryItem;
+import com.heller.tmf.platform.trade.delivery.DeliveryExtension;
+import com.heller.tmf.platform.trade.delivery.DeliveryItem;
 
 //这个注解用来建立扩展点实现与业务的关联。
 @BizCode("taobao")
