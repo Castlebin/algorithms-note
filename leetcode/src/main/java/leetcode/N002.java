@@ -1,61 +1,123 @@
 package leetcode;
 
-import java.math.BigInteger;
+import org.junit.Test;
 
+/**
+ 2. Add Two Numbers
+ You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+ You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+ Example
+
+ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+ Output: 7 -> 0 -> 8
+ Explanation: 342 + 465 = 807.
+ */
 public class N002 {
 
-    public BigInteger getNumOfListNode(ListNode listNode) {
-        return new BigInteger(getNumStrOfListNode(listNode));
-    }
-
-    public String getNumStrOfListNode(ListNode listNode) {
-        return new StringBuilder(getNumStrOfListNodeReverse(listNode)).reverse().toString();
-    }
-
-    public String getNumStrOfListNodeReverse(ListNode listNode) {
-        String numStr = "" + listNode.val;
-        if (listNode.next == null) {
-            return numStr;
-        } else {
-            return numStr + getNumStrOfListNodeReverse(listNode.next);
-        }
-    }
-
-    public ListNode createListNodeFromNum(BigInteger num) {
-        String numReverseStr = new StringBuilder(num.toString()).reverse().toString();
-
-        char[] chars = numReverseStr.toCharArray();
-        ListNode result = new ListNode(new Integer(chars[0]+""));
-        ListNode n = result;
-        for (int i=1; i<chars.length; i++) {
-            ListNode newNode = new ListNode(new Integer(chars[i]+""));
-            n.next = newNode;
-            n = newNode;
-        }
-
-        return result;
-    }
-
+    /**
+     * 相当于一个简单的加法器实现
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return createListNodeFromNum(getNumOfListNode(l1).add(getNumOfListNode(l2)));
-    }
+        ListNode head = new ListNode(0);
+        ListNode cur = head;
+        ListNode nextNode;
+        ListNode aCur = l1;
+        ListNode bCur = l2;
+        int a, b, sum;
+        int carry = 0;
 
-    public static void main(String[] args) {
-        N002 n002 = new N002();
-        ListNode l1 = n002.createListNodeFromNum(new BigInteger("999999999999999"));
-        ListNode l2 = n002.createListNodeFromNum(new BigInteger("99999999999999999999999991"));
+        do {
+            a = aCur.val;
+            b = bCur.val;
+            sum = a + b + carry;
+            if (sum >= 10) {
+                carry = sum / 10;
+                sum %= 10;
+            } else {
+                carry = 0;
+            }
+            cur.val = sum;
 
-        ListNode result = n002.addTwoNumbers(l1, l2);
-        System.out.println(n002.getNumOfListNode(result));
-    }
+            aCur = aCur.next;
+            bCur = bCur.next;
+            if (aCur != null && bCur != null) {
+                nextNode = new ListNode(0);
+                cur.next = nextNode;
+                cur = nextNode;
+            }
+        } while (aCur != null && bCur != null);
 
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
+        ListNode left = aCur == null ? bCur : aCur;
+        while (left != null && carry > 0) {
+            sum = left.val + carry;
+            if (sum >= 10) {
+                carry = sum / 10;
+                sum %= 10;
+            } else {
+                carry = 0;
+            }
+            nextNode = new ListNode(sum);
+            cur.next = nextNode;
+            cur = nextNode;
+            left = left.next;
         }
+        if (carry <= 0) {
+            cur.next = left;
+        } else {
+            nextNode = new ListNode(carry);
+            cur.next = nextNode;
+            cur = nextNode;
+        }
+
+        return head;
     }
 
+    @Test
+    public void test() {
+        ListNode l1 = ListNode.createListNode("456789");
+        System.out.println(l1);
+        ListNode l2 = ListNode.createListNode("56789");
+        System.out.println(l2);
+
+        ListNode l3 = addTwoNumbers(l1, l2);
+        System.out.println(l3);
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
+
+    public static ListNode createListNode(String s) {
+        ListNode head = new ListNode(0);
+        ListNode cur = head;
+        ListNode next;
+        for (int i = 0; i < s.length(); i++) {
+            cur.val = Integer.parseInt(s.substring(i, i + 1));
+            if (i < s.length() - 1) {
+                next = new ListNode(0);
+                cur.next = next;
+                cur = next;
+            }
+        }
+        return head;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNode cur = this;
+        do {
+            sb.append(cur.val);
+            cur = cur.next;
+        } while (cur != null);
+
+        return sb.toString();
+    }
 }
