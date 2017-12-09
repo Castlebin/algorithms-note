@@ -1,29 +1,34 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Test;
 
 public class N001 {
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (target == nums[i] + nums[j]) {
-                    result[0] = i;
-                    result[1] = j;
-
-                    return result;
-                }
+            int b = target - nums[i];
+            if (map.containsKey(b)) {
+                result[0] = map.get(b);
+                result[1] = i;
+                return result;
             }
+            map.put(nums[i], i);
         }
 
         return null;
     }
 
-    public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 4};
+    @Test
+    public void testTwoSum() {
+        int[] nums = new int[] {3, 2, 4};
         int target = 6;
 
-        int[] result = new N001().twoSum(nums, target);
+        int[] result = twoSum(nums, target);
         System.out.println(Arrays.toString(result));
     }
 
