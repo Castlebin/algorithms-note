@@ -34,5 +34,10 @@
             <version>4.12</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.1.5</version>
+        </dependency>
     </dependencies>
 </project>
