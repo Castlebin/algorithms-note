@@ -44,6 +44,20 @@ public class MaxSubSeqSumTest {
         testMaxSubSeqSum();
     }
 
+    @Test
+    public void test1() {
+        sequence = new int[]{1};
+        testMaxSubSeqSum();
+    }
+
+    @Test
+    public void test2() {
+        sequence = new int[]{-1};
+        testMaxSubSeqSum();
+    }
+
+
+
     /**
      * 生成 (-range, range) 之间的随机整数序列，长度为n
      */
