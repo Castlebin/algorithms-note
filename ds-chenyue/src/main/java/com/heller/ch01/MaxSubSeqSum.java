@@ -62,6 +62,9 @@ public class MaxSubSeqSum {
     }
 
     private static int maxSubSeqSum_3(int[] array, int begin, int end) {
+        if (array.length == 0) {
+            return 0;
+        }
         if (begin == end) {
             if (array[begin] > 0) {
                 return array[begin];

@@ -40,7 +40,7 @@ public class MaxSubSeqSumTest {
 
     @Test
     public void test() {
-        sequence = new int[]{-2, 10, -9, -1, -6};
+        sequence = new int[]{};
         testMaxSubSeqSum();
     }
 
