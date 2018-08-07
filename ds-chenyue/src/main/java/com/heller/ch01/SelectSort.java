@@ -5,6 +5,11 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * 选择排序
+ *
+ * 每次循环，从 i到 n 元素 之间，找出最小元素，通过swap放到i的位置，所以每次循环，前i个元素是排好序的
+ */
 public class SelectSort {
 
     public int[] selectSort(int[] array) {
