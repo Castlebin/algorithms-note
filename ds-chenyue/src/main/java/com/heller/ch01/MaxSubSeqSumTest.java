@@ -11,6 +11,7 @@ public class MaxSubSeqSumTest {
 
     @Test
     public void testMaxSubSeqSum() {
+        System.out.println(Arrays.toString(sequence));
         int maxSubSeqSum_1 = MaxSubSeqSum.maxSubSeqSum_1(sequence);
         int maxSubSeqSum_2 = MaxSubSeqSum.maxSubSeqSum_2(sequence);
         int maxSubSeqSum_3 = MaxSubSeqSum.maxSubSeqSum_3(sequence);
