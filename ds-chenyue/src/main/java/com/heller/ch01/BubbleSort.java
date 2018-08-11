@@ -16,9 +16,9 @@ public class BubbleSort {
      */
     public static void bubbleSort(int[] array) {
         for (int j = 0; j < array.length; j++) {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] > array[j]) {
-                    swap(array, i,j);
+            for (int i = 0; i < array.length - 1 - j; i++) {
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
                 }
             }
         }
@@ -27,7 +27,7 @@ public class BubbleSort {
     @Test
     public void testBubbleSort() {
         int[] array = generateArray(10, 8);
-        int [] copy = Arrays.copyOf(array, array.length);
+        int[] copy = Arrays.copyOf(array, array.length);
         System.out.println("origin: " + Arrays.toString(array));
         System.out.println("copy: " + Arrays.toString(copy));
 
