@@ -1,0 +1,3 @@
+[submodule "AlgorithmsSedgewick"]
+	path = AlgorithmsSedgewick
+	url = git@github.com:aistrate/AlgorithmsSedgewick.git
