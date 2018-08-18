@@ -75,6 +75,9 @@ public class MaxSubSeqSum {
         int leftMaxSubSeqSum = maxSubSeqSum_3(array, begin, middle);
         int rightMaxSubSeqSum = maxSubSeqSum_3(array, middle + 1, end);
 
+        /**
+         * 从中间从左边相加 的 最大和
+         */
         int leftMaxSum = 0, leftSum = 0;
         for (int i = middle; i >= begin; i--) {
             leftSum += array[i];
@@ -83,6 +86,9 @@ public class MaxSubSeqSum {
             }
         }
 
+        /**
+         * 从中间往右边相加 的 最大和
+         */
         int rightMaxSum = 0, rightSum = 0;
         for (int i = middle + 1; i <= end; i++) {
             rightSum += array[i];
