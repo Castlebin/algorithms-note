@@ -1,4 +1,4 @@
-package com.heller.ch01;
+package com.heller;
 
 import java.util.Random;
 

@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static cn.hutool.core.util.ArrayUtil.swap;
-import static com.heller.ch01.ArrayUtil.generateArray;
+import static com.heller.ArrayUtil.generateArray;
 
 public class BubbleSort {
 
