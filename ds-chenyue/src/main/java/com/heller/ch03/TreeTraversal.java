@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * 3. 后序遍历（左子树、右子树、根）               （递归调用）
  * 4. 层次遍历（从上外下、从左往右、一层一层来）    （借助队列实现）
  */
-public class TreeNodeTraversal {
+public class TreeTraversal {
 
     /**
      * 前序遍历（根、左子树、右子树）               （递归调用）
@@ -65,7 +65,5 @@ public class TreeNodeTraversal {
             }
         }
     }
-
-    // 二叉树的 前序、中序、后序 遍历 的 非递归实现
 
 }
