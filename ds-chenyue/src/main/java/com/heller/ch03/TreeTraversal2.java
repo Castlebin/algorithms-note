@@ -86,6 +86,7 @@ public class TreeTraversal2 {
                 } else {
                     currentNode = stack.pop();  // 第三次遇到，可以pop了
                     System.out.println(currentNode.data);
+                    currentNode = null;     // ** 注意了！
                 }
             }
         }
@@ -114,7 +115,7 @@ public class TreeTraversal2 {
                 stack.pop();
                 pre = cur;
             } else {
-                if (cur.right != null) {
+                if (cur.right != null) { // 注意，先右后左，因为是栈，需要保证左儿子先出栈
                     stack.push(cur.right);
                 }
                 if (cur.left != null) {
