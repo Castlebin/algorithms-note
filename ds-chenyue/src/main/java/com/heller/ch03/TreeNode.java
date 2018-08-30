@@ -16,4 +16,8 @@ public class TreeNode {
 
     public TreeNode right;
 
+    public TreeNode(Integer data) {
+        this.data = data;
+    }
+
 }
