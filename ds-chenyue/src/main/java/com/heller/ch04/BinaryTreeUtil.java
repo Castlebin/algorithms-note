@@ -62,4 +62,34 @@ public class BinaryTreeUtil {
         return root;
     }
 
+    /**
+     * find、findMin、findMax、insert 的非递归实现
+     */
+    public static TreeNode find_1(TreeNode root, Integer element) {
+        while (root != null) {
+            if (element > root.data) {
+                root = root.right;
+            } else if (element < root.data) {
+                root = root.left;
+            } else {
+                return root;
+            }
+        }
+        return null;
+    }
+
+    public static TreeNode findMin_1(TreeNode root) {
+        while (root != null && root.left != null) {
+            root = root.left;
+        }
+        return root;
+    }
+
+    public static TreeNode findMax_1(TreeNode root) {
+        while (root != null && root.right != null) {
+            root = root.right;
+        }
+        return root;
+    }
+
 }
