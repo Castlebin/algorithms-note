@@ -4,9 +4,9 @@ import com.heller.ch03.TreeNode;
 
 /**
  * 实现二叉搜索树的几种基本操作
- * <p>
+ *
  * find、findMin、findMax、insert、delete
- * <p>
+ *
  * delete操作稍微复杂一点点，因为删除必须要考虑，删除后，要仍然是一颗二叉搜索树
  */
 public class BinaryTreeUtil {
@@ -62,6 +62,7 @@ public class BinaryTreeUtil {
         return root;
     }
 
+    // ====================== 非递归实现 ======================
     /**
      * find、findMin、findMax、insert 的非递归实现
      */
@@ -89,6 +90,33 @@ public class BinaryTreeUtil {
         while (root != null && root.right != null) {
             root = root.right;
         }
+        return root;
+    }
+
+    public static TreeNode insert_1(TreeNode root, Integer element) {
+        if (root == null) {
+            return new TreeNode(element);
+        }
+
+        TreeNode prev;
+        TreeNode cur = root;
+        while (cur != null) {
+            prev = cur;
+            if (element < cur.data) {
+                cur = cur.left;
+                if (cur == null) {
+                    prev.left = new TreeNode(element);
+                }
+            } else if (element > cur.data) {
+                cur = cur.right;
+                if (cur == null) {
+                    prev.right = new TreeNode(element);
+                }
+            } else {
+                return root;
+            }
+        }
+
         return root;
     }
 
