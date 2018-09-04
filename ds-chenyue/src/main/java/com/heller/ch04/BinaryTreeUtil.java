@@ -63,6 +63,8 @@ public class BinaryTreeUtil {
     }
 
     /**
+     * 删除 变 替换
+     *
      * 删除的递归实现  （删除变成替换，用 右子树中的最小节点 或者 左子树中的最大节点 替换要删除的节点元素）
      */
     public static TreeNode delete(TreeNode root, Integer element) {
