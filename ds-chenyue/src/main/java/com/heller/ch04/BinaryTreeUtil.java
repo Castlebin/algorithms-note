@@ -175,20 +175,20 @@ public class BinaryTreeUtil {
                     cur = tmp;  // 替换之后，变为从右子树中去删除tmp节点的值
                     element = tmp.data;
                 } else { // 要删除的那个节点为叶节点或者只有一个儿子的情况
-                    if (root.left == null) {    // 有右儿子或者无子节点的情况
-                        root = root.right;
-                    } else {    // 有左儿子的情况
-                        root = root.left;
+                    if (cur.left == null) {    // 有右儿子或者无子节点的情况
+                        cur = cur.right;
+                    } else {    // 只有有左儿子的情况
+                        cur = cur.left;
                     }
 
                     // 上面的code block等价于
                     /*
-                     if (root.left == null && root.right == null) {// 要删除的为叶节点
-                        root = null;
-                     } else if( root.right != null) {// 要删除的节点只有右儿子
-                        root = root.right;
+                     if (cur.left == null && cur.right == null) {// 要删除的为叶节点
+                        cur = null;
+                     } else if( cur.right != null) {// 要删除的节点只有右儿子
+                        cur = cur.right;
                      } else {// 要删除的节点只有左儿子
-                        root = root.left;
+                        cur = cur.left;
                      }
                      */
                 }
