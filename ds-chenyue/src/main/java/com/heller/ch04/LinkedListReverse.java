@@ -10,11 +10,11 @@ public class LinkedListReverse {
 
         @Override
         public String toString() {
-            StringBuilder sb = new StringBuilder(data+"->");
-            Node n = next;
-            while (n != null) {
-                sb.append(n.data).append("->");
-                n = n.next;
+            StringBuilder sb = new StringBuilder();
+            Node cur = this;
+            while (cur != null) {
+                sb.append(cur.data).append("->");
+                cur = cur.next;
             }
             sb.append("null");
             return sb.toString();
@@ -40,19 +40,22 @@ public class LinkedListReverse {
 
     @Test
     public void testReverse() {
-        Node head = new Node();
-        head.data = 0;
-        Node cur = head;
-        for (int i = 1; i < 10; i++) {
-            Node next = new Node();
-            next.data = i;
+        for (int n = 0; n < 10; n++) {
+            Node head = new Node();
+            head.data = 0;
+            Node cur = head;
+            for (int i = 1; i <= n; i++) {
+                Node next = new Node();
+                next.data = i;
 
-            cur.next = next;
-            cur = next;
+                cur.next = next;
+                cur = next;
+            }
+
+            System.out.println(head);
+            System.out.println(reverse(head));
+            System.out.println("-----------------");
         }
-
-        System.out.println(head);
-        System.out.println(reverse(head));
     }
 
 }
