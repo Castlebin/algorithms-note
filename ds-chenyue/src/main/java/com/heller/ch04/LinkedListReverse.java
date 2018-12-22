@@ -2,8 +2,6 @@ package com.heller.ch04;
 
 import org.junit.Test;
 
-import java.util.List;
-
 public class LinkedListReverse {
 
     class Node {
