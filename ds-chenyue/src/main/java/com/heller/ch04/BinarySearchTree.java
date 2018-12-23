@@ -120,12 +120,30 @@ public class BinarySearchTree {
      * 删除的递归实现  （删除变成替换，用 右子树中的最小节点 或者 左子树中的最大节点 替换要删除的节点元素）
      */
     public static TreeNode delete(TreeNode bst, int element) {
-
-        return null;
+        if (bst == null) {
+            System.out.println("要删除的的元素不存在");
+        } else if (element > bst.data) {
+            bst.right = delete(bst.right, element);
+        } else if (element < bst.data) {
+            bst.left = delete(bst.left, element);
+        } else { // 找到要删除的元素
+            if (bst.left != null && bst.right != null) {
+                // 找到右子树的最小元素，替换掉当前节点元素值，再从右边递归的删除那个右子树的最小元素
+                TreeNode tmp = findMin(bst.right);
+                bst.data = tmp.data;
+                bst.right = delete(bst.right, tmp.data);
+            } else {
+                if (bst.left == null) {
+                    bst = bst.right;
+                } else {
+                    bst = bst.left;
+                }
+            }
+        }
+        return bst;
     }
 
     public static TreeNode delete_1(TreeNode bst, int element) {
-
         return null;
     }
 
