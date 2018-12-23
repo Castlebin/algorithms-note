@@ -2,6 +2,8 @@ package com.heller.ch04;
 
 import com.heller.ch03.TreeNode;
 
+import java.lang.reflect.WildcardType;
+
 /**
  * 实现二叉搜索树的几种基本操作
  *
@@ -44,24 +46,34 @@ public class BinarySearchTree {
      * findMin 递归、非递归       (最左边的节点)
      */
     public static TreeNode findMin(TreeNode bst) {
-        return null;
+        if (bst != null && bst.left != null) {
+            return findMin(bst.left);
+        }
+        return bst;
     }
 
     public static TreeNode findMin_1(TreeNode bst) {
-        return null;
+        while (bst != null && bst.left != null) {
+            bst = bst.left;
+        }
+        return bst;
     }
 
     /**
      * findMax 递归、非递归       (最右边的节点)
      */
     public static TreeNode findMax(TreeNode bst) {
-
-        return null;
+        if (bst != null && bst.right != null) {
+            return findMax(bst);
+        }
+        return bst;
     }
 
     public static TreeNode findMax_1(TreeNode bst) {
-
-        return null;
+        while (bst != null && bst.right != null) {
+            bst = bst.right;
+        }
+        return bst;
     }
 
     /**
