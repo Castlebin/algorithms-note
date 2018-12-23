@@ -167,7 +167,7 @@ public class BinarySearchTree {
                     if (bst.left == null) {
                         prev.right = bst.right;
                     } else {
-                        prev.left = bst.left;
+                        prev.right = bst.left;
                     }
                 }
             }
