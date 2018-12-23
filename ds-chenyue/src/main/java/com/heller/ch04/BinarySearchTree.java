@@ -2,9 +2,6 @@ package com.heller.ch04;
 
 import com.heller.ch03.TreeNode;
 
-import java.lang.annotation.ElementType;
-import java.lang.reflect.WildcardType;
-
 /**
  * 实现二叉搜索树的几种基本操作
  *
@@ -18,11 +15,28 @@ public class BinarySearchTree {
      * find 递归、非递归
      */
     public static TreeNode find(TreeNode bst, int element) {
-        return null;
+        if (bst == null) {
+            return null;
+        }
+        if (element > bst.data) {
+            return find(bst.right, element);
+        } else if (element < bst.data) {
+            return find(bst.left, element);
+        } else {
+            return bst;
+        }
     }
 
     public static TreeNode find_1(TreeNode bst, int element) {
-
+        while (bst != null) {
+            if (element > bst.data) {
+                bst = bst.right;
+            } else if (element < bst.data) {
+                bst = bst.left;
+            } else {
+                return bst;
+            }
+        }
         return null;
     }
 
