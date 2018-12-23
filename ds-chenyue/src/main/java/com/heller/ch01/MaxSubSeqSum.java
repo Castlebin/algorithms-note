@@ -2,10 +2,22 @@ package com.heller.ch01;
 
 import cn.hutool.core.util.NumberUtil;
 
+import java.util.Scanner;
+
 /**
  * 最大子序列和问题，4种算法
  */
 public class MaxSubSeqSum {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] nums = new int[len];
+        for (int i = 0; i < len; i++) {
+            nums[i] = sc.nextInt();
+        }
+        System.out.println(maxSubSeqSum_1(nums));
+    }
 
     /**
      * 最笨的，3层循环，遍历所有组合序列
