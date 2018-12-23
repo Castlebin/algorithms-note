@@ -80,13 +80,38 @@ public class BinarySearchTree {
      * inset 递归实现、非递归
      */
     public static TreeNode insert(TreeNode bst, int element) {
-
-        return null;
+        if (bst == null) {
+            return new TreeNode(element);
+        }
+        if (element > bst.data) {
+            bst.right = insert(bst.right, element);
+        } else if (element < bst.data) {
+            bst.left = insert(bst.left, element);
+        }
+        return bst;
     }
 
     public static TreeNode insert_1(TreeNode bst, int element) {
+        if (bst == null) {
+            return new TreeNode(element);
+        }
+        TreeNode cur = bst;
+        while (cur != null && cur.data != element) {
+            TreeNode prev = cur;
+            if (element > cur.data) {
+                cur = cur.right;
+                if (cur == null) {
+                    prev.right = new TreeNode(element);
+                }
+            } else {
+                cur = cur.left;
+                if (cur == null) {
+                    prev.left = new TreeNode(element);
+                }
+            }
+        }
 
-        return null;
+        return bst;
     }
 
     /**
