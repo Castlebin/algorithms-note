@@ -12,7 +12,7 @@ import com.heller.ch03.TreeNode;
 public class BinaryTreeUtil {
 
     /**
-     * find 递归实现
+     * find 递归、非递归
      */
     public static TreeNode find(TreeNode root, Integer element) {
         if (root == null) {
@@ -27,8 +27,21 @@ public class BinaryTreeUtil {
         }
     }
 
+    public static TreeNode find_1(TreeNode root, Integer element) {
+        while (root != null) {
+            if (element > root.data) {
+                root = root.right;
+            } else if (element < root.data) {
+                root = root.left;
+            } else {
+                return root;
+            }
+        }
+        return null;
+    }
+
     /**
-     * findMin 递归实现
+     * findMin 递归、非递归
      */
     public static TreeNode findMin(TreeNode root) {
         if (root != null && root.left != null) {
@@ -37,8 +50,15 @@ public class BinaryTreeUtil {
         return root;
     }
 
+    public static TreeNode findMin_1(TreeNode root) {
+        while (root != null && root.left != null) {
+            root = root.left;
+        }
+        return root;
+    }
+
     /**
-     * findMax 递归实现
+     * findMax 递归、非递归
      */
     public static TreeNode findMax(TreeNode root) {
         if (root != null && root.right != null) {
@@ -47,8 +67,15 @@ public class BinaryTreeUtil {
         return root;
     }
 
+    public static TreeNode findMax_1(TreeNode root) {
+        while (root != null && root.right != null) {
+            root = root.right;
+        }
+        return root;
+    }
+
     /**
-     * inset 递归实现 (考虑原树为null的情况，所以需要返回)
+     * inset 递归实现、非递归
      */
     public static TreeNode insert(TreeNode root, Integer element) {
         if (root == null) {
@@ -59,6 +86,33 @@ public class BinaryTreeUtil {
         } else if (element > root.data) {
             root.right = insert(root.right, element);
         }
+        return root;
+    }
+
+    public static TreeNode insert_1(TreeNode root, Integer element) {
+        if (root == null) {
+            return new TreeNode(element);
+        }
+
+        TreeNode prev;
+        TreeNode cur = root;
+        while (cur != null) {
+            prev = cur;
+            if (element < cur.data) {
+                cur = cur.left;
+                if (cur == null) {
+                    prev.left = new TreeNode(element);
+                }
+            } else if (element > cur.data) {
+                cur = cur.right;
+                if (cur == null) {
+                    prev.right = new TreeNode(element);
+                }
+            } else {
+                return root;
+            }
+        }
+
         return root;
     }
 
@@ -98,64 +152,6 @@ public class BinaryTreeUtil {
                      }
                      */
                 }
-            }
-        }
-
-        return root;
-    }
-
-    // ====================== 非递归实现 ======================
-    /**
-     * find、findMin、findMax、insert 的非递归实现
-     */
-    public static TreeNode find_1(TreeNode root, Integer element) {
-        while (root != null) {
-            if (element > root.data) {
-                root = root.right;
-            } else if (element < root.data) {
-                root = root.left;
-            } else {
-                return root;
-            }
-        }
-        return null;
-    }
-
-    public static TreeNode findMin_1(TreeNode root) {
-        while (root != null && root.left != null) {
-            root = root.left;
-        }
-        return root;
-    }
-
-    public static TreeNode findMax_1(TreeNode root) {
-        while (root != null && root.right != null) {
-            root = root.right;
-        }
-        return root;
-    }
-
-    public static TreeNode insert_1(TreeNode root, Integer element) {
-        if (root == null) {
-            return new TreeNode(element);
-        }
-
-        TreeNode prev;
-        TreeNode cur = root;
-        while (cur != null) {
-            prev = cur;
-            if (element < cur.data) {
-                cur = cur.left;
-                if (cur == null) {
-                    prev.left = new TreeNode(element);
-                }
-            } else if (element > cur.data) {
-                cur = cur.right;
-                if (cur == null) {
-                    prev.right = new TreeNode(element);
-                }
-            } else {
-                return root;
             }
         }
 
