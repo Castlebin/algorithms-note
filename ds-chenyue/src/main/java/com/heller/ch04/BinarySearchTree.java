@@ -144,7 +144,35 @@ public class BinarySearchTree {
     }
 
     public static TreeNode delete_1(TreeNode bst, int element) {
-        return null;
+        if (bst == null || (bst.data == element && bst.right == null && bst.left == null)) {
+            return null;
+        }
+        TreeNode cur = bst;
+        while (cur != null) {
+            TreeNode prev = cur;
+            if (element > cur.data) {
+                cur = cur.right;
+            } else if (element < cur.data) {
+                cur = cur.left;
+            } else { // 找到要删除的元素
+                if (cur.left != null && cur.right != null) {
+                    // 找到右子树的最小元素，替换掉当前节点元素值，再从右边删除那个右子树的最小元素
+                    TreeNode tmp = findMin(bst.right);
+                    bst.data = tmp.data;
+
+                    // 从右边删除那个右子树的最小元素
+                    cur = cur.right;
+                    element = tmp.data;
+                } else {
+                    if (bst.left == null) {
+                        prev.right = bst.right;
+                    } else {
+                        prev.left = bst.left;
+                    }
+                }
+            }
+        }
+        return bst;
     }
 
 }
