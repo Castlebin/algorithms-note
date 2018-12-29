@@ -17,7 +17,7 @@ public class AVLTree {
         } else if (data < t.data) {// 插入t的左子树
             t.left = insert(t.left, data);
             /** 如果需要左旋 */
-            if (getHight(t.left) - getHight(t.right) == 2) {
+            if (getHeight(t.left) - getHeight(t.right) == 2) {
                 t = singleLeftRotation(t);// 左单旋
             } else {
                 t = doubleLeftRightRotation(t);/** 左-右双旋*/
@@ -25,7 +25,7 @@ public class AVLTree {
         } else if (data > t.data) {
             t.right = insert(t.right, data);
             /**如果需要右旋*/
-            if (getHight(t.right) - getHight(t.left) == 2) {
+            if (getHeight(t.right) - getHeight(t.left) == 2) {
                 t = singleRightRotation(t);
             } else {
                 t = doubleRightLeftRotation(t);
@@ -40,8 +40,8 @@ public class AVLTree {
         AVLTreeNode b = a.left;
         a.left = b.right;
         b.right = a;
-        a.height = max(getHight(a.left), getHight(a.right)) + 1;
-        b.height = max(getHight(b.left), a.height) + 1;
+        a.height = max(getHeight(a.left), getHeight(a.right)) + 1;
+        b.height = max(getHeight(b.left), a.height) + 1;
         return b;
     }
 
@@ -49,8 +49,8 @@ public class AVLTree {
         AVLTreeNode b = a.right;
         a.right = b.left;
         b.left = a;
-        a.height = max(getHight(a.left), getHight(a.right)) + 1;
-        b.height = max(getHight(b.right), a.height) + 1;
+        a.height = max(getHeight(a.left), getHeight(a.right)) + 1;
+        b.height = max(getHeight(b.right), a.height) + 1;
         return b;
     }
 
@@ -69,15 +69,15 @@ public class AVLTree {
         return singleRightRotation(a);
     }
 
-    private int getHight(AVLTreeNode t) {
-        return getHightPreOrder(t);
+    private int getHeight(AVLTreeNode t) {
+        return getHeightPreOrder(t);
     }
 
-    private int getHightPreOrder(AVLTreeNode treeNode) {
+    private int getHeightPreOrder(AVLTreeNode treeNode) {
         if (treeNode == null) {
             return 0;
         }
-        return max(getHightPreOrder(treeNode.left), getHightPreOrder(treeNode.right)) + 1;
+        return max(getHeightPreOrder(treeNode.left), getHeightPreOrder(treeNode.right)) + 1;
     }
 
     private int max(int a, int b) {
