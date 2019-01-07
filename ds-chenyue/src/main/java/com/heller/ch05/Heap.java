@@ -18,9 +18,9 @@ public class Heap {
      */
     public Heap(int maxSize) {
         this.maxSize = maxSize;
-        data = new int[maxSize];
-        size = 0;
-        data[0] = MAX_VALUE;    // 第一个元素不存值，作为哨兵
+        this.data = new int[maxSize];
+        this.size = 0;
+        this.data[0] = MAX_VALUE;    // 第一个元素不存值，作为哨兵
     }
 
     /**
@@ -76,6 +76,34 @@ public class Heap {
         data[parent] = x;
 
         return max;
+    }
+
+    /*----------- 建造最大堆 -----------*/
+    public Heap(int[] data, int maxSize) {
+        this.maxSize = maxSize;
+        this.size = data.length;
+        this.data = new int[maxSize];
+        this.data[0] = MAX_VALUE;
+        System.arraycopy(data, 0, this.data, 1, data.length);
+
+        // 已经初始化好了堆，要开始调整堆中存储元素的数组了
+        // 从最后一个有儿子的节点开始调整堆，使满足最大堆的有序性
+        for (int i = this.size / 2; i > 0; i--) {
+            int parent = i;
+            int x = this.data[parent];
+            for (int child; parent * 2 <= this.size; parent = child) {
+                child = parent*2;
+                if (child != this.size && this.data[child] < this.data[child + 1]) {
+                    child++;
+                }
+                if (x >= this.data[child]) {
+                    break;
+                } else {
+                    this.data[parent] = this.data[child];
+                }
+            }
+            this.data[parent] = x;
+        }
     }
 
 }
