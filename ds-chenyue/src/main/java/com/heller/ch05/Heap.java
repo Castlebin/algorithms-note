@@ -31,6 +31,13 @@ public class Heap {
     }
 
     /**
+     * 判断堆是否为空
+     */
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    /**
      * 插入一个新的元素到堆里
      */
     public void insert(int element) {
@@ -42,6 +49,33 @@ public class Heap {
             data[i] = data[i / 2];    // 上滤element
         }
         data[i] = element;
+    }
+
+    /**
+     * 删除元素
+     */
+    public int delete() {
+        if (isEmpty()) {
+            throw new RuntimeException("堆为空");
+        }
+        int max = data[1];  // 取出第一个元素，作为要删除和返回的值
+        /* 用最大堆中最后一个元素从根结点开始向上过滤下层结点 */
+        int x = data[size--];
+        int parent = 1;
+        for (int child; parent * 2 <= size; parent = child) {
+            child = parent * 2;
+            if (child != size && data[child] < data[child + 1]) {
+                child++;
+            }
+            if (x >= data[child]) {
+                break;
+            } else {
+                data[parent] = data[child];
+            }
+        }
+        data[parent] = x;
+
+        return max;
     }
 
 }
