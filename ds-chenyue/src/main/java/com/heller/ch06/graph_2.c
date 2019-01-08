@@ -38,7 +38,6 @@ struct GNode{
 typedef PtrToGNode LGraph; /* 以邻接表方式存储的图类型 */
 
 
-
 LGraph CreateGraph( int VertexNum )
 { /* 初始化一个有VertexNum个顶点但没有边的图 */
     Vertex V;
