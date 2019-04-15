@@ -13,18 +13,19 @@ public class BubbleSort {
      * 冒泡排序：（稳定的排序算法）
      * n轮循环，每轮循环中，比较两个相邻元素，如果a[i] > a[i+1]，则交换两个元素
      * 每一轮排序之后，从第n-i到n-1个元素都是有序的（大的那部分元素）
-     *
+     * <p>
      * 优化：当某一轮循环时，发现没有元素交换，那么说明整个序列都是排序好的了，不需要继续循环了
      */
     public static void bubbleSort(int[] array) {
-        for (int j = 0; j < array.length; j++) {
+        for (int k = array.length - 1; k > 0; k--) {
             boolean swapped = false;
-            for (int i = 0; i < array.length - 1 - j; i++) {
+            for (int i = 0; i < k; i++) {
                 if (array[i] > array[i + 1]) {
                     swap(array, i, i + 1);
                     swapped = true;
                 }
             }
+            // 这一轮没有元素需要交换，说明已经是有序的了，不需要再进行下一轮
             if (!swapped) {
                 break;
             }
