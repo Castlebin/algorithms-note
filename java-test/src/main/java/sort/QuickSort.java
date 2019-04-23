@@ -2,6 +2,9 @@ package sort;
 
 import java.util.Arrays;
 
+/**
+ * http://www.runoob.com/w3cnote/quick-sort-2.html
+ */
 public class QuickSort {
 
     public int[] sort(int[] sourceArray) throws Exception {
