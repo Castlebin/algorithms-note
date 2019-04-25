@@ -31,8 +31,8 @@ public class InsertSort {
     public void testSort() {
         InsertSort insertSort = new InsertSort();
         BubbleSort bubbleSort = new BubbleSort();
-        for (int i = 0; i < 10; i++) {
-            int[] array = generateNonnegativeArray(8, 10);
+        for (int i = 0; i < 100; i++) {
+            int[] array = generateNonnegativeArray(100, 1000);
             int[] copy = Arrays.copyOfRange(array, 0, array.length);
             int[] copy2 = Arrays.copyOfRange(array, 0, array.length);
             System.out.println("origin: " + Arrays.toString(array));
