@@ -13,18 +13,15 @@ public class ShellSort {
         int swapCount = 0;
         // 这里只是为了简单，采取了每次除2这种生成递减间隔的策略
         for (int dk = array.length / 2; dk >= 1; dk /= 2) {
-            if (dk % 2 == 0) {
-                dk = dk - 1;
-            }
             System.out.println(dk + "间隔排序");
 
             // 内层的循环就是一个dk间隔的插入排序
-            for (int p = dk; p < array.length; p += dk) {
+            for (int p = dk; p < array.length; p++) {
                 // 新牌先拿到手里
                 int tmp = array[p];
                 // 与现有的排序好的牌进行比较，从右到左，给新牌找个合适的位置插进去
                 int i = p;
-                for (; i > 0 && array[i - dk] > tmp; i -= dk) {
+                for (; i >= dk && array[i - dk] > tmp; i -= dk) {
                     // 将牌往后移，移出一个空位
                     array[i] = array[i - dk];
                     swapCount++;
@@ -39,7 +36,7 @@ public class ShellSort {
     @Test
     public void testSort() {
         ShellSort shellSort = new ShellSort();
-        BubbleSort bubbleSort = new BubbleSort();
+        InsertSort insertSort = new InsertSort();
         for (int i = 0; i < 10; i++) {
             int[] array = generateNonnegativeArray(100, 10000);
             int[] copy = Arrays.copyOfRange(array, 0, array.length);
@@ -48,7 +45,7 @@ public class ShellSort {
             System.out.println("copy  : " + Arrays.toString(array));
 
             shellSort.sort(array);
-            bubbleSort.sort(copy2);
+            insertSort.sort(copy2);
             System.out.println("sorted: " + Arrays.toString(array));
             Arrays.sort(copy);
 
