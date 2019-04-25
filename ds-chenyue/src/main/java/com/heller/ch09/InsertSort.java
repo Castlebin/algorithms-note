@@ -17,6 +17,7 @@ public class InsertSort {
             // 与现有的排序好的牌进行比较，从右到左，给新牌找个合适的位置插进去
             int j = i - 1;
             for (; j >= 0 && array[j] > tmp; j--) {
+                // 将牌往后移，移出一个空位
                 array[j + 1] = array[j];
                 swapCount++;
             }
