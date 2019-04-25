@@ -11,8 +11,8 @@ import static com.heller.ArrayUtil.swap;
 public class BubbleSort {
 
     public void sort(int[] array) {
-        int swapCount = 0;
         int swap = 0;
+        int swapCount = 0;
         for (int p = array.length - 1; p > 0; p--) {
             boolean sorted = true;
             for (int i = 0; i < p; i++) {
@@ -20,8 +20,8 @@ public class BubbleSort {
                     sorted = false;
                     swap(array, i, i + 1);
 
-                    swapCount += 3;
-                    swap += 1;
+                    swap += 3;
+                    swapCount += 1;
                 }
             }
             // 如果某一轮比较，发现没有元素需要交换，说明数组已经是排序好了的，无需再循环
@@ -29,7 +29,7 @@ public class BubbleSort {
                 break;
             }
         }
-        System.out.println("BubbleSort 经过交换次数 swap = " + swap + ", swapCount = " + swapCount);
+        System.out.println("BubbleSort 经过交换次数 swapCount = " + swapCount + ", swap = " + swap);
     }
 
     @Test
