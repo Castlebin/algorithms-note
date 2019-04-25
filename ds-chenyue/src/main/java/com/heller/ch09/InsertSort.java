@@ -6,46 +6,44 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static com.heller.ArrayUtil.generateNonnegativeArray;
-import static com.heller.ArrayUtil.swap;
 
-public class BubbleSort {
+public class InsertSort {
 
     public void sort(int[] array) {
         int swapCount = 0;
-        int swap = 0;
-        for (int p = array.length - 1; p > 0; p--) {
-            boolean sorted = true;
-            for (int i = 0; i < p; i++) {
-                if (array[i] > array[i + 1]) {
-                    sorted = false;
-                    swap(array, i, i + 1);
-
-                    swapCount += 3;
-                    swap += 1;
-                }
+        for (int i = 1; i < array.length; i++) {
+            // 新牌先拿到手里
+            int tmp = array[i];
+            // 与现有的排序好的牌进行比较，从右到左，给新牌找个合适的位置插进去
+            int j = i - 1;
+            for (; j >= 0 && array[j] > tmp; j--) {
+                array[j + 1] = array[j];
+                swapCount++;
             }
-            // 如果某一轮比较，发现没有元素需要交换，说明数组已经是排序好了的，无需再循环
-            if (sorted) {
-                break;
-            }
+            array[j + 1] = tmp;
         }
-        System.out.println("BubbleSort 经过交换次数 swap = " + swap + ", swapCount = " + swapCount);
+
+        System.out.println("InsertSort 经过交换次数 swapCount = " + swapCount);
     }
 
     @Test
     public void testSort() {
+        InsertSort insertSort = new InsertSort();
         BubbleSort bubbleSort = new BubbleSort();
         for (int i = 0; i < 10; i++) {
             int[] array = generateNonnegativeArray(8, 10);
             int[] copy = Arrays.copyOfRange(array, 0, array.length);
+            int[] copy2 = Arrays.copyOfRange(array, 0, array.length);
             System.out.println("origin: " + Arrays.toString(array));
             System.out.println("copy  : " + Arrays.toString(array));
 
-            bubbleSort.sort(array);
+            insertSort.sort(array);
+            bubbleSort.sort(copy2);
             System.out.println("sorted: " + Arrays.toString(array));
             Arrays.sort(copy);
 
             Assert.assertArrayEquals("相等", array, copy);
+            Assert.assertArrayEquals("相等", array, copy2);
         }
     }
 
