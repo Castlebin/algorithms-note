@@ -1,3 +1,6 @@
 [submodule "AlgorithmsSedgewick"]
 	path = AlgorithmsSedgewick
 	url = git@github.com:aistrate/AlgorithmsSedgewick.git
+[submodule "Algorithms-Java"]
+	path = Algorithms-Java
+	url = git@github.com:Castlebin/Java.git
