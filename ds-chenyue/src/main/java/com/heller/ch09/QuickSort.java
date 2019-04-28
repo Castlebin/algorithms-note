@@ -22,10 +22,8 @@ public class QuickSort {
             int i = left;
             int j = right - 1;
             for (; ; ) {
-                while (array[++i] < pivot) {
-                }
-                while (array[--j] > pivot) {
-                }
+                while (array[++i] < pivot) {}
+                while (array[--j] > pivot) {}
                 if (i < j) {
                     swap(array, i, j);
                 } else {
