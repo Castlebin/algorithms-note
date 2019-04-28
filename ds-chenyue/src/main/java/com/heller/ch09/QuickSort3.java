@@ -16,17 +16,17 @@ public class QuickSort3 {
 
     private void quickSort(int[] array, int left, int right) {
         if (left < right) {
-            int partitionIndex = partition(array, left, right);
-            quickSort(array, left, partitionIndex - 1);
-            quickSort(array, partitionIndex + 1, right);
+            int pivotIndex = partition(array, left, right);
+            quickSort(array, left, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, right);
         }
     }
 
     private int partition(int[] array, int left, int right) {
         // 设定基准值（pivot）, 取左边第一个作为pivot （实际上表现很差的选择）
-        int p = left;
-        int pivot = array[p];
-        int i = p + 1;
+        int pivotIndex = left;
+        int pivot = array[pivotIndex];
+        int i = pivotIndex + 1;
         for (int j = i; j <= right; j++) {
             if (array[j] < pivot) {
                 if (j != i) {
@@ -35,8 +35,9 @@ public class QuickSort3 {
                 i++;
             }
         }
-        swap(array, p, i - 1);
-        return i - 1;
+        swap(array, pivotIndex, i - 1);
+        pivotIndex = i - 1;
+        return pivotIndex;
     }
 
     @Test
