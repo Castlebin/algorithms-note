@@ -19,17 +19,13 @@ public class QuickSort1 {
     private void quickSort(int[] array, int left, int right) {
         if (left < right) {
             // 获取枢纽值，并将其放在当前待处理序列末尾
-            middleThree(array, left, right);
-            // 枢纽值被放在序列末尾
-            int pivot = right - 1;
-            // 左指针
+            int pivot = middleThree(array, left, right);
             int i = left;
-            // 右指针
             int j = right - 1;
             while (true) {
-                while (array[++i] < array[pivot]) {
+                while (array[++i] < pivot) {
                 }
-                while (j > left && array[--j] > array[pivot]) {
+                while (j > left && array[--j] > pivot) {
                 }
                 if (i < j) {
                     swap(array, i, j);
