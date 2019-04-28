@@ -18,7 +18,6 @@ public class QuickSort1 {
 
     private void quickSort(int[] array, int left, int right) {
         if (left < right) {
-            // 获取枢纽值，并将其放在当前待处理序列末尾
             int pivot = middleThree(array, left, right);
             int i = left;
             int j = right - 1;
