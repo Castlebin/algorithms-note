@@ -2,6 +2,9 @@ package inner;
 
 import org.junit.Test;
 
+/**
+ * 1. 成员内部类
+ */
 public class TestPropertyInnerClass {
 
     /**
