@@ -1,5 +1,8 @@
 package inner;
 
+/**
+ * 1. 成员内部类
+ */
 public class Outer {
     private Inner inner = null;
 
