@@ -3,8 +3,8 @@ package test;
 import java.util.ArrayList;
 
 class Child extends Parent {
-    int i = 0;
-    ArrayList<Integer> list;
+    private int i = 0;
+    private ArrayList<Integer> list;
 
     public Child() {
         super();
