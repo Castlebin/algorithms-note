@@ -34,7 +34,7 @@ public class Parent {
     }
 
     /**
-     * 以下是输出内容，不太能理解最后一行输出
+     * 以下是输出内容，不太能理解最后一行输出（明白了，super()执行后，开始执行属性的赋值操作了，有int i = 0，而list没有再赋值，所以保持原状了）
      new Parent
      Parent.init
      new Child, i=100, list.size=1
