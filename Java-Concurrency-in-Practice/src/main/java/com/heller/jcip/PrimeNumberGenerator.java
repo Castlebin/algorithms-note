@@ -3,15 +3,7 @@ package com.heller.jcip;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LongTimeJob {
-    public static Long run(long begin, long end) {
-        Long result = 1L;
-        while (begin <= end) {
-            result = findPrimeNumber(begin++);
-            System.out.println(result);
-        }
-        return result;
-    }
+public class PrimeNumberGenerator {
 
     public static Long findPrimeNumber(long nTh) {
         if (nTh < 1) {
@@ -39,6 +31,16 @@ public class LongTimeJob {
         return true;
     }
 
+    public static void runALongTimeJob(long m, long n) {
+        long start = System.currentTimeMillis();
+        for (long nth = m; nth < n; nth++) {
+            Long prime = findPrimeNumber(nth);
+            long end = System.currentTimeMillis();
+            System.out.println(nth + " -> " + prime + ", time: " + (end - start) + " ms");
+            start = end;
+        }
+    }
+
     @Test
     public void testIsPrime() {
         Assert.assertTrue(isPrimeNumber(2));
@@ -49,16 +51,11 @@ public class LongTimeJob {
     }
 
     /**
-     * 本机，普通机器，求出第10000个素数，大概耗时4秒
+     * 本机，普通机器，求第4000个素数，大概耗时 700 ms
      */
     @Test
     public void testLongTimeJob() {
-        long start = System.currentTimeMillis();
-        for (long nth = 1000; nth < 100000; nth++) {
-            Long prime = findPrimeNumber(nth);
-            long end = System.currentTimeMillis();
-            System.out.println(nth + " -> " + prime + ", time: " + (end - start) + " ms");
-            start = end;
-        }
+        runALongTimeJob(4000, 100000);
     }
+
 }
