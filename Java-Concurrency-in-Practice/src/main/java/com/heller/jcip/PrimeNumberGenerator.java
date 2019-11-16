@@ -36,7 +36,7 @@ public class PrimeNumberGenerator {
         for (long nth = m; nth < n; nth++) {
             Long prime = findPrimeNumber(nth);
             long end = System.currentTimeMillis();
-            System.out.println(nth + " -> " + prime + ", time: " + (end - start) + " ms");
+            System.out.println(nth + " -> " + prime + ", time: " + (end - start) + " ms, thread: " + Thread.currentThread().getName());
             start = end;
         }
     }
