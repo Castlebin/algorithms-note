@@ -30,5 +30,31 @@ class BrokenPrimeProducer extends Thread {
     public void cancel() {
         cancelled = true;
     }
+
+    public static void consumePrimes() throws InterruptedException {
+        BlockingQueue<BigInteger> primes = new ArrayBlockingQueue<BigInteger>(5);
+        BrokenPrimeProducer producer = new BrokenPrimeProducer(primes);
+        producer.start();
+        try {
+            Thread.sleep(1000);
+            while (needMorePrimes()) {
+                consume(primes.take());
+            }
+        } finally {
+            producer.cancel();
+        }
+    }
+
+    private static boolean needMorePrimes() {
+        return false;
+    }
+
+    private static void consume(BigInteger prime) {
+        System.out.println(prime);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        consumePrimes();
+    }
 }
 
