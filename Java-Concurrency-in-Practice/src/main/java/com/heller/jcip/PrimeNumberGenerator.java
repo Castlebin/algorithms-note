@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class PrimeNumberGenerator {
 
-    public static Long findPrimeNumber(long nTh) {
+    public static long findPrimeNumber(long nTh) {
         if (nTh < 1) {
             throw new IllegalArgumentException("nTh must bigger then ZERO!");
         }
@@ -34,7 +34,7 @@ public class PrimeNumberGenerator {
     public static void runALongTimeJob(long m, long n) {
         long start = System.currentTimeMillis();
         for (long nth = m; nth < n; nth++) {
-            Long prime = findPrimeNumber(nth);
+            long prime = findPrimeNumber(nth);
             long end = System.currentTimeMillis();
             System.out.println(nth + " -> " + prime + ", time: " + (end - start) + " ms, thread: " + Thread.currentThread().getName());
             start = end;
