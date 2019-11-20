@@ -8,7 +8,7 @@ import net.jcip.annotations.GuardedBy;
 public class SimulateCAS {
     @GuardedBy("this") private int value;
 
-    public synchronized int getValue() {
+    public synchronized int get() {
         return value;
     }
 
