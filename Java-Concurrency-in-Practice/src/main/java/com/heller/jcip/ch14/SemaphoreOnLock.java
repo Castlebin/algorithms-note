@@ -1,4 +1,4 @@
-package com.heller.jcip.ch15;
+package com.heller.jcip.ch14;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
