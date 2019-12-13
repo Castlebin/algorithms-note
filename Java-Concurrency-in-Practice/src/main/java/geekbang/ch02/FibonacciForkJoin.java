@@ -32,7 +32,7 @@ class FibonacciTask extends RecursiveTask<Integer> {
         n1.fork();
         FibonacciTask n2 = new FibonacciTask(n - 2);
 
-        return n1.join() + n2.compute();
+        return n2.compute() + n1.join();
     }
 
 }
