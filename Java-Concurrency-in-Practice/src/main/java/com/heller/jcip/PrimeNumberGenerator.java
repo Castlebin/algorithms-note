@@ -23,7 +23,7 @@ public class PrimeNumberGenerator {
     }
 
     public static boolean isPrimeNumber(long num) {
-        for (long divisor = 2; divisor < num; divisor++) {
+        for (long divisor = 2; divisor <= Math.sqrt(num); divisor++) {
             if (num % divisor == 0) {
                 return false;
             }
