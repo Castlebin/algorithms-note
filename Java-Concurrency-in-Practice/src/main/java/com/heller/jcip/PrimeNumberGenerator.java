@@ -10,7 +10,7 @@ public class PrimeNumberGenerator {
             throw new IllegalArgumentException("nTh must bigger then ZERO!");
         }
         int n = 0;
-        for (long num = 2; num <= Long.MAX_VALUE; num++) {
+        for (long num = 2; num < Long.MAX_VALUE; num++) {
             if (isPrimeNumber(num)) {
                 n++;
                 if (n == nTh) {
@@ -23,7 +23,11 @@ public class PrimeNumberGenerator {
     }
 
     public static boolean isPrimeNumber(long num) {
-        for (long divisor = 2; divisor < num; divisor++) {
+        if (num % 2 == 0) {
+            return false;
+        }
+
+        for (long divisor = 3; divisor <= Math.sqrt(num); divisor+=2) {
             if (num % divisor == 0) {
                 return false;
             }
