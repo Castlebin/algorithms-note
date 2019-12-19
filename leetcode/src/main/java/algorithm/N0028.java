@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import org.junit.Test;
  Input: haystack = "aaaaa", needle = "bba"
  Output: -1
  */
-public class N028 {
+public class N0028 {
 
     public int strStr(String haystack, String needle) {
         if (haystack == null || haystack.length() < needle.length()) {

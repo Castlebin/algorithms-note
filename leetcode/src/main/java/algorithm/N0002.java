@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
  * Output: 7 -> 0 -> 8
  * Explanation: 342 + 465 = 807.
  */
-public class N002 {
+public class N0002 {
 
     /**
      * 相当于一个简单的加法器实现

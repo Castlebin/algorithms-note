@@ -1,10 +1,10 @@
-package leetcode;
+package algorithm;
 
-public class N121 {
+public class N0121 {
 
     private Integer[] arr;
 
-    public N121(Integer[] arr) {
+    public N0121(Integer[] arr) {
         this.arr = arr;
     }
 

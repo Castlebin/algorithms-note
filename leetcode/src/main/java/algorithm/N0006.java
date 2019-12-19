@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import org.junit.Test;
  * string convert(string text, int nRows);
  * convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
  */
-public class N006 {
+public class N0006 {
     public String convert(String s, int nRows) {
         if (nRows <= 0) {
             return "";

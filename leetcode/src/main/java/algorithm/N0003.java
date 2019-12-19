@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,17 +16,17 @@ import java.util.Map;
  *
  * Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
-public class N003 {
+public class N0003 {
     public static void main(String[] args) {
-        N003 n003 = new N003();
-        System.out.println(n003.lengthOfLongestSubstring(null));
-        System.out.println(n003.lengthOfLongestSubstring(""));
-        System.out.println(n003.lengthOfLongestSubstring("a"));
-        System.out.println(n003.lengthOfLongestSubstring("aa"));
-        System.out.println(n003.lengthOfLongestSubstring("aaa"));
-        System.out.println(n003.lengthOfLongestSubstring("abcd"));
-        System.out.println(n003.lengthOfLongestSubstring("ababcabcdabcdeabcdef"));
-        System.out.println(n003.lengthOfLongestSubstring("dvdf"));
+        N0003 n0003 = new N0003();
+        System.out.println(n0003.lengthOfLongestSubstring(null));
+        System.out.println(n0003.lengthOfLongestSubstring(""));
+        System.out.println(n0003.lengthOfLongestSubstring("a"));
+        System.out.println(n0003.lengthOfLongestSubstring("aa"));
+        System.out.println(n0003.lengthOfLongestSubstring("aaa"));
+        System.out.println(n0003.lengthOfLongestSubstring("abcd"));
+        System.out.println(n0003.lengthOfLongestSubstring("ababcabcdabcdeabcdef"));
+        System.out.println(n0003.lengthOfLongestSubstring("dvdf"));
     }
 
     public int lengthOfLongestSubstring(String s) {

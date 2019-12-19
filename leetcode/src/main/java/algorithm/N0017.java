@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
  * Input: "23"
  * Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
  */
-public class N017 {
+public class N0017 {
 
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();

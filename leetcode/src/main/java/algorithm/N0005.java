@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 /**
  * 5. Longest Palindromic Substring
@@ -15,7 +15,7 @@ package leetcode;
  * Input: "cbbd"
  * Output: "bb"
  */
-public class N005 {
+public class N0005 {
 
     public String longestPalindrome(String s) {
         if (s == null || s.length() <= 1) {

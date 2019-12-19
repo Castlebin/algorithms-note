@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 /**
     4. Median of Two Sorted Arrays
@@ -17,12 +17,12 @@ package leetcode;
 
  The median is (2 + 3)/2 = 2.5
  */
-public class N004 {
+public class N0004 {
     public static void main(String[] args) {
-        N004 n004 = new N004();
+        N0004 n0004 = new N0004();
         int[] nums1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
         int[] nums2 = new int[]{1, 2, 3, 4};
-        System.out.println(n004.findMedianSortedArrays(nums1, nums2));
+        System.out.println(n0004.findMedianSortedArrays(nums1, nums2));
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {

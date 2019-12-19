@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +25,7 @@ import org.junit.Test;
  ]
 
  */
-public class N015 {
+public class N0015 {
 
     private int[] nums = new int[] {-1, 0, 1, 2, -1, -4};
     

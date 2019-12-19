@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ import org.junit.Test;
  * <p>
  * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
  */
-public class N016 {
+public class N0016 {
 
     public int threeSumClosest(int[] nums, int target) {
         int c = Integer.MAX_VALUE;

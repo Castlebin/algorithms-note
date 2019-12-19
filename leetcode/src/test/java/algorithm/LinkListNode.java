@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 class LinkListNode {
     int val;

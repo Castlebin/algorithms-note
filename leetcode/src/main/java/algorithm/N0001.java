@@ -1,4 +1,4 @@
-package leetcode;
+package algorithm;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import org.junit.Test;
  return [0, 1].
 
  */
-public class N001 {
+public class N0001 {
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         Map<Integer, Integer> map = new HashMap<>();
