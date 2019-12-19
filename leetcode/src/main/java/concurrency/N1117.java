@@ -1,34 +1,36 @@
 package concurrency;
 
-import leetcode.ThreadPoolUtil;
 import org.junit.Test;
-import sun.security.x509.IPAddressName;
-
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.IntConsumer;
 
 /**
  * 1117. Building H2O
+ *
+ * Runtime: 12 ms, faster than 69.91% of Java online submissions for Building H2O.
+ * Memory Usage: 37.2 MB, less than 100.00% of Java online submissions for Building H2O.
  */
 public class N1117 {
 
     class H2O {
+        private int count;
 
-        public void hydrogen(Runnable releaseHydrogen) throws InterruptedException {
-
+        public synchronized void hydrogen(Runnable releaseHydrogen) throws InterruptedException {
+            while (count % 3 == 0) {
+                wait();
+            }
             // releaseHydrogen.run() outputs "H". Do not change or remove this line.
             releaseHydrogen.run();
-
+            count++;
+            notifyAll();
         }
 
         public synchronized void oxygen(Runnable releaseOxygen) throws InterruptedException {
-
+            while (count % 3 != 0) {
+                wait();
+            }
             // releaseOxygen.run() outputs "O". Do not change or remove this line.
             releaseOxygen.run();
-            
+            count++;
+            notifyAll();
         }
     }
 
@@ -41,7 +43,7 @@ public class N1117 {
             if (c == 'H') {
                 new Thread(() -> {
                     try {
-                        h2O.hydrogen(() -> System.out.println(c));
+                        h2O.hydrogen(() -> System.out.println('H'));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -49,7 +51,7 @@ public class N1117 {
             } else if (c == 'O') {
                 new Thread(() -> {
                     try {
-                        h2O.oxygen(() -> System.out.println(c));
+                        h2O.oxygen(() -> System.out.println('O'));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
