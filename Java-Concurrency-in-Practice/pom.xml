@@ -14,6 +14,7 @@
         <logback.version>1.2.3</logback.version>
         <hutool.version>4.0.12</hutool.version>
         <netty.version>4.1.42.Final</netty.version>
+        <guava.version>22.0</guava.version>
     </properties>
 
     <dependencies>
@@ -31,12 +32,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>22.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava-testlib</artifactId>
-            <version>22.0</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -65,4 +61,18 @@
             <version>${netty.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgument>-parameters</compilerArgument>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
