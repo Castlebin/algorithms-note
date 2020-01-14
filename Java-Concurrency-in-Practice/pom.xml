@@ -12,7 +12,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <logback.version>1.2.3</logback.version>
-        <hutool.version>4.0.12</hutool.version>
+        <hutool.version>4.1.13</hutool.version>
         <netty.version>4.1.42.Final</netty.version>
         <guava.version>22.0</guava.version>
     </properties>
