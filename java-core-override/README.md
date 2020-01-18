@@ -1,0 +1,1 @@
+# 重写String类，使用-Xbootclasspath替换掉Java原生实现
