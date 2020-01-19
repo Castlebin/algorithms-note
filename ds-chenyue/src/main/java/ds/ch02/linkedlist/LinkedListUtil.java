@@ -1,8 +1,8 @@
 package ds.ch02.linkedlist;
 
-public class NodeUtil {
+public class LinkedListUtil {
     /**
-     * 打印单向链表，格式：1->2->3->4->5
+     * 打印单向链表，格式：1->2->3->4->5->
      */
     public static String toString(Node head) {
         if (head == null) {
