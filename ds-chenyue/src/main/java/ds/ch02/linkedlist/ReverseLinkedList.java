@@ -5,7 +5,7 @@ import org.junit.Test;
 public class ReverseLinkedList {
 
     /**
-     * 单向链表 反转
+     * 单向链表 翻转
      */
     public static Node reverse(Node head) {
         if (head == null || head.next == null) {
@@ -33,15 +33,15 @@ public class ReverseLinkedList {
 
     @Test
     public void testReverse() {
-        Node origin = NodeUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7});
-        System.out.println("origin : " + NodeUtil.toString(origin));
+        Node origin = LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7});
+        System.out.println("origin : " + LinkedListUtil.toString(origin));
         Node reversed = reverse(origin);
-        System.out.println("reversed : " + NodeUtil.toString(reversed));
+        System.out.println("reversed : " + LinkedListUtil.toString(reversed));
 
-        System.out.println(NodeUtil.toString(NodeUtil.generateLinkedListFromArray(null)));
-        System.out.println(NodeUtil.toString(reverse(NodeUtil.generateLinkedListFromArray(null))));
-        System.out.println(NodeUtil.toString(NodeUtil.generateLinkedListFromArray(new int[]{1})));
-        System.out.println(NodeUtil.toString(reverse(NodeUtil.generateLinkedListFromArray(new int[]{1}))));
+        System.out.println(LinkedListUtil.toString(LinkedListUtil.generateLinkedListFromArray(null)));
+        System.out.println(LinkedListUtil.toString(reverse(LinkedListUtil.generateLinkedListFromArray(null))));
+        System.out.println(LinkedListUtil.toString(LinkedListUtil.generateLinkedListFromArray(new int[]{1})));
+        System.out.println(LinkedListUtil.toString(reverse(LinkedListUtil.generateLinkedListFromArray(new int[]{1}))));
     }
 
 }
