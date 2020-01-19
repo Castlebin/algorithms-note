@@ -9,7 +9,7 @@ public class ReverseLinkedList {
      */
     public static Node reverse(Node head) {
         if (head == null || head.next == null) {
-            return head;
+            return head;  // 此段不要，其实效果相同，下面的循环已经覆盖这种情况了，但是还是要比较好
         }
 
         Node prev = null;
@@ -37,6 +37,11 @@ public class ReverseLinkedList {
         System.out.println("origin : " + NodeUtil.toString(origin));
         Node reversed = reverse(origin);
         System.out.println("reversed : " + NodeUtil.toString(reversed));
+
+        System.out.println(NodeUtil.toString(NodeUtil.generateLinkedListFromArray(null)));
+        System.out.println(NodeUtil.toString(reverse(NodeUtil.generateLinkedListFromArray(null))));
+        System.out.println(NodeUtil.toString(NodeUtil.generateLinkedListFromArray(new int[]{1})));
+        System.out.println(NodeUtil.toString(reverse(NodeUtil.generateLinkedListFromArray(new int[]{1}))));
     }
 
 }
