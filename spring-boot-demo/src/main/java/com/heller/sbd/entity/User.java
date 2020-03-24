@@ -1,4 +1,4 @@
-package com.heller.sbd.entiry;
+package com.heller.sbd.entity;
 
 import lombok.Getter;
 import lombok.Setter;
