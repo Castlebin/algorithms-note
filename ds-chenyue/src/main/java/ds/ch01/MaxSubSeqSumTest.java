@@ -26,7 +26,7 @@ public class MaxSubSeqSumTest {
     public void multiTest() {
         Random r = new Random();
         for (int t = 0; t < 30; t++) {
-            sequence = buildSeq(10, r.nextInt(100));
+            sequence = buildSeq(1000, r.nextInt(100));
             testMaxSubSeqSum();
         }
     }

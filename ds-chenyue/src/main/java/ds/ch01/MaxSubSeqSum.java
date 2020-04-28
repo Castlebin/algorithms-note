@@ -124,12 +124,10 @@ public class MaxSubSeqSum {
         int subSeqSum = 0;
         for (int i = 0; i < array.length; i++) {
             subSeqSum += array[i];
-            if (subSeqSum < 0) {
-                subSeqSum = 0;
-                continue;
-            }
             if (subSeqSum > maxSubSeqSum) {
                 maxSubSeqSum = subSeqSum;
+            } else if (subSeqSum < 0) {
+                subSeqSum = 0;
             }
         }
         return maxSubSeqSum;
