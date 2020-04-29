@@ -72,7 +72,7 @@ public class ReverseK {
         Node result = prev;
         Node tmpTail = head;
 
-        for (int i = k; i + k < size; i += k) {
+        for (int i = k; i + k <= size; i += k) {
             Node nextTail = cur;
             for (int t = 0; t < k; t++) {
                 Node next = cur.next;
