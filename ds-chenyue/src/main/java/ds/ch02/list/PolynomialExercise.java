@@ -48,20 +48,20 @@ public class PolynomialExercise {
     }
 
     public static List<PolynomialItem> add(List<PolynomialItem> a, List<PolynomialItem> b) {
-        List<PolynomialItem> result = new ArrayList<>();
+        List<PolynomialItem> poly = new ArrayList<>();
         int posA = 0, posB = 0;
         while (posA < a.size() && posB < b.size()) {
             PolynomialItem pa = a.get(posA);
             PolynomialItem pb = b.get(posB);
             if (pa.exponent > pb.exponent) {
-                result.add(pa);
+                poly.add(pa);
                 posA++;
             } else if (pa.exponent < pb.exponent) {
-                result.add(pb);
+                poly.add(pb);
                 posB++;
             } else {
                 if (pa.coefficient + pb.coefficient != 0) {
-                    result.add(new PolynomialItem(pa.coefficient + pb.coefficient, pa.exponent));
+                    poly.add(new PolynomialItem(pa.coefficient + pb.coefficient, pa.exponent));
                 }
                 posA++;
                 posB++;
@@ -69,20 +69,20 @@ public class PolynomialExercise {
         }
         if (posA < a.size()) {
             for (int i = posA; i < a.size(); i++) {
-                result.add(a.get(i));
+                poly.add(a.get(i));
             }
         } else if (posB < b.size()) {
             for (int i = posB; i < b.size(); i++) {
-                result.add(b.get(i));
+                poly.add(b.get(i));
             }
         }
-        return result;
+        return poly;
     }
 
     public static List<PolynomialItem> multiply(List<PolynomialItem> a, List<PolynomialItem> b) {
-        List<PolynomialItem> result = new ArrayList<>();
+        List<PolynomialItem> poly = new ArrayList<>();
         if (a.size() == 0 || b.size() == 0) {
-            return result;
+            return poly;
         }
         List<List<PolynomialItem>> multi = new ArrayList<>();
         for (PolynomialItem pa : a) {
@@ -94,10 +94,10 @@ public class PolynomialExercise {
         }
 
         for (List<PolynomialItem> mu : multi) {
-            result = add(result, mu);
+            poly = add(poly, mu);
         }
 
-        return result;
+        return poly;
     }
 
     static class PolynomialItem {
