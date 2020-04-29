@@ -1,4 +1,4 @@
-package ds.ch01;
+package ds.ch01.exe;
 
 public class BinarySearch {
 
