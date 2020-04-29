@@ -81,6 +81,14 @@ public class ReverseLinkedList {
         System.out.println(LinkedListUtil.toString(reverse(LinkedListUtil.generateLinkedListFromArray(null))));
         System.out.println(LinkedListUtil.toString(LinkedListUtil.generateLinkedListFromArray(new int[]{1})));
         System.out.println(LinkedListUtil.toString(reverse(LinkedListUtil.generateLinkedListFromArray(new int[]{1}))));
+
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 2)));
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 3)));
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 4)));
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 7)));
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 10)));
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 11)));
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 12)));
     }
 
 }
