@@ -28,7 +28,46 @@ public class ReverseLinkedList {
      * 单向链表，每k个翻转。从头开始划分，划分不足k个，则该段不翻转
      */
     public static Node reverseK(Node head, int k) {
-        return null;
+        int size = size(head);
+        if (size < k) {
+            return head;
+        }
+        // 第一个 K 旋转，决定 返回的 head
+        Node prev = null;
+        Node cur = head;
+        for (int i = 0; i < k; i++) {
+            Node next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        Node result = prev;
+        Node tmpTail = head;
+
+        for (int i = k; i + k < size; i += k) {
+            Node nextTail = cur;
+            for (int t = 0; t < k; t++) {
+                Node next = cur.next;
+                cur.next = prev;
+                prev = cur;
+                cur = next;
+            }
+            tmpTail.next = prev;
+            tmpTail = nextTail;
+        }
+        tmpTail.next = cur;
+
+        return result;
+    }
+
+    public static int size(Node head) {
+        int size = 0;
+        Node cur = head;
+        while (cur != null) {
+            size++;
+            cur = cur.next;
+        }
+        return size;
     }
 
     @Test
