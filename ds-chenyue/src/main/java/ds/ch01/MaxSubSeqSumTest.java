@@ -1,5 +1,6 @@
 package ds.ch01;
 
+import ds.ch01.exe.MaxSubSeqSum;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
