@@ -1,4 +1,4 @@
-package ds.ch02.list;
+package ds.ch02.exe;
 
 import java.util.ArrayList;
 import java.util.List;
