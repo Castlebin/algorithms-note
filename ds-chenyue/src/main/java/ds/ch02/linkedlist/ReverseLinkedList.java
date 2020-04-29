@@ -44,7 +44,7 @@ public class ReverseLinkedList {
         Node result = prev;
         Node tmpTail = head;
 
-        for (int i = k; i + k < size; i += k) {
+        for (int i = k; i + k <= size; i += k) {
             Node nextTail = cur;
             for (int t = 0; t < k; t++) {
                 Node next = cur.next;
@@ -82,6 +82,7 @@ public class ReverseLinkedList {
         System.out.println(LinkedListUtil.toString(LinkedListUtil.generateLinkedListFromArray(new int[]{1})));
         System.out.println(LinkedListUtil.toString(reverse(LinkedListUtil.generateLinkedListFromArray(new int[]{1}))));
 
+        System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4}), 2)));
         System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 2)));
         System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 3)));
         System.out.println(LinkedListUtil.toString(reverseK(LinkedListUtil.generateLinkedListFromArray(new int[] {1,2,3,4,5,6,7,8,9,10,11}), 4)));
