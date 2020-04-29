@@ -71,8 +71,7 @@ public class PolynomialExercise {
             for (int i = posA; i < a.size(); i++) {
                 result.add(a.get(i));
             }
-        }
-        if (posB < b.size()) {
+        } else if (posB < b.size()) {
             for (int i = posB; i < b.size(); i++) {
                 result.add(b.get(i));
             }
