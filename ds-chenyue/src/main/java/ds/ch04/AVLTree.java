@@ -17,7 +17,7 @@ public class AVLTree {
             /** 如果需要左旋 */
             if (getHeight(t.left) - getHeight(t.right) == 2) {
                 t = singleLeftRotation(t);// 左单旋
-            } else {
+            } else {// 非单旋的情况下，必须都做双旋，这样可能只是增加了无用操作而已，却简化了整个流程
                 t = doubleLeftRightRotation(t);/** 左-右双旋*/
             }
         } else if (data > t.data) {
