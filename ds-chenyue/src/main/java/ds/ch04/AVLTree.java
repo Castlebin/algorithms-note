@@ -6,14 +6,12 @@ public class AVLTree {
         Integer data;
         AVLTreeNode left;
         AVLTreeNode right;
-        int height;     /* height，定义为左子树、右子树的height中的较大值+1 */
     }
 
     public AVLTreeNode insert(AVLTreeNode t, Integer data) {
         if (t == null) {
             t = new AVLTreeNode();
             t.data = data;
-            t.height = 0;
         } else if (data < t.data) {// 插入t的左子树
             t.left = insert(t.left, data);
             /** 如果需要左旋 */
@@ -40,8 +38,6 @@ public class AVLTree {
         AVLTreeNode b = a.left;
         a.left = b.right;
         b.right = a;
-        a.height = max(getHeight(a.left), getHeight(a.right)) + 1;
-        b.height = max(getHeight(b.left), a.height) + 1;
         return b;
     }
 
@@ -49,8 +45,6 @@ public class AVLTree {
         AVLTreeNode b = a.right;
         a.right = b.left;
         b.left = a;
-        a.height = max(getHeight(a.left), getHeight(a.right)) + 1;
-        b.height = max(getHeight(b.right), a.height) + 1;
         return b;
     }
 
