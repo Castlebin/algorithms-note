@@ -1,5 +1,7 @@
 package ds.ch04;
 
+import java.lang.annotation.ElementType;
+
 public class AVLTree {
 
     class AVLTreeNode {
@@ -16,17 +18,21 @@ public class AVLTree {
             t.left = insert(t.left, data);
             /** 如果需要左旋 */
             if (getHeight(t.left) - getHeight(t.right) == 2) {
-                t = singleLeftRotation(t);// 左单旋
-            } else {// 非单旋的情况下，必须都做双旋，这样可能只是增加了无用操作而已，却简化了整个流程
-                t = doubleLeftRightRotation(t);/** 左-右双旋*/
+                if (data < t.left.data) {
+                    t = singleLeftRotation(t);/* 左单旋 */
+                } else {
+                    t = doubleLeftRightRotation(t);/* 左-右 双旋 */
+                }
             }
         } else if (data > t.data) {
             t.right = insert(t.right, data);
             /**如果需要右旋*/
             if (getHeight(t.right) - getHeight(t.left) == 2) {
-                t = singleRightRotation(t);
-            } else {
-                t = doubleRightLeftRotation(t);
+                if (data > t.right.data) {
+                    t = singleRightRotation(t); /* 右单旋 */
+                } else {
+                    t = doubleRightLeftRotation(t);/* 右-左 双旋 */
+                }
             }
         }
 
