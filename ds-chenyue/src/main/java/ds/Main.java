@@ -1,49 +1,60 @@
 package ds;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String firstLine = sc.nextLine();
-        String secondLine = sc.nextLine();
-
-        int[] array = new int[Integer.parseInt(firstLine)];
-        String[] nums = secondLine.split(" ");
-        int i = 0;
-        for (String num : nums) {
-            if (i < array.length) {
-                array[i++] = Integer.parseInt(num);
-            }
+        String[] meta = firstLine.split("\\s+");
+        int maxSize = Integer.parseInt(meta[0]);
+        int nums = Integer.parseInt(meta[1]);
+        int repeatTimes = Integer.parseInt(meta[2]);
+        String[][] cases = new String[repeatTimes][];
+        for (int i = 0; i < repeatTimes; i++) {
+            cases[i] = sc.nextLine().split("\\s+");
         }
-
-        maxSubSeqSum_4(array);
+        for (String[] outputSeqCase : cases) {
+            boolean possible = isPossibleOpSeq(maxSize, nums, outputSeqCase);
+            System.out.println(possible?"YES":"NO");
+        }
     }
 
-    public static void maxSubSeqSum_4(int[] array) {
-        int maxSubSeqSum = -1;
-        int subSeqSum = 0;
-        int begin = -1, end = 1, possibleBegin = -1;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] >= 0) {
-                if (possibleBegin == -1) {
-                    possibleBegin = i;
+    public static boolean isPossibleOpSeq(int stackSize, int nums, String[] outputSeq) {
+        Stack<Integer> stack = new Stack<>();
+        int numCur = Integer.parseInt(outputSeq[0]);
+        if (numCur > stackSize) {
+            return false;
+        }
+        for (int i = 1; i <= numCur; i++) {
+            stack.push(i);
+        }
+        int i = 0;
+        while (i < outputSeq.length) {
+            int output = Integer.parseInt(outputSeq[i]);
+            if (numCur >= output && !stack.isEmpty()) {
+                if (stack.pop().compareTo(output) != 0) {
+                    return false;
+                }
+                i++;
+            } else {
+                for (int num = numCur + 1; num <= output; num++) {
+                    if (stack.size() >= stackSize) {
+                        return false;
+                    }
+                    stack.push(num);
+                }
+                if (output > numCur) {
+                    numCur = output;
                 }
             }
-            subSeqSum += array[i];
-            if (subSeqSum > maxSubSeqSum) {
-                maxSubSeqSum = subSeqSum;
-                end = i;
-                begin = possibleBegin;
-            } else if (subSeqSum < 0) {
-                subSeqSum = 0;
-                possibleBegin = -1;
-            }
         }
-        if (maxSubSeqSum == -1) {
-            System.out.println(0 + " " + array[0] + " " + array[array.length - 1]);
-        } else {
-            System.out.println(maxSubSeqSum + " " + array[begin] + " " + array[end]);
+        if (i == outputSeq.length) {
+            return true;
         }
+
+        return false;
     }
+
 }
