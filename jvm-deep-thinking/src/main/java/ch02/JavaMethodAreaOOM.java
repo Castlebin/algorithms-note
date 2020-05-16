@@ -9,7 +9,7 @@ import net.sf.cglib.proxy.MethodProxy;
 /**
  * JDK 8 动态生成类导致方法区溢出（使用CGLib）
  * VM args:
- *      -XX:MetaspaceSize=2m -XX:MaxMetaspaceSize=5m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/admin/logs/java.hprof
+       -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=10m
  */
 public class JavaMethodAreaOOM {
     public static void main(String[] args) {

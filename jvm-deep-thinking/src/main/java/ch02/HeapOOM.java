@@ -6,7 +6,10 @@ import java.util.List;
 /**
  * 2.4.1 Java堆内存溢出
  * <p>
- * VM args: -Xms5m -Xmx10m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/admin/logs/java.hprof
+ * VM args:
+
+    -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/Users/heller/tmp/heapOOM.hprof
+
  */
 public class HeapOOM {
     static class OOMObject {
