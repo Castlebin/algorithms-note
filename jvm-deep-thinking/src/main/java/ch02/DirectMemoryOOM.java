@@ -8,7 +8,7 @@ import sun.misc.Unsafe;
  * 2.4.4 直接内存溢出(使用unsafe分配内存)
  * 直接内存分配
  *  VM args:
- *      -Xms20M -XX:MaxDirectMemorySize=10M  -XX:+HeapDumpOnOutOfMemoryError
+ *      -Xmx20M -XX:MaxDirectMemorySize=10M -XX:+HeapDumpOnOutOfMemoryError
  */
 public class DirectMemoryOOM {
     private static final int _1MB = 1024 * 1024;
