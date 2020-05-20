@@ -2,6 +2,13 @@ package ch03;
 
 /**
  * 3-2 一次对象的自我拯救演示
+
+ output:
+
+     finalize method calling...
+     Yes, I'm alive
+     No, I'm dead..
+
  */
 public class FinalizeEscapeGC {
     public static FinalizeEscapeGC SAVE_HOOK = null;
