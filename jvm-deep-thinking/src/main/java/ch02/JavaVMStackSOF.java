@@ -2,7 +2,7 @@ package ch02;
 
 /**
  * 2.4.2 虚拟机栈溢出
- * VM args: -Xss128k
+ * VM args: -Xss200k
  */
 public class JavaVMStackSOF {
     private int stackLength = 1;

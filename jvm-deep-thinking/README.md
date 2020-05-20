@@ -1,4 +1,4 @@
-# 深入理解Java虚拟机 - JVM高级特性与最佳实践（基于JDK 7）
+# 深入理解Java虚拟机 - JVM高级特性与最佳实践（第3版）
 
 # 一点资料
 RednaxelaFX博客：http://rednaxelafx.iteye.com/
