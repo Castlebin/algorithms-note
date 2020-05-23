@@ -1,75 +1,71 @@
 $  javap -verbose ch08.StaticDispatch  > x.log
 
 Classfile /Users/heller/study-code/java-exercise/jvm-deep-thinking/target/classes/ch08/StaticDispatch.class
-  Last modified May 23, 2020; size 1132 bytes
-  MD5 checksum 6137a50be70f0abc3186ed5aba6129d1
+  Last modified May 24, 2020; size 1088 bytes
+  MD5 checksum ea37ce29876c94b2b18ee5fb15192256
   Compiled from "StaticDispatch.java"
 public class ch08.StaticDispatch
   minor version: 0
   major version: 52
   flags: ACC_PUBLIC, ACC_SUPER
 Constant pool:
-   #1 = Methodref          #16.#41        // java/lang/Object."<init>":()V
-   #2 = Fieldref           #42.#43        // java/lang/System.out:Ljava/io/PrintStream;
-   #3 = String             #44            // hello,guy!
-   #4 = Methodref          #45.#46        // java/io/PrintStream.println:(Ljava/lang/String;)V
-   #5 = String             #47            // hello,gentleman!
-   #6 = String             #48            // hello,lady!
-   #7 = Class              #49            // ch08/Man
-   #8 = Methodref          #7.#41         // ch08/Man."<init>":()V
-   #9 = Class              #50            // ch08/Woman
-  #10 = Methodref          #9.#41         // ch08/Woman."<init>":()V
-  #11 = Class              #51            // ch08/StaticDispatch
-  #12 = Methodref          #11.#41        // ch08/StaticDispatch."<init>":()V
-  #13 = Methodref          #11.#52        // ch08/StaticDispatch.sayHello:(Lch08/Human;)V
-  #14 = Methodref          #11.#53        // ch08/StaticDispatch.sayHello:(Lch08/Man;)V
-  #15 = Methodref          #11.#54        // ch08/StaticDispatch.sayHello:(Lch08/Woman;)V
-  #16 = Class              #55            // java/lang/Object
-  #17 = Utf8               <init>
-  #18 = Utf8               ()V
-  #19 = Utf8               Code
-  #20 = Utf8               LineNumberTable
-  #21 = Utf8               LocalVariableTable
-  #22 = Utf8               this
-  #23 = Utf8               Lch08/StaticDispatch;
-  #24 = Utf8               sayHello
-  #25 = Utf8               (Lch08/Human;)V
-  #26 = Utf8               guy
-  #27 = Utf8               Lch08/Human;
-  #28 = Utf8               (Lch08/Man;)V
-  #29 = Utf8               Lch08/Man;
-  #30 = Utf8               (Lch08/Woman;)V
-  #31 = Utf8               Lch08/Woman;
-  #32 = Utf8               main
-  #33 = Utf8               ([Ljava/lang/String;)V
-  #34 = Utf8               args
-  #35 = Utf8               [Ljava/lang/String;
-  #36 = Utf8               man
-  #37 = Utf8               woman
-  #38 = Utf8               sr
-  #39 = Utf8               SourceFile
-  #40 = Utf8               StaticDispatch.java
-  #41 = NameAndType        #17:#18        // "<init>":()V
-  #42 = Class              #56            // java/lang/System
-  #43 = NameAndType        #57:#58        // out:Ljava/io/PrintStream;
-  #44 = Utf8               hello,guy!
-  #45 = Class              #59            // java/io/PrintStream
-  #46 = NameAndType        #60:#61        // println:(Ljava/lang/String;)V
-  #47 = Utf8               hello,gentleman!
-  #48 = Utf8               hello,lady!
-  #49 = Utf8               ch08/Man
-  #50 = Utf8               ch08/Woman
-  #51 = Utf8               ch08/StaticDispatch
-  #52 = NameAndType        #24:#25        // sayHello:(Lch08/Human;)V
-  #53 = NameAndType        #24:#28        // sayHello:(Lch08/Man;)V
-  #54 = NameAndType        #24:#30        // sayHello:(Lch08/Woman;)V
-  #55 = Utf8               java/lang/Object
-  #56 = Utf8               java/lang/System
-  #57 = Utf8               out
-  #58 = Utf8               Ljava/io/PrintStream;
-  #59 = Utf8               java/io/PrintStream
-  #60 = Utf8               println
-  #61 = Utf8               (Ljava/lang/String;)V
+   #1 = Methodref          #14.#39        // java/lang/Object."<init>":()V
+   #2 = Fieldref           #40.#41        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = String             #42            // hello,guy!
+   #4 = Methodref          #43.#44        // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #5 = String             #45            // hello,gentleman!
+   #6 = String             #46            // hello,lady!
+   #7 = Class              #47            // ch08/Man
+   #8 = Methodref          #7.#39         // ch08/Man."<init>":()V
+   #9 = Class              #48            // ch08/Woman
+  #10 = Methodref          #9.#39         // ch08/Woman."<init>":()V
+  #11 = Class              #49            // ch08/StaticDispatch
+  #12 = Methodref          #11.#39        // ch08/StaticDispatch."<init>":()V
+  #13 = Methodref          #11.#50        // ch08/StaticDispatch.sayHello:(Lch08/Human;)V
+  #14 = Class              #51            // java/lang/Object
+  #15 = Utf8               <init>
+  #16 = Utf8               ()V
+  #17 = Utf8               Code
+  #18 = Utf8               LineNumberTable
+  #19 = Utf8               LocalVariableTable
+  #20 = Utf8               this
+  #21 = Utf8               Lch08/StaticDispatch;
+  #22 = Utf8               sayHello
+  #23 = Utf8               (Lch08/Human;)V
+  #24 = Utf8               guy
+  #25 = Utf8               Lch08/Human;
+  #26 = Utf8               (Lch08/Man;)V
+  #27 = Utf8               Lch08/Man;
+  #28 = Utf8               (Lch08/Woman;)V
+  #29 = Utf8               Lch08/Woman;
+  #30 = Utf8               main
+  #31 = Utf8               ([Ljava/lang/String;)V
+  #32 = Utf8               args
+  #33 = Utf8               [Ljava/lang/String;
+  #34 = Utf8               man
+  #35 = Utf8               woman
+  #36 = Utf8               sr
+  #37 = Utf8               SourceFile
+  #38 = Utf8               StaticDispatch.java
+  #39 = NameAndType        #15:#16        // "<init>":()V
+  #40 = Class              #52            // java/lang/System
+  #41 = NameAndType        #53:#54        // out:Ljava/io/PrintStream;
+  #42 = Utf8               hello,guy!
+  #43 = Class              #55            // java/io/PrintStream
+  #44 = NameAndType        #56:#57        // println:(Ljava/lang/String;)V
+  #45 = Utf8               hello,gentleman!
+  #46 = Utf8               hello,lady!
+  #47 = Utf8               ch08/Man
+  #48 = Utf8               ch08/Woman
+  #49 = Utf8               ch08/StaticDispatch
+  #50 = NameAndType        #22:#23        // sayHello:(Lch08/Human;)V
+  #51 = Utf8               java/lang/Object
+  #52 = Utf8               java/lang/System
+  #53 = Utf8               out
+  #54 = Utf8               Ljava/io/PrintStream;
+  #55 = Utf8               java/io/PrintStream
+  #56 = Utf8               println
+  #57 = Utf8               (Ljava/lang/String;)V
 {
   public ch08.StaticDispatch();
     descriptor: ()V
@@ -80,7 +76,7 @@ Constant pool:
          1: invokespecial #1                  // Method java/lang/Object."<init>":()V
          4: return
       LineNumberTable:
-        line 11: 0
+        line 13: 0
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0       5     0  this   Lch08/StaticDispatch;
@@ -95,8 +91,8 @@ Constant pool:
          5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
          8: return
       LineNumberTable:
-        line 14: 0
-        line 15: 8
+        line 16: 0
+        line 17: 8
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0       9     0  this   Lch08/StaticDispatch;
@@ -112,8 +108,8 @@ Constant pool:
          5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
          8: return
       LineNumberTable:
-        line 18: 0
-        line 19: 8
+        line 20: 0
+        line 21: 8
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0       9     0  this   Lch08/StaticDispatch;
@@ -129,8 +125,8 @@ Constant pool:
          5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
          8: return
       LineNumberTable:
-        line 22: 0
-        line 23: 8
+        line 24: 0
+        line 25: 8
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0       9     0  this   Lch08/StaticDispatch;
@@ -159,29 +155,19 @@ Constant pool:
         29: aload_3
         30: aload_2
         31: invokevirtual #13                 // Method sayHello:(Lch08/Human;)V
-        34: aload_3
-        35: aload_2
-        36: checkcast     #7                  // class ch08/Man
-        39: invokevirtual #14                 // Method sayHello:(Lch08/Man;)V
-        42: aload_3
-        43: aload_1
-        44: checkcast     #9                  // class ch08/Woman
-        47: invokevirtual #15                 // Method sayHello:(Lch08/Woman;)V
-        50: return
+        34: return
       LineNumberTable:
-        line 26: 0
-        line 27: 8
-        line 29: 16
-        line 30: 24
-        line 31: 29
-        line 33: 34
-        line 34: 42
-        line 35: 50
+        line 28: 0
+        line 29: 8
+        line 31: 16
+        line 32: 24
+        line 33: 29
+        line 34: 34
       LocalVariableTable:
         Start  Length  Slot  Name   Signature
-            0      51     0  args   [Ljava/lang/String;
-            8      43     1   man   Lch08/Human;
-           16      35     2 woman   Lch08/Human;
-           24      27     3    sr   Lch08/StaticDispatch;
+            0      35     0  args   [Ljava/lang/String;
+            8      27     1   man   Lch08/Human;
+           16      19     2 woman   Lch08/Human;
+           24      11     3    sr   Lch08/StaticDispatch;
 }
 SourceFile: "StaticDispatch.java"
