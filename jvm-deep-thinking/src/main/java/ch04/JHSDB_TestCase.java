@@ -9,7 +9,7 @@ package ch04;
     -Xmx10m -XX:+UseSerialGC -XX:+UseCompressedOops
 
  */
-public class JHSDBTestCase {
+public class JHSDB_TestCase {
 
     static class Test {
         static ObjectHolder staticObj = new ObjectHolder();
