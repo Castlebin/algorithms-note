@@ -63,13 +63,13 @@ public class GraphLinkedArray {
         this.numOfVertex = vertexNum;
         this.numOfEdge = 0;
         // 初始化邻接矩阵
-        this.weightArray = new int[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
-        for (int i = 0; i < MAX_VERTEX_NUM; i++) {
-            for (int j = 0; j < MAX_VERTEX_NUM; j++) {
+        this.weightArray = new int[numOfVertex][numOfVertex];
+        for (int i = 0; i < numOfVertex; i++) {
+            for (int j = 0; j < numOfVertex; j++) {
                 weightArray[i][j] = Integer.MAX_VALUE;
             }
         }
-        this.dataArray = new char[MAX_VERTEX_NUM];
+        this.dataArray = new char[numOfVertex];
     }
 
     /**
