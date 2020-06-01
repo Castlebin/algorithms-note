@@ -73,7 +73,7 @@ public class GraphLinkedList {
      * 初始化一个有 vertexNum 个顶点 的图，但是没有边
      * @param vertexNum 顶点数目
      */
-    public GraphLinkedList(int vertexNum, /** 有的话，一般没有 int data */) {
+    public GraphLinkedList(int vertexNum) {
         if (vertexNum > MAX_VERTEX_NUM) {
             throw new RuntimeException("最大顶点数目不能超过" + MAX_VERTEX_NUM);
         }
