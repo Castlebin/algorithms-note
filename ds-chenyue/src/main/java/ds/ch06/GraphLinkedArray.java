@@ -81,8 +81,6 @@ public class GraphLinkedArray {
         // 无向图的话，还要插入边 <w, v>
         graph.weightArray[edge.w][edge.v] = edge.weight;
 
-        graph.numOfEdge = graph.numOfEdge + 1;
-
         return graph;
     }
 
