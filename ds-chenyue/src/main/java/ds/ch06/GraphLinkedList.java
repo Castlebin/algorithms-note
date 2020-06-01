@@ -97,13 +97,16 @@ public class GraphLinkedList {
         e1.v = edge.w;
         e1.weight = edge.weight;
         // 插入表头
-        e1.next = graph.adjArray[e1.v].firstEdge;
-        graph.adjArray[e1.v].firstEdge = e1;
+        e1.next = graph.adjArray[edge.v].firstEdge;
+        graph.adjArray[edge.v].firstEdge = e1;
 
         // 无向图的话，还应该插入 <w, v>
-        // 不写了
-
-        graph.numOfEdge = graph.numOfEdge + 1;
+        AdjEdge e2 = new AdjEdge();
+        e2.v = edge.v;
+        e2.weight = edge.weight;
+        // 插入表头
+        e2.next = graph.adjArray[edge.w].firstEdge;
+        graph.adjArray[edge.w].firstEdge = e2;
 
         return graph;
     }
