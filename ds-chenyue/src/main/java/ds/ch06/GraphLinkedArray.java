@@ -51,7 +51,7 @@ public class GraphLinkedArray {
     /**
      * 定义边
      */
-    class Edge {
+    static class Edge {
         int v, w;   // 有向边 <v, w>
         int weight; // 权重
     }
@@ -88,7 +88,7 @@ public class GraphLinkedArray {
         return graph;
     }
 
-    public GraphLinkedArray buildGraph(int nv, int ne, List<Edge> edges) {
+    public static GraphLinkedArray buildGraph(int nv, int ne, List<Edge> edges) {
         GraphLinkedArray graph = new GraphLinkedArray(nv);
         graph.numOfEdge = ne;
         for (Edge edge : edges) {
@@ -97,7 +97,7 @@ public class GraphLinkedArray {
         return graph;
     }
 
-    public GraphLinkedArray readAndBuildGraph() {
+    public static GraphLinkedArray readAndBuildGraph() {
         Scanner sc = new Scanner(System.in);
         String firstLine = sc.nextLine();
         String[] num = firstLine.split("\\s+");
