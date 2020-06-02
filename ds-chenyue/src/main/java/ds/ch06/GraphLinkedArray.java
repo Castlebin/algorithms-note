@@ -1,5 +1,9 @@
 package ds.ch06;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * 用 邻接矩阵 表示 图
  */
@@ -82,6 +86,36 @@ public class GraphLinkedArray {
         graph.weightArray[edge.w][edge.v] = edge.weight;
 
         return graph;
+    }
+
+    public GraphLinkedArray buildGraph(int nv, int ne, List<Edge> edges) {
+        GraphLinkedArray graph = new GraphLinkedArray(nv);
+        graph.numOfEdge = ne;
+        for (Edge edge : edges) {
+            graph.insertEdge(graph, edge);
+        }
+        return graph;
+    }
+
+    public GraphLinkedArray readAndBuildGraph() {
+        Scanner sc = new Scanner(System.in);
+        String firstLine = sc.nextLine();
+        String[] num = firstLine.split("\\s+");
+        int nv = Integer.parseInt(num[0]);
+        int ne = Integer.parseInt(num[1]);
+        List<Edge> edges = new ArrayList<>(ne);
+        for(int i = 0; i < ne; i++) {
+            String eD = sc.nextLine();
+            String[] edgeData = eD.split("\\s+");
+            Edge edge = new Edge();
+            edge.v = Integer.parseInt(edgeData[0]);
+            edge.w = Integer.parseInt(edgeData[1]);
+            if (edgeData.length >= 3) {
+                edge.weight = Integer.parseInt(edgeData[2]);
+            }
+            edges.add(edge);
+        }
+        return buildGraph(nv, ne, edges);
     }
 
 }
