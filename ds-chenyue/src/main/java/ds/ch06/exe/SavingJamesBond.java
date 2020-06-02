@@ -2,6 +2,12 @@ package ds.ch06.exe;
 
 import java.util.Scanner;
 
+/**
+ * 拯救007，典型的 DFS 应用
+ *
+ * 06-图2 Saving James Bond - Easy Version (25分)
+ *
+ */
 public class SavingJamesBond {
 
     public static void main(String[] args) {
