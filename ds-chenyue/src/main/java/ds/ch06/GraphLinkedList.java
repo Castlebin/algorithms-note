@@ -17,7 +17,7 @@ public class GraphLinkedList {
     /**
      * 顶点 数量
      */
-    int numOfVertex;
+    public int numOfVertex;
 
     /**
      * 边 数量
@@ -27,28 +27,28 @@ public class GraphLinkedList {
     /**
      * 邻接表
      */
-    VNode[] adjArray;
+    public VNode[] adjArray;
 
     /**
      * 顶点的头结点定义
      */
-    class VNode {
+    public class VNode {
         /**
          * 很多时候，顶点无数据，不需要
          */
         char data;
 
         // 邻接的所有顶点，放在一条链表上
-        AdjEdge firstEdge;
+        public AdjEdge firstEdge;
     }
 
     /**
      * 邻接边的定义
      */
-    class AdjEdge {
-        int v;  // 邻接点下标
+    public class AdjEdge {
+        public int v;  // 邻接点下标
         int weight; // 权重
-        AdjEdge next;   // 再下一个邻接点
+        public AdjEdge next;   // 再下一个邻接点
     }
 
     /**
