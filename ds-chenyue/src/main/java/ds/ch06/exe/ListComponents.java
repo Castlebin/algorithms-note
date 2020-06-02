@@ -85,16 +85,14 @@ public class ListComponents {
         boolean[] visited = new boolean[graph.numOfVertex];
         for (int v = 0; v < graph.numOfVertex; v++) {
             boolean linked = false;
-            List<Integer> resultSet = new ArrayList<>();
+            List<Integer> result = new ArrayList<>();
             if (!visited[v]) {
                 linked = true;
-                Queue<Integer> queue = new LinkedList<>();
-                queue.add(v);
-                resultSet = bfs(graph, queue, visited, resultSet);
+                result = bfs(graph, v, visited);
             }
             if (linked) {
                 StringBuilder sb = new StringBuilder("{");
-                for (Integer re : resultSet) {
+                for (Integer re : result) {
                     sb.append(" " + re);
                 }
                 sb.append(" }");
@@ -103,27 +101,30 @@ public class ListComponents {
         }
     }
 
-    public static List<Integer> bfs(GraphLinkedList graph, Queue<Integer> queue, boolean[] visited,
-                                    List<Integer> result) {
-        int v = queue.remove();
-        if (visited[v]) {
-            return result;
-        }
+    public static List<Integer> bfs(GraphLinkedList graph, int v, boolean[] visited) {
+        List<Integer> result = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
         visited[v] = true;
-        result.add(v);
-        // 找到v的邻接点
-        SortedSet<Integer> linkedVertexs = new TreeSet<>();
-        GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge;
-        while (edge != null) {
-            if (!visited[edge.v]) {
-                linkedVertexs.add(edge.v);
-            }
-            edge = edge.next;
-        }
-        queue.addAll(linkedVertexs);
+        queue.add(v);
 
         while (!queue.isEmpty()) {
-            bfs(graph, queue, visited, result);
+            v = queue.remove();
+            result.add(v);
+            // 找到v的邻接点
+            SortedSet<Integer> linkedVertexs = new TreeSet<>();
+            GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge;
+            while (edge != null) {
+                if (!visited[edge.v]) {
+                    linkedVertexs.add(edge.v);
+                }
+                edge = edge.next;
+            }
+            for (Integer w : linkedVertexs) {
+                if (!visited[w]) {
+                    visited[w] = true;
+                    queue.add(w);
+                }
+            }
         }
 
         return result;
