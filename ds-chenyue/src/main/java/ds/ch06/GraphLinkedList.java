@@ -87,6 +87,7 @@ public class GraphLinkedList {
         // 初始化邻接表
         this.adjArray = new VNode[numOfVertex];
         for (int i = 0; i < numOfVertex; i++) {
+            adjArray[i] = new VNode();
             adjArray[i].firstEdge = null;
             // 有data的话，可以加上data的初始化，一般没有
         }
