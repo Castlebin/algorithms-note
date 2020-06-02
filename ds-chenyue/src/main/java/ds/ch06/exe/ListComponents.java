@@ -65,14 +65,7 @@ public class ListComponents {
         visited[v] = true;
         result.add(v);
         // 找到v的邻接点
-        SortedSet<Integer> linkedVertexs = new TreeSet<>();
-        GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge;
-        while (edge != null) {
-            if (!visited[edge.v]) {
-                linkedVertexs.add(edge.v);
-            }
-            edge = edge.next;
-        }
+        SortedSet<Integer> linkedVertexs = getLinkNodes(graph, v);
         for (Integer w : linkedVertexs) {
             if (!visited[w]) {
                 dfs(graph, w, visited, result);
@@ -111,14 +104,7 @@ public class ListComponents {
             v = queue.remove();
             result.add(v);
             // 找到v的邻接点
-            SortedSet<Integer> linkedVertexs = new TreeSet<>();
-            GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge;
-            while (edge != null) {
-                if (!visited[edge.v]) {
-                    linkedVertexs.add(edge.v);
-                }
-                edge = edge.next;
-            }
+            SortedSet<Integer> linkedVertexs = getLinkNodes(graph, v);
             for (Integer w : linkedVertexs) {
                 if (!visited[w]) {
                     visited[w] = true;
@@ -128,6 +114,20 @@ public class ListComponents {
         }
 
         return result;
+    }
+
+    private static SortedSet<Integer> getLinkNodes(GraphLinkedList graph, int v) {
+        return getLinkNodesOrdered(graph, v);
+    }
+
+    private static SortedSet<Integer> getLinkNodesOrdered(GraphLinkedList graph, int v) {
+        SortedSet<Integer> linkedVertexs = new TreeSet<>();
+        GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge;
+        while (edge != null) {
+            linkedVertexs.add(edge.v);
+            edge = edge.next;
+        }
+        return linkedVertexs;
     }
 
 }
