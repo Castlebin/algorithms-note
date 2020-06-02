@@ -68,9 +68,9 @@ public class GraphLinkedList {
     /**
      * 定义边
      */
-    static class Edge {
-        int v, w;   // 有向边 <v, w>
-        int weight; // 权重
+    public static class Edge {
+        public int v, w;   // 有向边 <v, w>
+        public int weight; // 权重
     }
 
     /**
