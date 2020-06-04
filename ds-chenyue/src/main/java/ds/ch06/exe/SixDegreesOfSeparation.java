@@ -37,9 +37,9 @@ public class SixDegreesOfSeparation {
         Queue<Integer> queue = new LinkedList<>();
         visited[v] = true;
         queue.add(v);
+        count++;
         while (!queue.isEmpty()) {
             int n = queue.remove();
-            count++;
 
             // 对于 n 的每个邻接点 w
             GraphLinkedList.AdjEdge edge = graph.adjArray[n].firstEdge;
@@ -47,6 +47,7 @@ public class SixDegreesOfSeparation {
                 if (!visited[edge.v] && level[n] < 6) {
                     visited[edge.v] = true;
                     queue.add(edge.v);
+                    count++;
                     level[edge.v] = level[n] + 1;
                 }
                 edge = edge.next;
