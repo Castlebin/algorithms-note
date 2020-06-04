@@ -24,7 +24,7 @@ public class SixDegreesOfSeparation {
     private static void sds(GraphLinkedList graph) {
         int numOfVertex = graph.numOfVertex;
         for (int v = 0; v < numOfVertex; v++) {
-            int count = sds(graph, v);
+            int count = sds_2(graph, v);
             System.out.printf("%d: %.2f%%\n", v + 1, count * 100.0 / numOfVertex);
         }
     }
@@ -51,6 +51,44 @@ public class SixDegreesOfSeparation {
                     level[edge.v] = level[n] + 1;
                 }
                 edge = edge.next;
+            }
+        }
+
+        return count;
+    }
+
+    private static int sds_2(GraphLinkedList graph, int v) {
+        boolean[] visited = new boolean[graph.numOfVertex];
+        int count = 0;
+
+        int level = 0;
+        int last = v;   // 上一层的最后一个元素
+        int tail = 0;
+
+        Queue<Integer> queue = new LinkedList<>();
+        visited[v] = true;
+        queue.add(v);
+        count++;
+        while (!queue.isEmpty()) {
+            v = queue.remove();
+
+            // 对于 v 的每个邻接点 w (即 开始 访问 下一层的节点了)
+            GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge;
+            while (edge != null) {
+                if ( !visited[edge.v] ) {
+                    visited[edge.v] = true;
+                    queue.add(edge.v);
+                    count++;
+                    tail = edge.v;
+                }
+                edge = edge.next;
+            }
+            if (v == last) {
+                level++;
+                last = tail;
+            }
+            if (level >= 6) {
+                break;
             }
         }
 
