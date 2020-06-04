@@ -35,8 +35,8 @@ public class SixDegreesOfSeparation {
         int count = 0;
 
         Queue<Integer> queue = new LinkedList<>();
-        queue.add(v);
         visited[v] = true;
+        queue.add(v);
         while (!queue.isEmpty()) {
             int n = queue.remove();
             count++;
