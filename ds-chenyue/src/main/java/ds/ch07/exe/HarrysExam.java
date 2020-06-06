@@ -30,8 +30,8 @@ public class HarrysExam {
                 if (i == j) {
 
                 } else if (dist[i][j] == 0) {
-                    graph[i][j] = Integer.MAX_VALUE / 2;    // 防溢出，😌
-                    dist[i][j] = Integer.MAX_VALUE / 2;
+                    graph[i][j] = Short.MAX_VALUE;    // 防溢出，😌
+                    dist[i][j] = Short.MAX_VALUE;
                 }
             }
         }
@@ -46,7 +46,7 @@ public class HarrysExam {
             for (int i = 0; i < num; i++) {
                 int maxLen = dist[i][0];
                 for (int j = 0; j < num; j++) {
-                    int d = dist[i][k] + dist[k][j];
+                    int d = dist[i][k] + dist[k][j];    // 注意防溢出，😌
                     if (d < dist[i][j]) {
                         dist[i][j] = d;
                     }
