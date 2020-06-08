@@ -55,3 +55,4 @@ bool Dijkstra( MGraph Graph, int dist[], int path[], Vertex S )
     } /* while结束*/
     return true; /* 算法执行完毕，返回正确标记 */
 }
+
