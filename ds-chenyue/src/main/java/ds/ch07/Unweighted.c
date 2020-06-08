@@ -21,4 +21,3 @@ void Unweighted ( LGraph Graph, int dist[], int path[], Vertex S )
             }
     } /* while结束*/
 }
-
