@@ -47,7 +47,7 @@ public class GraphLinkedList {
      */
     public class AdjEdge {
         public int v;  // 邻接点下标
-        int weight; // 权重
+        public int weight; // 权重
         public AdjEdge next;   // 再下一个邻接点
     }
 
