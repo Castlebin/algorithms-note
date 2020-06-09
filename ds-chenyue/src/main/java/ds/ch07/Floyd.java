@@ -5,6 +5,8 @@ import ds.ch06.GraphLinkedArray;
 /**
     多源最短路径 - Floyd算法
     对 稠密图 合适，用 邻接矩阵 表示图
+
+    (todo 思考下，最短路径经过的顶点如何得到？)
  */
 public class Floyd {
 
