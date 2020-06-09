@@ -6,6 +6,9 @@ import java.util.Scanner;
     07-图4 哈利·波特的考试 (25分)
  */
 public class HarrysExam {
+    // 定义一下正无穷大
+    private static final int INF = Short.MAX_VALUE;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String firstLine = sc.nextLine();
@@ -30,8 +33,8 @@ public class HarrysExam {
                 if (i == j) {
 
                 } else if (dist[i][j] == 0) {
-                    graph[i][j] = Short.MAX_VALUE;    // 防溢出，😌
-                    dist[i][j] = Short.MAX_VALUE;
+                    graph[i][j] = INF;    // 防溢出，😌
+                    dist[i][j] = INF;
                 }
             }
         }
