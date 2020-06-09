@@ -9,6 +9,9 @@ import java.util.Scanner;
  */
 public class GraphLinkedArray {
 
+    // 定义一下正无穷大
+    private static final int INF = Short.MAX_VALUE;
+
     /**
      * 最大节点数
      */
@@ -17,22 +20,22 @@ public class GraphLinkedArray {
     /**
      * 顶点 数量
      */
-    int numOfVertex;
+    public int numOfVertex;
 
     /**
      * 边 数量
      */
-    int numOfEdge;
+    public int numOfEdge;
 
     /**
      * 邻接矩阵 (假设权重是整数)，若两个顶点之间没有边，权重定义为正无穷大
      */
-    int[][] weightArray;
+    public int[][] weightArray;
 
     /**
      * 存顶点的数据，假设为字符（很多时候，顶点无数据，不需要这个域）
      */
-    char[] dataArray;
+    public char[] dataArray;
 
     /**
      * 定义顶点
@@ -70,7 +73,7 @@ public class GraphLinkedArray {
         this.weightArray = new int[numOfVertex][numOfVertex];
         for (int i = 0; i < numOfVertex; i++) {
             for (int j = 0; j < numOfVertex; j++) {
-                weightArray[i][j] = Integer.MAX_VALUE;
+                weightArray[i][j] = INF;
             }
         }
         this.dataArray = new char[numOfVertex];
