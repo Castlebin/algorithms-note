@@ -24,7 +24,7 @@ public class Unweighted {
             // 对于 v 的每个邻接点 w
             for (GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge; edge != null; edge = edge.next) {
                 int w = edge.v;
-                if (result[w].dist != Short.MAX_VALUE) {
+                if (result[w].dist != Short.MAX_VALUE) {// 如果 w 还没有被收录
                     result[w].dist = result[v].dist + 1;
                     result[w].path = v;
                     queue.add(w);
