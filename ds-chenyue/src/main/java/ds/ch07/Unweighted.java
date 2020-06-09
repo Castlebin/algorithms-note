@@ -11,6 +11,9 @@ import java.util.Queue;
     以递增（非递减）的顺序，收录到原点距离最短的每个订单
  */
 public class Unweighted {
+
+    // 定义一下正无穷大
+    private static final int INF = Short.MAX_VALUE;
     
     public DistPath[] unweighted(GraphLinkedList graph, int s) {
         DistPath[] result = new DistPath[graph.numOfVertex];
@@ -24,7 +27,7 @@ public class Unweighted {
             // 对于 v 的每个邻接点 w
             for (GraphLinkedList.AdjEdge edge = graph.adjArray[v].firstEdge; edge != null; edge = edge.next) {
                 int w = edge.v;
-                if (result[w].dist != Short.MAX_VALUE) {// 如果 w 还没有被收录
+                if (result[w].dist != INF) {// 如果 w 还没有被收录
                     result[w].dist = result[v].dist + 1;
                     result[w].path = v;
                     queue.add(w);
@@ -40,7 +43,7 @@ public class Unweighted {
             if (distPath == null) {
                 distPath = new DistPath();
             }
-            distPath.dist = Short.MAX_VALUE;
+            distPath.dist = INF;
             distPath.path = -1;
         }
     }
