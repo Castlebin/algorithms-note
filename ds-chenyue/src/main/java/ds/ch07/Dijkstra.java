@@ -42,12 +42,6 @@ public class Dijkstra {
             }
         }
 
-        // 判断是否全部被收录了，没有的话，表示图不连通
-        boolean allCollected = checkCollected(collected);
-        if (!allCollected) {
-            throw new RuntimeException("图不连通！无法求解");
-        }
-
         return distPaths;
     }
 
