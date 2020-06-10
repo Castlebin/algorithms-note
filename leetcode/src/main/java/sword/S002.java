@@ -31,3 +31,11 @@ final class Singleton5 {
         public static final Singleton5 instance = new Singleton5();
     }
 }
+
+/**
+ * effective java 提到的利用枚举实现的单例
+ * 挺神奇的一种方式
+ */
+enum Singleton6 {
+    INSTANCE;
+}
