@@ -4,16 +4,20 @@ package sword;
  * 单例模式
  */
 
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * 利用类加载
  *
  * 线程安全 提前生成单例
  */
 final class Singleton4 {
-    private static final Singleton4 instance = new Singleton4();
+    private Singleton4() {}
+
+    private static final Singleton4 INSTANCE = new Singleton4();
 
     public static Singleton4 getInstance() {
-        return instance;
+        return INSTANCE;
     }
 }
 
@@ -23,12 +27,14 @@ final class Singleton4 {
  * 利用内部类，实现懒加载
  */
 final class Singleton5 {
+    private Singleton5() {}
+
     public static Singleton5 getInstance() {
-        return Nested.instance;
+        return Nested.INSTANCE;
     }
 
     static class Nested {
-        public static final Singleton5 instance = new Singleton5();
+        public static final Singleton5 INSTANCE = new Singleton5();
     }
 }
 
@@ -38,4 +44,22 @@ final class Singleton5 {
  */
 enum Singleton6 {
     INSTANCE;
+}
+
+final class Singleton7 {
+    private Singleton7() {}
+
+    private static final AtomicReference<Singleton7> REFERENCE = new AtomicReference<>();
+
+    public static Singleton7 getInstance() {
+        for (;;) {
+            Singleton7 current = REFERENCE.get();
+            if (current != null) {
+                return current;
+            }
+            if (REFERENCE.compareAndSet(null, new Singleton7())) {
+                return REFERENCE.get();
+            }
+        }
+    }
 }
