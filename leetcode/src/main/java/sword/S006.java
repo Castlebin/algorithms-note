@@ -2,8 +2,6 @@ package sword;
 
 import org.junit.Test;
 
-import java.lang.reflect.WildcardType;
-
 /**
  * 06. 从尾到头打印链表
  * 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
@@ -50,4 +48,32 @@ class ListNode {
     ListNode(int x) {
         val = x;
     }
+
+    public static ListNode createListNode(String s) {
+        ListNode head = new ListNode(0);
+        ListNode cur = head;
+        ListNode next;
+        for (int i = 0; i < s.length(); i++) {
+            cur.val = Integer.parseInt(s.substring(i, i + 1));
+            if (i < s.length() - 1) {
+                next = new ListNode(0);
+                cur.next = next;
+                cur = next;
+            }
+        }
+        return head;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNode cur = this;
+        do {
+            sb.append(cur.val);
+            cur = cur.next;
+        } while (cur != null);
+
+        return sb.toString();
+    }
+
 }
