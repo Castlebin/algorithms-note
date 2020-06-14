@@ -60,7 +60,7 @@ public class S022 {
             return null;
         }
         ListNode p2 = head;
-        while (p1 != null && p2 != null) {
+        while (p1 != null) {
             p1 = p1.next;
             p2 = p2.next;
         }
