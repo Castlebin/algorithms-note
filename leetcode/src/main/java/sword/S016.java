@@ -25,9 +25,6 @@ public class S016 {
         if (n == 1) {
             return x;
         }
-        if (n == -1) {
-            return 1 / x;
-        }
         // 注意，n 有可能为负数
         // 注意，n 为最小负数时，直接取相反数，会溢出，所以，用long
         boolean negative = false;
