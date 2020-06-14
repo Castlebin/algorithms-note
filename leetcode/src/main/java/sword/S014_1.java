@@ -21,8 +21,11 @@ public class S014_1 {
         if (ropeLength < 2) {
             return 0;
         }
-        if (ropeLength <= 3) {
-            return ropeLength - 1;
+        if (ropeLength == 2) {
+            return 1;
+        }
+        if (ropeLength == 3) {
+            return 2;
         }
         int[] products = new int[ropeLength + 1];
         products[0] = 0;
