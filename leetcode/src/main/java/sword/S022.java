@@ -42,6 +42,33 @@ public class S022 {
         return null;
     }
 
+    /**
+     * 快慢指针解法，一次遍历
+     */
+    public ListNode getKthFromEnd_2(ListNode head, int k) {
+        if (k <= 0) {
+            throw new IllegalArgumentException("k must >= 1");
+        }
+
+        ListNode p1 = head;
+        int count = 0;
+        while (p1 != null && count < k) {
+            count++;
+            p1 = p1.next;
+        }
+        if (count < k) {
+            return null;
+        }
+        ListNode p2 = head;
+        while (p1 != null && p2 != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        return p2;
+    }
+
+
     @Test
     public void test() {
 
