@@ -81,10 +81,14 @@ public class S032 {
         boolean reverse = false;
         TreeNode lastTail = root;
         TreeNode thisTail = null;
-        List<Integer> thisLevelResult = new ArrayList<>();
+        LinkedList<Integer> thisLevelResult = new LinkedList<>();
         while (!queue.isEmpty()) {
             TreeNode node = queue.remove();
-            thisLevelResult.add(node.val);
+            if (!reverse) {
+                thisLevelResult.add(node.val);
+            } else {
+                thisLevelResult.push(node.val);
+            }
             if (node.left != null) {
                 queue.add(node.left);
                 thisTail = node.left;
@@ -95,11 +99,8 @@ public class S032 {
             }
             if (node == lastTail) {
                 lastTail = thisTail;
-                if (reverse) {
-                    Collections.reverse(thisLevelResult);
-                }
                 result.add(thisLevelResult);
-                thisLevelResult = new ArrayList<>();
+                thisLevelResult = new LinkedList<>();
                 reverse = !reverse;
             }
         }
