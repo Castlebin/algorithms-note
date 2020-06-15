@@ -33,7 +33,7 @@ public class CountryRoad {
     private static int[] prim(Graph graph) {
         int countries = graph.graph.length;
         int count = 0;
-        int[][] dist = initDist(graph.graph, 0);
+        int[] dist = initDist(graph.graph, 0);
         boolean[] collected = new boolean[countries];
         int[] mst = new int[countries];
 
@@ -48,22 +48,11 @@ public class CountryRoad {
         return null;
     }
 
-    private static int[][] initDist(int[][] graph, int source) {
+    private static int[] initDist(int[][] graph, int source) {
         int countries = graph.length;
-        int[][] dist = new int[countries][countries];
-
-        for (int from = 0; from < countries; from++) {
-            for (int to = 0; to <= from; to++) {
-                if (from == to) {
-                    dist[from][to] = 0;
-                } else if (from == source) {
-                    dist[from][to] = graph[from][to];
-                    dist[to][from] = graph[from][to];
-                } else {
-                    dist[from][to] = INF;
-                    dist[to][from] = INF;
-                }
-            }
+        int[] dist = new int[countries];
+        for (int to = 0; to < countries; to++) {
+            dist[to] = graph[source][to];
         }
 
         return dist;
