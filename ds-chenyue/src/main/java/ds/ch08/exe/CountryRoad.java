@@ -27,13 +27,13 @@ public class CountryRoad {
      */
     public static void main(String[] args) {
         Graph graph = buildGraphFromInput();
-        int[] mst = prim(graph);
+        int[] mst = prim(graph, 0);
     }
 
-    private static int[] prim(Graph graph) {
+    private static int[] prim(Graph graph, int source) {
         int countries = graph.graph.length;
         int count = 0;
-        int[] dist = initDist(graph.graph, 0);
+        int[] dist = initDist(graph.graph, source);
         boolean[] collected = new boolean[countries];
         int[] mst = new int[countries];
 
