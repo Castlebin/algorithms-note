@@ -34,11 +34,9 @@ public class CountryRoad {
         int countries = graph.graph.length;
         int count = 0;
         int[] dist = initDist(graph.graph, source);
-        boolean[] collected = new boolean[countries];
         int[] mst = new int[countries];
 
         mst[0] = -1;
-        collected[0] = true;
         count++;
         while (true) {
             // todo
