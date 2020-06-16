@@ -34,13 +34,15 @@ public class ReverseK {
                 head = node;
             }
         }
+        int length = 1;
         Node cur = head;
         while (!cur.nextAddress.equals("-1")) {
+            length++;
             cur.next = nodeMap.get(cur.nextAddress);
             cur = cur.next;
         }
         // 链表构造完毕
-        Node reversed = reverseK(head, k);
+        Node reversed = reverseK(head, length, k);
         print(reversed);
     }
 
@@ -54,25 +56,20 @@ public class ReverseK {
         return size;
     }
 
-    public static Node reverseK(Node head, int k) {
-        int size = size(head);
+    public static Node reverseK(Node head, int size, int k) {
         if (size < k || k == 1) {
             return head;
         }
-        // 第一个 K 旋转，决定 返回的 head
-        Node prev = null;
-        Node cur = head;
-        for (int i = 0; i < k; i++) {
-            Node next = cur.next;
-            cur.next = prev;
-            cur.nextAddress = prev == null? "-1":prev.address;
-            prev = cur;
-            cur = next;
-        }
-        Node result = prev;
-        Node tmpTail = head;
 
-        for (int i = k; i + k <= size; i += k) {
+        // 往链表头部插入一个空节点，便于后面的操作
+        Node newHead = new Node();
+        newHead.next = head;
+        newHead.address = "-1";
+
+        Node prev = newHead;
+        Node cur = head;
+        Node tmpTail = prev;
+        for (int i = 0; i + k <= size; i += k) {
             Node nextTail = cur;
             for (int t = 0; t < k; t++) {
                 Node next = cur.next;
@@ -88,7 +85,7 @@ public class ReverseK {
         tmpTail.next = cur;
         tmpTail.nextAddress = cur == null?"-1":cur.address;
 
-        return result;
+        return newHead.next;
     }
 
     static class Node {
@@ -99,10 +96,16 @@ public class ReverseK {
     }
 
     public static void print(Node head) {
+        if (head == null) {
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
         Node cur = head;
         while (cur != null) {
-            System.out.println(cur.address + " " + cur.data + " " + cur.nextAddress);
+            sb.append(cur.address + " " + cur.data + " " + cur.nextAddress + "\n");
             cur = cur.next;
         }
+        System.out.print(sb.toString());
     }
+
 }
