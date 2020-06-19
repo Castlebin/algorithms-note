@@ -81,14 +81,14 @@ public class CountryRoad {
 
     private static int findMinDistVertex(int[] dist, int[] mst, int source) {
         int d = INF;
-        int minDistVertex = -1;
+        int minDistVertex = -1; // 表示不存在这样的点
         for (int v = 0; v < dist.length; v++) {
             if (dist[v] != 0 && dist[v] < d) {
                 d = dist[v];
                 minDistVertex = v;
             }
         }
-        return minDistVertex; // 表示不存在这样的点
+        return minDistVertex;
     }
 
     private static int[] initDist(int[][] graph, int source) {
