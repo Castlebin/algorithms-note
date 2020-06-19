@@ -116,8 +116,8 @@ public class HowLongDoesItTakes {
             adjEdge.next = adjNodes[v].firstEdge;
             adjNodes[v].firstEdge = adjEdge;
 
-            outDegrees[v] += outDegrees[v];
-            inDegrees[w] += inDegrees[w];
+            outDegrees[v] = outDegrees[v] + 1;
+            inDegrees[w] = inDegrees[w] + 1;
         }
     }
 
