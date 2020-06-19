@@ -42,7 +42,8 @@ public class HowLongDoesItTakes {
                         earliestTime = earliest[w];
                     }
                 }
-                if (--inDegrees[w] == 0) {
+                inDegrees[w] = inDegrees[w] - 1;
+                if (inDegrees[w] == 0) {
                     zeroDegreeNodeList.add(w);
                 }
                 edge = edge.next;
