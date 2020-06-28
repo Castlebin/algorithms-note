@@ -16,14 +16,14 @@ public class RadixSort {
         // 对 arr 进行拷贝，不改变参数内容
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 
-        int maxDigit = getMaxDigitLength(arr);
-        return radixSort(arr, maxDigit);
+        int maxValueLength = getMaxValueLength(arr);
+        return radixSort(arr, maxValueLength);
     }
 
     /**
      * 获取最高位数
      */
-    private int getMaxDigitLength(int[] arr) {
+    private int getMaxValueLength(int[] arr) {
         int maxValue = getMaxValue(arr);
         return getNumLenght(maxValue);
     }
@@ -49,11 +49,11 @@ public class RadixSort {
         return lenght;
     }
 
-    private int[] radixSort(int[] arr, int maxDigit) {
+    private int[] radixSort(int[] arr, int maxValueLength) {
         int mod = 10;
         int dev = 1;
 
-        for (int i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
+        for (int i = 0; i < maxValueLength; i++, dev *= 10, mod *= 10) {
             // 考虑负数的情况，这里扩展一倍队列数，其中 [0-9]对应负数，[10-19]对应正数 (bucket + 10)
             int[][] counter = new int[mod * 2][0];
 
