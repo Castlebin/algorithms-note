@@ -16,14 +16,14 @@ public class RadixSort {
         // 对 arr 进行拷贝，不改变参数内容
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
 
-        int maxDigit = getMaxDigit(arr);
+        int maxDigit = getMaxDigitLength(arr);
         return radixSort(arr, maxDigit);
     }
 
     /**
      * 获取最高位数
      */
-    private int getMaxDigit(int[] arr) {
+    private int getMaxDigitLength(int[] arr) {
         int maxValue = getMaxValue(arr);
         return getNumLenght(maxValue);
     }
