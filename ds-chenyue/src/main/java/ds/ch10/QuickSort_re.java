@@ -1,5 +1,7 @@
-package ds.ch09;
+package ds.ch10;
 
+import ds.ch09.InsertSort;
+import ds.ch09.QuickSort;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -73,7 +75,7 @@ public class QuickSort_re {
 
     @Test
     public void testSort() {
-        QuickSort quickSort = new QuickSort();
+        ds.ch09.QuickSort quickSort = new QuickSort();
         InsertSort insertSort = new InsertSort();
         for (int i = 0; i < 10; i++) {
             int[] array = generateNonNegativeArray(1000, 1000000);
