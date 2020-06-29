@@ -1,5 +1,6 @@
-package ds.ch09;
+package ds.ch10;
 
+import ds.ch09.InsertSort;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import java.util.Arrays;
 import static ds.ArrayUtil.generateNonNegativeArray;
 import static ds.ArrayUtil.swap;
 
-public class QuickSort1_0 {
+public class QuickSort1_1 {
 
     private int cutoff = 3;
 
@@ -17,21 +18,16 @@ public class QuickSort1_0 {
     }
 
     private void quickSort(int[] array, int left, int right) {
-        if (left >= right) {
-            return;
-        }
-        if (left + 1 == right && array[left] > array[right]) {
-            swap(array, left, right);
-            return;
-        }
-        int pivot = middleThree(array, left, right);
-        if (right - left > 2) {
-            int i = left;
-            int j = right - 1;
+        if (left < right) {
+            int pivot = middleThree(array, left, right);
+            int i = left + 1;
+            int j = right - 2;
             while (true) {
-                while (array[++i] < pivot) {
+                while (array[i] < pivot) {
+                    i++;
                 }
-                while (array[--j] > pivot) {
+                while (j > left && array[j] > pivot) {
+                    j--;
                 }
                 if (i < j) {
                     swap(array, i, j);
@@ -39,7 +35,7 @@ public class QuickSort1_0 {
                     break;
                 }
             }
-            if (i < right - 1) {
+            if (i < right) {
                 swap(array, i, right - 1);
             }
             quickSort(array, left, i - 1);
@@ -64,10 +60,10 @@ public class QuickSort1_0 {
 
     @Test
     public void testSort() {
-        QuickSort1_0 quickSort = new QuickSort1_0();
+        QuickSort1_1 quickSort = new QuickSort1_1();
         InsertSort insertSort = new InsertSort();
-        for (int i = 0; i < 101; i++) {
-            int[] array = generateNonNegativeArray(103, 100000);
+        for (int i = 0; i < 10; i++) {
+            int[] array = generateNonNegativeArray(10, 1000);
             int[] copy = Arrays.copyOfRange(array, 0, array.length);
             int[] copy2 = Arrays.copyOfRange(array, 0, array.length);
             System.out.println("origin: " + Arrays.toString(array));

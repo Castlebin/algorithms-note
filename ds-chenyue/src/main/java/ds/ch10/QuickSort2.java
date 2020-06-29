@@ -1,5 +1,6 @@
-package ds.ch09;
+package ds.ch10;
 
+import ds.ch09.InsertSort;
 import org.junit.Assert;
 import org.junit.Test;
 
