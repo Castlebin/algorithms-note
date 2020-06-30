@@ -7,7 +7,6 @@ public class Heap {
 
     private static final int MAX_VALUE = Integer.MAX_VALUE;
 
-    private int maxSize;    // 堆的最大容量
     private int[] data;     // 存放元素的数组（第一个元素不存值，作为哨兵）
     private int size;       // 当前堆中的元素个数
 
@@ -17,17 +16,16 @@ public class Heap {
      * @param maxSize 堆的最大容量
      */
     public Heap(int maxSize) {
-        this.maxSize = maxSize;
-        this.data = new int[maxSize];
+        this.data = new int[maxSize + 1]; // 第一个元素不存值，作为哨兵（最大堆）
         this.size = 0;
-        this.data[0] = MAX_VALUE;    // 第一个元素不存值，作为哨兵
+        this.data[0] = MAX_VALUE;    // 第一个元素不存值，作为哨兵（最大堆）
     }
 
     /**
      * 判断堆是否已满
      */
     public boolean isFull() {
-        return this.size == maxSize;
+        return this.size == data.length - 1;
     }
 
     /**
@@ -46,7 +44,7 @@ public class Heap {
         }
         int i = ++size; // i指向插入后堆中的最后一个元素的位置
         for (; element > data[i / 2]; i /= 2) {
-            data[i] = data[i / 2];    // 上滤element
+            data[i] = data[i / 2];    // 上浮 element
         }
         data[i] = element;
     }
@@ -59,7 +57,7 @@ public class Heap {
             throw new RuntimeException("堆为空");
         }
         int max = data[1];  // 取出第一个元素，作为要删除和返回的值
-        /* 用最大堆中最后一个元素从根结点开始向上过滤下层结点 */
+        /* 用最大堆中最后一个元素从根结点开始 下沉 */
         int x = data[size--];
         int parent = 1;
         for (int child; parent * 2 <= size; parent = child) {
@@ -80,10 +78,9 @@ public class Heap {
 
     /*----------- 建造最大堆 -----------*/
     public Heap(int[] data, int maxSize) {
-        this.maxSize = maxSize;
-        this.size = data.length;
-        this.data = new int[maxSize];
+        this.data = new int[maxSize + 1];
         this.data[0] = MAX_VALUE;
+        this.size = data.length;
         System.arraycopy(data, 0, this.data, 1, data.length);
 
         // 已经初始化好了堆，要开始调整堆中存储元素的数组了
@@ -91,7 +88,7 @@ public class Heap {
         for (int i = this.size / 2; i > 0; i--) {
             int parent = i;
             int x = this.data[parent];
-            for (int child; parent * 2 <= this.size; parent = child) {
+            for (int child; parent * 2 <= this.size; parent = child) { // 下沉
                 child = parent*2;
                 if (child != this.size && this.data[child] < this.data[child + 1]) {
                     child++;
