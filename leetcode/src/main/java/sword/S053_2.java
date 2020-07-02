@@ -11,7 +11,7 @@ import org.junit.Test;
 
  递增数组，所以用二分法查找
 */
-public class S053 {
+public class S053_2 {
     public int missingNumber(int[] nums) {
         if (nums == null || nums.length == 0 || nums[0] != 0) {
             return 0;
