@@ -14,7 +14,7 @@ import java.util.Queue;
 
  若队列为空，pop_front 和 max_value 需要返回 -1
 */
-public class S059 {
+public class S059_2 {
 
     class MaxQueue {
 
