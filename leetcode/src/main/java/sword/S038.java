@@ -2,9 +2,7 @@ package sword;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  剑指 Offer 38. 字符串的排列
