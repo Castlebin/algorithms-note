@@ -27,24 +27,18 @@ public class S038 {
         }
         Set<String> permutationSet = new HashSet<>();
         permutationSet.add(s.substring(0, 1));
-        permutation(s, 1, permutationSet);
-        return permutationSet.toArray(new String[]{});
-    }
-
-    public void permutation(String s, int lastLength, Set<String> permutationSet) {
-        if (lastLength < s.length()) {
-            char c = s.charAt(lastLength);
+        for (int i = 1; i < s.length(); i++) {
+            char c = s.charAt(i);
             Set<String> newSet = new HashSet<>();
             for (String permu : permutationSet) {
-                for (int index = 0; index <= lastLength; index++){
+                for (int index = 0; index <= i; index++){
                     String per = permu.substring(0, index) + c + permu.substring(index);
                     newSet.add(per);
                 }
             }
-            permutationSet.clear();
-            permutationSet.addAll(newSet);
-            permutation(s, lastLength + 1, permutationSet);
+            permutationSet = newSet;
         }
+        return permutationSet.toArray(new String[]{});
     }
 
     @Test
