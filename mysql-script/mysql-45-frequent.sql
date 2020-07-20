@@ -61,5 +61,57 @@ CREATE TABLE `t` (
 ) ENGINE=InnoDB;
 insert into t(id, k) values(1,1),(2,2);
 
+/**
+  第 10 篇 为什么 MySQL 会选错索引
+  选错索引的例子，无法复现，留言区给了可以复现的 SQL，简单来说id设置为自增，不要指定id值
+  （但是，这样其实与例子中数据就不一致了，虽然也可以）
+  号外，号外，我终于把开头例子给复现了，修改建表语句（id自增），存储过程代码（不要指定id值）如下，即可复现不选择索引a问题：
+ */
+CREATE TABLE `t` (
+ `id` int(11) auto_increment,
+ `a` int(11) DEFAULT NULL,
+ `b` int(11) DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ KEY `a` (`a`),
+ KEY `b` (`b`)
+) ENGINE=InnoDB;
+
+delimiter ;;
+create procedure idata()
+begin
+declare i int;
+set i=1;
+while(i<=100000)do
+        insert into t (`a`,`b`) values(i, i);
+        set i=i+1;
+    end while;
+end;;
+delimiter ;
+
+/**
+  对比原来的 SQL
+ */
+
+CREATE TABLE `t_1` (
+ `id` int(11) NOT NULL,
+ `a` int(11) DEFAULT NULL,
+ `b` int(11) DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ KEY `a` (`a`),
+ KEY `b` (`b`)
+) ENGINE=InnoDB;
+
+delimiter ;;
+create procedure idata_1()
+begin
+    declare i int;
+    set i=1;
+    while(i<=100000)do
+            insert into t_1 values(i, i, i);
+            set i=i+1;
+        end while;
+end;;
+delimiter ;
+
 
 
