@@ -21,10 +21,8 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(1110);
         while (true) {
             try(Socket socket = serverSocket.accept();
-                InputStream is = socket.getInputStream();
-                OutputStream os = socket.getOutputStream();
-                ObjectInputStream ois = new ObjectInputStream(is);
-                ObjectOutputStream oos = new ObjectOutputStream(os);) {
+                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+                ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());) {
 
                 String serviceClassName = (String)ois.readObject();
                 String methodName = (String)ois.readObject();
