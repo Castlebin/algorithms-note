@@ -13,6 +13,9 @@ import java.util.Map;
 public class Server {
     public static final Map<Class<?>, Object> serviceImplMap = new HashMap<>();
 
+    /**
+     * 服务注册
+     */
     static {
         serviceImplMap.put(HelloService.class, new HelloServiceImpl());
     }
