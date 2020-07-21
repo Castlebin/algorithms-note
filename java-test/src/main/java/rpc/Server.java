@@ -37,9 +37,7 @@ public class Server {
                     parameterTypes[i] = (Class<?>)((Object[])pts)[i];
                 }
                 Object[] parameters = new Object[((Object[])ps).length];
-                for (int i = 0; i < ((Object[]) ps).length; i++) {
-                    parameters[i] = ((Object[])ps)[i];
-                }
+                System.arraycopy(((Object[]) ps), 0, parameters, 0, ((Object[]) ps).length);
 
                 Class<?> serviceClass = Class.forName(serviceClassName);
                 Object serviceImpl = serviceImplMap.get(serviceClass);
