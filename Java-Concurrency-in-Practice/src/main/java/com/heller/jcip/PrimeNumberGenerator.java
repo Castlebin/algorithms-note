@@ -23,6 +23,10 @@ public class PrimeNumberGenerator {
     }
 
     public static boolean isPrimeNumber(long num) {
+        if (num == 2 || num == 3) {
+            return true;
+        }
+
         if (num % 2 == 0) {
             return false;
         }

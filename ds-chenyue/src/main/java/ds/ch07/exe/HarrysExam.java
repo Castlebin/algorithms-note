@@ -70,7 +70,7 @@ public class HarrysExam {
             }
         }
 
-        if (maxImprecationLength == Integer.MAX_VALUE) {
+        if (maxImprecationLength == INF) {
             System.out.println(0);
         } else {
             System.out.println((animal + 1) + " " + maxImprecationLength);
