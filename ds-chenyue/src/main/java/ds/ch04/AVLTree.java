@@ -1,19 +1,20 @@
 package ds.ch04;
 
-import java.lang.annotation.ElementType;
-
 public class AVLTree {
 
     class AVLTreeNode {
         Integer data;
         AVLTreeNode left;
         AVLTreeNode right;
+
+        AVLTreeNode(Integer data) {
+            this.data = data;
+        }
     }
 
     public AVLTreeNode insert(AVLTreeNode t, Integer data) {
         if (t == null) {
-            t = new AVLTreeNode();
-            t.data = data;
+            t = new AVLTreeNode(data);
         } else if (data < t.data) {// 插入t的左子树
             t.left = insert(t.left, data);
             /** 如果需要左旋 */

@@ -18,8 +18,7 @@ public class AVLTreeRoot {
     public static AVL insert(int element, AVL avl) {
         if (avl == null) {
             avl = new AVL(element);
-        }
-        if (element < avl.data) {
+        } else if (element < avl.data) {
             avl.left = insert(element, avl.left);
             // 如果需要左旋（里面判断是需要 左单旋 还是 左-右双旋 ）
             if (getHeight(avl.left) - getHeight(avl.right) == 2) {
