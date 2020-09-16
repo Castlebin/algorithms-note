@@ -40,6 +40,71 @@ public class AVLTree {
         return t;
     }
 
+    private AVLTreeNode delete(AVLTreeNode avl, Integer data) {
+        if (avl == null) {
+            return null;
+        }
+        if (data < avl.data) {
+            avl = delete(avl.left, data);
+        } else if (data > avl.data) {
+            avl = delete(avl.right, data);
+        } else {
+            // 找到了要删除的节点值 avl
+            if (avl.left != null && avl.right != null) {
+                // 找到右子树的最小元素，替换掉当前节点元素值，再从右边递归的删除那个右子树的最小元素
+                AVLTreeNode tmp = findMin(avl.right);
+                avl.data = tmp.data;
+                avl.right = delete(avl.right, tmp.data);
+            } else if (avl.left == null) {
+                avl = avl.right;
+            } else {
+                avl = avl.left;
+            }
+        }
+
+        // 可能需要调整节点，做旋转（写了一个通用的旋转方法，包含了 4 种旋转）
+        // 这样，相对于 普通的二叉搜索树 的 删除操作，这是这里多了一个调整平衡 的步骤而已
+        // 插入 操作的代码，其实也可以用这个进行简化
+        avl = doRotation(avl);
+
+        return avl;
+    }
+
+    /**
+     * 通用的 rotation 方法，4 种 旋转都在这里实现，可以简化其他的代码
+     *
+     * 相当好 ！！！ 提炼出了 旋转的 4种 情况 的判断方法
+     */
+    private AVLTreeNode doRotation(AVLTreeNode avl) {
+        if (avl == null) {
+            return null;
+        }
+        if (getHeight(avl.left) - getHeight(avl.right) == 2) {
+            // 需要 左单旋
+            if (getHeight(avl.left.left) >= getHeight(avl.left.right)) {
+                return singleLeftRotation(avl);
+            } else {
+                // 需要做 左-右 双旋
+                return doubleLeftRightRotation(avl);
+            }
+        } else if (getHeight(avl.right) - getHeight(avl.left) == 2) {
+            if (getHeight(avl.right.right) >= getHeight(avl.right.left)) {
+                return singleRightRotation(avl);
+            } else {
+                return doubleRightLeftRotation(avl);
+            }
+        }
+
+        return avl;
+    }
+
+    public AVLTreeNode findMin(AVLTreeNode avl) {
+        if (avl != null && avl.left != null) {
+            return findMin(avl.left);
+        }
+        return avl;
+    }
+
     private AVLTreeNode singleLeftRotation(AVLTreeNode a) { /* 注意：A必须有一个左子结点B */
         /* 将A与B做左单旋，更新A与B的高度，返回新的根结点B */
         AVLTreeNode b = a.left;
