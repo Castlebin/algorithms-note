@@ -155,7 +155,7 @@ public class BinarySearchTree {
             } else { // 找到要删除的元素
                 if (cur.left != null && cur.right != null) {
                     // 找到右子树的最小元素，替换掉当前节点元素值，再从右边删除那个右子树的最小元素
-                    TreeNode tmp = findMin(bst.right);
+                    TreeNode tmp = findMin(cur.right);
                     bst.data = tmp.data;
 
                     // 从右边删除那个右子树的最小元素
