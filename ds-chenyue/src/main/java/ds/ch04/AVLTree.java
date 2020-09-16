@@ -74,6 +74,8 @@ public class AVLTree {
      * 通用的 rotation 方法，4 种 旋转都在这里实现，可以简化其他的代码
      *
      * 相当好 ！！！ 提炼出了 旋转的 4种 情况 的判断方法
+     *
+     * 正确性不太确定 ？？？
      */
     private AVLTreeNode doRotation(AVLTreeNode avl) {
         if (avl == null) {
