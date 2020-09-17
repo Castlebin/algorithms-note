@@ -8,7 +8,7 @@ import org.junit.Test;
 
  三个数组都相同时，没办法，只能退化为顺序查找
  */
-public class S010 {
+public class S011 {
 
     public int minArray(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
