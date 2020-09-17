@@ -20,7 +20,7 @@ public class S011 {
         }
         while (begin < end - 1) {
             int mid = (begin + end) / 2;
-            // 三个数字都相同时，没办法，只能退化为顺序查找
+            // 三个数字都相同时，退化为顺序查找 （如果是同一个位置，则表明找到了）
             if (numbers[begin] == numbers[mid]
                 && numbers[mid] == numbers[end]) {
                 return findMinInOrder(numbers, begin, end);
