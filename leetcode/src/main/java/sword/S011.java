@@ -19,7 +19,7 @@ public class S011 {
             return numbers[begin];
         }
         while (begin < end - 1) {
-            int mid = (begin + end) / 2;
+            int mid = (end - begin) / 2 + begin;
             // 三个数字都相同时，退化为顺序查找 （如果是同一个位置，则表明找到了）
             if (numbers[begin] == numbers[mid]
                 && numbers[mid] == numbers[end]) {
