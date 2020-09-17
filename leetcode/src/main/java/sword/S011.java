@@ -36,7 +36,7 @@ public class S011 {
 
     private int findMinInOrder(int[] numbers, int begin, int end) {
         int min = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
+        for (int i = begin; i <= end; i++) {
             if (numbers[i] < min) {
                 min = numbers[i];
             }
