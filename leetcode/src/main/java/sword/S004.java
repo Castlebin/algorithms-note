@@ -40,4 +40,37 @@ public class S004 {
         Assert.assertEquals(true, findNumberIn2DArray(array, 3));
     }
 
+    /**
+     * 仔细分析之后，其实也可以用递归方式，得出另一种解法，理论上更快，但稍复杂
+     */
+    class Solution2 {
+        public boolean findNumberIn2DArray(int[][] matrix, int target) {
+            if (matrix == null
+                    || matrix.length <= 0
+                    || matrix[0] == null || matrix[0].length <= 0) {
+                return false;
+            }
+
+            return findNumberIn2DArray(matrix, target, 0, matrix.length - 1, 0, matrix[0].length - 1);
+        }
+
+        public boolean findNumberIn2DArray(int[][] matrix, int target, int startX, int endX, int startY, int endY) {
+            if (startX > endX || startY > endY) {
+                return false;
+            }
+            int middleX = (endX - startX) / 2 + startX;
+            int middleY = (endY - startY) / 2 + startY;
+            if (matrix[middleX][middleY] == target) {
+                return true;
+            }
+            if (matrix[middleX][middleY] > target) {
+                return findNumberIn2DArray(matrix, target, startX, endX, startY, middleY - 1)
+                        || findNumberIn2DArray(matrix, target, startX, middleX - 1, middleY, endY);
+            } else {
+                return findNumberIn2DArray(matrix, target, middleX + 1, endX, startY, endY)
+                        || findNumberIn2DArray(matrix, target, startX, middleX, middleY + 1, endY);
+            }
+        }
+    }
+
 }
