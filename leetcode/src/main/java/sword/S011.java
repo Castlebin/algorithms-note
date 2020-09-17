@@ -18,9 +18,8 @@ public class S011 {
         if (numbers[begin] < numbers[numbers.length - 1]) {
             return numbers[begin];
         }
-        int mid;
         while (begin < end - 1) {
-            mid = (begin + end) / 2;
+            int mid = (begin + end) / 2;
             // 三个数字都相同时，没办法，只能退化为顺序查找
             if (numbers[begin] == numbers[mid]
                 && numbers[mid] == numbers[end]) {
