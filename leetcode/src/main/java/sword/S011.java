@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- 11. 旋转数组的最小数字
+ 11. 旋转数组的最小数字 （理解题意）
 
- 三个数组都相同时，没办法，只能退化为顺序查找
+ 三个数字都相同时，没办法，只能退化为顺序查找
  */
 public class S011 {
 
@@ -21,7 +21,7 @@ public class S011 {
         int mid;
         while (begin < end - 1) {
             mid = (begin + end) / 2;
-            // 三个数组都相同时，没办法，只能退化为顺序查找
+            // 三个数字都相同时，没办法，只能退化为顺序查找
             if (numbers[begin] == numbers[mid]
                 && numbers[mid] == numbers[end]) {
                 return findMinInOrder(numbers, begin, end);
