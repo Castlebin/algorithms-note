@@ -37,6 +37,9 @@ public class QuickSort {
     }
 
     private static int partition(int[] arr, int start, int end) {
+        if (start == end) {
+            return start;
+        }
         int right = end;
         int pivotIndex = getPivotIndex(arr, start, end);
         int pivot = arr[pivotIndex];
@@ -48,7 +51,7 @@ public class QuickSort {
             while (start <= end && arr[start] < pivot) {
                 start++;
             }
-            while (end >=0 && arr[end] >= pivot) {
+            while (end >= start && arr[end] >= pivot) {
                 end--;
             }
             if (start < end) {
@@ -72,13 +75,15 @@ public class QuickSort {
     }
 
     /**
-     * 三元取中值
+     * 三元取中值 !! 别写错了
      */
     private static int middleThree(int[] arr, int start, int end) {
         int middle = (end - start) / 2 + start;
-        if (arr[start] <= arr[middle] && arr[middle] <= arr[end]) {
+        if ((arr[start] <= arr[middle] && arr[middle] <= arr[end])
+                || (arr[start] >= arr[middle] && arr[middle] >= arr[end])) {
             return middle;
-        } else if (arr[middle] <= arr[start] && arr[start] <= arr[end]) {
+        } else if ((arr[middle] <= arr[start] && arr[start] <= arr[end])
+                || (arr[middle] >= arr[start] && arr[start] >= arr[end])) {
             return start;
         } else {
             return end;
