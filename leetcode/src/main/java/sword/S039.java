@@ -48,7 +48,7 @@ public class S039 {
     }
 
     /**
-     * 利用 快排 思想， 递归 时间复杂度 O(NlogN)
+     * 利用 快排 思想， 递归 时间复杂度 O(N) （不是 O(NlogN) 因为，二分两半中，永远都只挑一个走下去）
      * @param nums
      * @return
      */
