@@ -8,60 +8,72 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * 一次过？厉害了
- * 有点满意 ^_^
  *
- * 注意 循环时，要判断边界啊！！！（因为这个没一次过 😢）
+ * 注意 边界判断！！ 边界条件太多！稍不留神就会出错
  *
  * 简单易懂，易移植
  */
 public class QuickSort {
 
     public static void sort(int[] arr) {
+        // 边界判断
         if (arr == null || arr.length <= 1) {
             return;
         }
 
-        int start = 0, end = arr.length - 1;
-        quickSort(arr, start, end);
+        quickSort(arr, 0, arr.length - 1);
     }
 
     private static void quickSort(int[] arr, int start, int end) {
+        // 边界判断
         if (start >= end) {
             return;
         }
 
         int pivotIndex = partition(arr, start, end);
-        quickSort(arr, start, pivotIndex - 1);
-        quickSort(arr, pivotIndex + 1, end);
+        // 边界判断
+        if (pivotIndex > start) {
+            quickSort(arr, start, pivotIndex - 1);
+        }
+        if (pivotIndex < end) {
+            quickSort(arr, pivotIndex + 1, end);
+        }
     }
 
+    /**
+     * 注意，上面调用 partition 时，保证了 start < end
+     */
     private static int partition(int[] arr, int start, int end) {
-        if (start == end) {
+        int pivotIndex = getPivotIndex(arr, start, end);
+
+        // [start, end] 区间只有两个元素时
+        if (end - start == 1) {
+            if (arr[start] > arr[end]) {
+                swap(arr, start, end);
+            }
             return start;
         }
-        int right = end;
-        int pivotIndex = getPivotIndex(arr, start, end);
+
+        // [start, end] 区间，有三个或以上元素
         int pivot = arr[pivotIndex];
-        // 把这个 中元 换到 最右边
-        swap(arr, pivotIndex, end);
-        end--;
+        int rightIndex = end;
+        // 把 pivot 放到 右边 藏起来
+        swap(arr, pivotIndex, rightIndex);
         while (start < end) {
-            // 注意，这两个地方 都需要判别是否超出边界了
             while (start <= end && arr[start] < pivot) {
                 start++;
             }
-            while (end >= start && arr[end] >= pivot) {
+            while (start <= end && arr[end] >= pivot) {
                 end--;
             }
             if (start < end) {
                 swap(arr, start, end);
             }
         }
-
-        // 现在 start 指针所在的位置，应该是 pivot 应该待的位置，交换一下
-        swap(arr, start, right);
-
+        // 此时，start 位置，应该是主元应该待的位置
+        if (start < rightIndex) {
+            swap(arr, start, rightIndex);
+        }
         return start;
     }
 
@@ -75,7 +87,7 @@ public class QuickSort {
     }
 
     /**
-     * 三元取中值 !! 别写错了
+     * 三元取中 !! 别写错了
      */
     private static int middleThree(int[] arr, int start, int end) {
         int middle = (end - start) / 2 + start;
@@ -101,6 +113,9 @@ public class QuickSort {
     @Test
     public void test() {
         int[] arr = new int[]{4, 981, 10, -17, 0, -20, 29, 50, 8, 43, -5};
+        QuickSort.sort(arr);
+        System.out.println(Arrays.toString(arr));
+        arr = new int[]{3, 3, 4};
         QuickSort.sort(arr);
         System.out.println(Arrays.toString(arr));
 
