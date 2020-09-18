@@ -24,6 +24,18 @@ public class S015 {
         return numberOfBit1;
     }
 
+    // 判断一个数是否 2 的整数次方  （二进制表示中，只有一个 1 ）
+    public boolean isPowOf2(int num) {
+        return 1 == hammingWeight(num);
+    }
+
+    // 判断两个数字，二进制位 最少需要经过几次变换，才能变为相同的数字
+    // 即 判断两个数字的二进制位 有 几位 不同
+    // 即 判断 两个数字 异或 的结果，有几位为 1
+    public int diffBit(int num1, int num2) {
+        return hammingWeight(num1 ^ num2);
+    }
+
     @Test
     public void test() {
         Assert.assertEquals(31, hammingWeight(0b11111111111111111111111111111101));
