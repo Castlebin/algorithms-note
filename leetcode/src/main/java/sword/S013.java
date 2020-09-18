@@ -27,34 +27,27 @@ public class S013 {
 
     private int movingCountCore(int rows, int cols, int threshold, int row, int col, boolean[][] visited) {
         int count = 0;
-
-        if (check(rows, cols, threshold, row, col, visited)) {
+        if (row >= 0 && row < rows
+            && col >= 0 && col < cols
+            && !visited[row][col]
+            && (calDigitSum(row) + calDigitSum(col) <= threshold)) {
             visited[row][col] = true;
-            count = 1 + movingCountCore(rows, cols, threshold, row - 1, col, visited)
-                    + movingCountCore(rows, cols, threshold, row + 1, col, visited)
-                    + movingCountCore(rows, cols, threshold, row, col - 1, visited)
-                    + movingCountCore(rows, cols, threshold, row, col + 1, visited);
+            count = 1 +
+                    movingCountCore(rows, cols, threshold, row - 1, col, visited) +
+                    movingCountCore(rows, cols, threshold, row + 1, col, visited) +
+                    movingCountCore(rows, cols, threshold, row, col - 1, visited) +
+                    movingCountCore(rows, cols, threshold, row, col + 1, visited);
         }
-
         return count;
     }
 
-    private boolean check(int rows, int cols, int threshold, int row, int col, boolean[][] visited) {
-        if (row >=0 && row < rows && col >= 0 && col < cols
-            && (calThreshold(row) + calThreshold(col)) <= threshold
-            && !visited[row][col]) {
-            return true;
-        }
-        return false;
-    }
-
-    private int calThreshold(int num) {
-        int th = 0;
+    public int calDigitSum(int num) {
+        int sum = 0;
         while (num > 0) {
-            th += num % 10;
+            sum += num % 10;
             num /= 10;
         }
-        return th;
+        return sum;
     }
 
     @Test
