@@ -3,6 +3,9 @@ package sword;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  剑指 Offer 39. 数组中出现次数超过一半的数字
  数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
@@ -20,6 +23,35 @@ import org.junit.Test;
  */
 public class S039 {
 
+    /**
+     * 方法 0. 简单的使用 hashmap进行统计可以，时间复杂度 O(N), 空间复杂度 O(N)
+     */
+    public int majorityElement_0(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("输入数据有误！");
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > nums.length / 2) {
+                return entry.getKey();
+            }
+        }
+        // 不存在
+        throw new IllegalArgumentException("不存在");
+    }
+
+    /**
+     * 利用 快排 思想， 递归 时间复杂度 O(NlogN)
+     * @param nums
+     * @return
+     */
     public int majorityElement(int[] nums) {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("输入数据有误！");
