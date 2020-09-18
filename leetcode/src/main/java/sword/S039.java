@@ -3,10 +3,6 @@ package sword;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  剑指 Offer 39. 数组中出现次数超过一半的数字
  数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
