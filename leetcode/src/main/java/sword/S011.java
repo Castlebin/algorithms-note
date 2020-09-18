@@ -24,6 +24,44 @@ import org.junit.Test;
  */
 public class S011 {
 
+    /**
+     * 第二种解法，细节稍有不同，貌似更加容易结合图来理解 （书中解法）
+     * @param numbers
+     * @return
+     */
+    public int minArray_2(int[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            throw new RuntimeException("输入不正确");
+        }
+        int begin = 0, end = numbers.length - 1;
+        int mid = begin;
+        while (numbers[begin] >= numbers[end]) {
+            if (end - begin == 1) {
+                mid = end;
+                break;
+            }
+
+            mid = (end - begin) / 2 + begin;
+            // 三个数字都相同时，只能退化为顺序查找
+            if (numbers[begin] == numbers[mid]
+                    && numbers[mid] == numbers[end]) {
+                return findMinInOrder(numbers, begin, end);
+            }
+            if (numbers[mid] >= numbers[begin]) {
+                begin = mid;
+            } else if (numbers[mid] <= numbers[end]) {
+                end = mid;
+            }
+        }
+
+        return numbers[mid];
+    }
+
+    /**
+     * 我的原始解法
+     * @param numbers
+     * @return
+     */
     public int minArray(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new RuntimeException("输入不正确");
