@@ -38,7 +38,12 @@ public class S015 {
 
     @Test
     public void test() {
-        Assert.assertEquals(31, hammingWeight(0b11111111111111111111111111111101));
+        Assert.assertEquals(29, hammingWeight(0B11110011111111111111111111111101));
+
+        Assert.assertTrue(isPowOf2(0B0000001000000000));
+        Assert.assertFalse(isPowOf2(0B0000001000100000));
+
+        Assert.assertEquals(2, diffBit(0B0000001000100100, 0B0010001000100000));
     }
 
 }
