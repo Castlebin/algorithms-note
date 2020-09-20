@@ -33,7 +33,9 @@ public class S016 {
         // 直接用三元表达式，也会出错，必须先做类型向上转换
     //    long exp = exponent > 0? exponent : -exponent;
         long exp = exponent;
-        exp = exp > 0? exp : -exp;
+        if (exp < 0) {
+            exp = -exp;
+        }
         boolean nonNegative = exponent > 0;
         long halfOfExp = exp / 2;
         boolean isEven = exp % 2 == 0;
