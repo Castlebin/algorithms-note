@@ -1,10 +1,8 @@
 package sword;
 
-import org.junit.Assert;
 import org.junit.Test;
+import sword.common.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**

@@ -1,7 +1,7 @@
 package sword;
 
-import org.junit.Assert;
 import org.junit.Test;
+import sword.common.TreeNode;
 
 /**
  剑指 Offer 55 - I. 二叉树的深度

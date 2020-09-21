@@ -1,6 +1,7 @@
 package sword;
 
 import org.junit.Test;
+import sword.common.TreeNode;
 
 /**
  * 07. 重建二叉树
@@ -64,12 +65,3 @@ public class S007 {
 
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}

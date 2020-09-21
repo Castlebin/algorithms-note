@@ -1,6 +1,7 @@
 package sword;
 
 import org.junit.Test;
+import sword.common.TreeNode;
 
 /**
  面试题68 - I. 二叉搜索树的最近公共祖先
