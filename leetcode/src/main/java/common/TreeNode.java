@@ -1,4 +1,4 @@
-package sword.common;
+package common;
 
 import java.util.LinkedList;
 import java.util.Queue;

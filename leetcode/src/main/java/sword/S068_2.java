@@ -2,7 +2,7 @@ package sword;
 
 import org.junit.Assert;
 import org.junit.Test;
-import sword.common.TreeNode;
+import common.TreeNode;
 
 import java.util.LinkedList;
 

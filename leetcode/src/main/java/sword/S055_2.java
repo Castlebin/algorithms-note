@@ -1,7 +1,7 @@
 package sword;
 
 import org.junit.Test;
-import sword.common.TreeNode;
+import common.TreeNode;
 
 /**
  剑指 Offer 55 - II. 平衡二叉树

@@ -1,4 +1,4 @@
-package sword.common;
+package common;
 
 public class ListNode {
     public int val;

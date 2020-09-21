@@ -1,7 +1,7 @@
 package sword;
 
 import org.junit.Test;
-import sword.common.TreeNode;
+import common.TreeNode;
 
 /**
  * 07. 重建二叉树

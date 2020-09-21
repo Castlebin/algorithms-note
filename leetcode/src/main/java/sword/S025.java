@@ -1,7 +1,7 @@
 package sword;
 
 import org.junit.Test;
-import sword.common.ListNode;
+import common.ListNode;
 
 /**
  面试题25. 合并两个排序的链表

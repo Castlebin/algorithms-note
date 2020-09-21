@@ -1,7 +1,7 @@
 package sword;
 
 import org.junit.Test;
-import sword.common.TreeNode;
+import common.TreeNode;
 
 /**
  面试题27. 二叉树的镜像

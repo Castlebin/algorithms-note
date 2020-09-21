@@ -1,7 +1,7 @@
 package sword;
 
 import org.junit.Test;
-import sword.common.ListNode;
+import common.ListNode;
 
 /**
  * 06. 从尾到头打印链表

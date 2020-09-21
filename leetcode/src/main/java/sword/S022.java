@@ -1,7 +1,7 @@
 package sword;
 
 import org.junit.Test;
-import sword.common.ListNode;
+import common.ListNode;
 
 /**
  面试题22. 链表中倒数第k个节点
