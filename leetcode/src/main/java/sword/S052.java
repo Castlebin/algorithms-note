@@ -1,7 +1,7 @@
 package sword;
 
-import org.junit.Assert;
 import org.junit.Test;
+import sword.common.ListNode;
 
 /**
  剑指 Offer 52. 两个链表的第一个公共节点

@@ -1,6 +1,7 @@
 package sword;
 
 import org.junit.Test;
+import sword.common.ListNode;
 
 /**
  面试题24. 反转链表
