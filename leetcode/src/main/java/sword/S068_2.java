@@ -1,6 +1,5 @@
 package sword;
 
-import com.sun.org.apache.xpath.internal.functions.FuncDoclocation;
 import org.junit.Assert;
 import org.junit.Test;
 import common.TreeNode;
@@ -67,6 +66,93 @@ public class S068_2 {
             }
 
             return null;
+        }
+
+        public TreeNode find(TreeNode root, TreeNode node) {
+            if (root == node) {
+                return node;
+            }
+
+            if (root != null) {
+                if (find(root.left, node) == node) {
+                    return node;
+                }
+                if (find(root.right, node) == node) {
+                    return node;
+                }
+            }
+
+            return null;
+        }
+    }
+
+    /**
+     * 解法 3. 由于题目保证解的存在，所以其实可以大大简化计算 (解法 1、2 中，其实都用了查找来保证元素的存在，更保险。
+     * 当然，为了兼顾，可以先查找，再用此法)
+     */
+    class Solution3 {
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            //返回节点存在情况
+            if(root == null || p == root || q == root) {
+                return root;
+            }
+            //再左右子树寻找 p q 两个节点
+            TreeNode left = lowestCommonAncestor(root.left,p,q);
+            TreeNode right = lowestCommonAncestor(root.right,p,q);
+            //情况1：如果右子树找不到 p 或 q 即(right==null)，
+            //那么说明 p 和 q 都在左子树上，返回 left
+
+            //情况2：如果左子树找不到 p 或 q 即(right==null)，
+            //那么说明 p 和 q 都在右子树上，返回 right
+
+            //如果上述情况都不符合，说明 p 和 q 分别在左子树和右子树，
+            //那么最近公共节点为当前节点
+            //直接返回 root 即可
+            return (right == null) ? left : (left == null) ? right : root;
+        }
+    }
+
+    /**
+     * 解法 4. 解法3 + 检查元素是否在树中
+     */
+    class Solution4 {
+
+        /**
+         * 解法3 + 检查元素是否在树中
+         *
+         * 给的节点不在树中，也能得出正确答案，速度也能保证
+         */
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            TreeNode pp = find(root, p);
+            TreeNode qq = find(root, q);
+            if (pp == null || qq == null) {
+                return null;
+            }
+
+            return lowestCommonAncestorInner(root, p, q);
+        }
+
+        /**
+         * 解法 3 利用了题中所说的条件，给定节点一定在树中，解一定存在
+         */
+        public TreeNode lowestCommonAncestorInner(TreeNode root, TreeNode p, TreeNode q) {
+            //返回节点存在情况
+            if(root == null || p == root || q == root) {
+                return root;
+            }
+            //再左右子树寻找 p q 两个节点
+            TreeNode left = lowestCommonAncestorInner(root.left,p,q);
+            TreeNode right = lowestCommonAncestorInner(root.right,p,q);
+            //情况1：如果右子树找不到 p 或 q 即(right==null)，
+            //那么说明 p 和 q 都在左子树上，返回 left
+
+            //情况2：如果左子树找不到 p 或 q 即(right==null)，
+            //那么说明 p 和 q 都在右子树上，返回 right
+
+            //如果上述情况都不符合，说明 p 和 q 分别在左子树和右子树，
+            //那么最近公共节点为当前节点
+            //直接返回 root 即可
+            return (right == null) ? left : (left == null) ? right : root;
         }
 
         public TreeNode find(TreeNode root, TreeNode node) {
