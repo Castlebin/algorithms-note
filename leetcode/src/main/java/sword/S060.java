@@ -23,7 +23,20 @@ public class S060 {
      * todo
      */
     public double[] twoSum(int n) {
-        return null;
+        if (n < 1) {
+            throw new IllegalArgumentException("n must >= 1");
+        }
+        double[] dp = new double[]{1/6d,1/6d,1/6d,1/6d,1/6d,1/6d};
+        for (int c = 2; c <= n; c++) {
+            double[] nextDp = new double[5 * c + 1];
+            for (int i = 0; i < dp.length; i++) {
+                for (int t = 1; t <= 6; t++) {
+                    nextDp[i + t - 1] += dp[i] / 6;
+                }
+            }
+            dp = nextDp;
+        }
+        return dp;
     }
 
     @Test
