@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import sword.common.TreeNode;
 
+import java.util.LinkedList;
+
 /**
  剑指 Offer 68 - II. 二叉树的最近公共祖先
  给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
@@ -84,6 +86,55 @@ public class S068_2 {
         }
     }
 
+    /**
+     * todo 未完成
+     */
+    class Solution2 {
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            if (root == p && root == q) {
+                return root;
+            }
+
+            LinkedList<TreeNode> pPath = new LinkedList<>();
+            boolean pExist = dfsForPath(root, p, pPath);
+            if (pExist) {
+                LinkedList<TreeNode> qPath = new LinkedList<>();
+                boolean qExist = dfsForPath(root, q, qPath);
+                if (qExist) {
+                    int shortPathLen = Math.min(pPath.size() ,qPath.size());
+                    TreeNode ancestor = pPath.getFirst();
+                    for (int i = 1; i < shortPathLen; i++) {
+                        if (pPath.get(i) != qPath.get(i)) {
+                            break;
+                        }
+                        ancestor = pPath.get(i);
+                    }
+                    return ancestor;
+                }
+            }
+
+            return null;
+        }
+
+        public boolean dfsForPath(TreeNode root, TreeNode node, LinkedList<TreeNode> path) {
+            if (root != null) {
+                path.add(root);
+                if (root == node) {
+                    return true;
+                }
+                if (dfsForPath(root.left, node, path)) {
+                    return true;
+                }
+                if (path.size() > 1) {
+                    path.removeLast();
+                }
+                if (dfsForPath(root.right, node, path)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 
     @Test
     public void test() {
