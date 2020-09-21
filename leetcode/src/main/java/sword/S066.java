@@ -27,22 +27,19 @@ public class S066 {
         if (a == null || a.length <= 1) {
             return new int[0];
         }
-        int[] ap = new int[a.length];
-        ap[0] = a[0];
+        int[] lp = new int[a.length];
+        lp[0] = 1;
         for (int i = 1; i < a.length; i++) {
-            ap[i] = ap[i - 1] * a[i];
+            lp[i] = lp[i - 1] * a[i - 1];
         }
-        int[] bp = new int[a.length];
-        bp[a.length - 1] = a[a.length - 1];
+        int[] rp = new int[a.length];
+        rp[a.length - 1] = 1;
         for (int i = a.length - 2; i >= 0; i--) {
-            bp[i] = bp[i + 1] * a[i];
+            rp[i] = rp[i + 1] * a[i + 1];
         }
-
         int[] result = new int[a.length];
-        result[0] = bp[1];
-        result[a.length - 1] = ap[a.length - 2];
-        for (int i = 1; i < a.length - 1; i++) {
-            result[i] = ap[i - 1] * bp[i + 1];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = lp[i] * rp[i];
         }
         return result;
     }
