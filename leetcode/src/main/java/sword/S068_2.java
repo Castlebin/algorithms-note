@@ -1,10 +1,11 @@
 package sword;
 
+import com.sun.org.apache.xpath.internal.functions.FuncDoclocation;
 import org.junit.Assert;
 import org.junit.Test;
 import common.TreeNode;
 
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  剑指 Offer 68 - II. 二叉树的最近公共祖先
@@ -87,7 +88,7 @@ public class S068_2 {
     }
 
     /**
-     * todo 未完成
+     * 回溯法，借助了额外空间，还是慢，而且内存占用增加了
      */
     class Solution2 {
         public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -116,20 +117,41 @@ public class S068_2 {
             return null;
         }
 
+        /**
+         * DFS 求根到一个节点的路径
+         */
         public boolean dfsForPath(TreeNode root, TreeNode node, LinkedList<TreeNode> path) {
+            return dfsForPath(root, node, path, new HashSet<>());
+        }
+
+        public boolean dfsForPath(TreeNode root, TreeNode node, LinkedList<TreeNode> path, Set<TreeNode> visited) {
             if (root != null) {
                 path.add(root);
+                visited.add(root);
                 if (root == node) {
                     return true;
                 }
-                if (dfsForPath(root.left, node, path)) {
-                    return true;
+                if (root.left != null) {
+                    if (!visited.contains(root.left)) {
+                        if (dfsForPath(root.left, node, path, visited)) {
+                            return true;
+                        }
+                    }
                 }
-                if (path.size() > 1) {
+                if (root.right != null) {
+                    if (!visited.contains(root.right)) {
+                        for (int i = path.size() - 1; path.get(i) != root; i--) {
+                            path.removeLast();
+                        }
+                        if (dfsForPath(root.right, node, path, visited)) {
+                            return true;
+                        }
+                    }
+                }
+                if ((root.left == null || visited.contains(root.left))
+                        && (root.right == null || visited.contains(root.right))) {
+                    // 回溯
                     path.removeLast();
-                }
-                if (dfsForPath(root.right, node, path)) {
-                    return true;
                 }
             }
             return false;
@@ -142,7 +164,7 @@ public class S068_2 {
         TreeNode p = TreeNode.findTreeNodeByValueRecursively(root, 5);
         TreeNode q = TreeNode.findTreeNodeByValueRecursively(root, 1);
         TreeNode target = TreeNode.findTreeNodeByValueRecursively(root, 3);
-        Assert.assertEquals(target, new Solution1().lowestCommonAncestor(root, p, q));
+        Assert.assertEquals(target, new Solution2().lowestCommonAncestor(root, p, q));
     }
 
 }
