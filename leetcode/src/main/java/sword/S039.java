@@ -24,6 +24,56 @@ import java.util.Map;
 public class S039 {
 
     /**
+     * 解法 3. 摩尔投票法，最优，时间复杂度 O(N)，空间复杂度 O(1)
+     */
+    class Solution3 {
+        public int majorityElement(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                throw new IllegalArgumentException("输入数据有误！");
+            }
+
+            int voteNum = nums[0], voteCount = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (voteCount <= 0) {
+                    voteNum = nums[i];
+                    voteCount = 1;
+                } else {
+                    if (voteNum == nums[i]) {
+                        voteCount++;
+                    } else {
+                        voteCount--;
+                    }
+                }
+            }
+
+            if (isMajority(nums, voteNum)) {
+                return voteNum;
+            }
+
+            // 不存在
+            throw new IllegalArgumentException("不存在");
+        }
+
+        /**
+         * 题目虽然说保证输入数据保证解的存在，但出于健壮性考虑，应该增加一个校验环节
+         * 否则，输入数据中没有元素，是超过一半的，解不正确
+         */
+        public boolean isMajority(int[] nums, int num) {
+            return count(nums, num) > (nums.length - 1) / 2;
+        }
+
+        public int count(int[] nums, int num) {
+            int count = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] == num) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+
+    /**
      * 方法 0. 简单的使用 hashmap进行统计可以，时间复杂度 O(N), 空间复杂度 O(N)
      */
     public int majorityElement_0(int[] nums) {
@@ -153,10 +203,10 @@ public class S039 {
     @Test
     public void test() {
         int[] nums = new int[]{3, 3, 4};
-        Assert.assertEquals(3, majorityElement(nums));
+        Assert.assertEquals(3, new Solution3().majorityElement(nums));
 
         nums = new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2};
-        Assert.assertEquals(2, majorityElement(nums));
+        Assert.assertEquals(2, new Solution3().majorityElement(nums));
     }
 
 }
