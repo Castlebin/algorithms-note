@@ -14,25 +14,56 @@ public class S036 {
 
     class Solution {
 
+        /**
+         * 很容易出错，画图吧
+         *
+         * 指针操作挺麻烦的，全靠画图（程序应该还可以简化，但是这样还是挺清晰的）
+         */
         public Node treeToDoublyList(Node root) {
             if (root == null) {
                 return root;
             }
-            // todo
-        }
-
-        public Node findMin(Node root) {
-            if (root == null || root.left == null) {
+            if (root.left == null && root.right == null) {
+                root.left = root;
+                root.right = root;
                 return root;
             }
-            return findMin(root.left);
-        }
+            // root 至少有一个儿子
+            Node leftChild = root.left;
+            Node rightChild = root.right;
+            if (leftChild != null && rightChild != null) {
+                Node left = treeToDoublyList(root.left);
+                root.left = left.left;
+                left.left.right = root;
 
-        public Node findMax(Node root) {
-            if (root == null || root.right == null) {
+                Node right = treeToDoublyList(root.right);
+                root.right = right;
+
+                left.left = right.left;
+
+                right.left.right = left;
+                right.left = root;
+
+                return left;
+            } else if (leftChild != null) {
+                Node left = treeToDoublyList(root.left);
+                root.left = left.left;
+                left.left.right = root;
+
+                left.left = root;
+                root.right = left;
+
+                return left;
+            } else {
+                Node right = treeToDoublyList(root.right);
+                root.right = right;
+                root.left = right.left;
+
+                right.left.right = root;
+                right.left = root;
+
                 return root;
             }
-            return findMax(root.right);
         }
 
         class Node {
@@ -88,7 +119,8 @@ public class S036 {
     @Test
     public void test() {
         Solution solution = new Solution();
-        solution.treeToDoublyList(solution.buildBinaryTreeFromArray(new Integer[]{4,2,5,1,3}));
+        Solution.Node node = solution.treeToDoublyList(solution.buildBinaryTreeFromArray(new Integer[]{4, 2, 5, 1, 3}));
+        System.out.println(node);
     }
 
 }
