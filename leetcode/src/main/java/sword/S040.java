@@ -17,12 +17,7 @@ public class S040 {
             return arr;
         }
 
-        PriorityQueue<Integer> heap = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2.compareTo(o1);
-            }
-        });
+        PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
         for (int item : arr) {
             if (heap.size() <= k) {
                 heap.add(item);
