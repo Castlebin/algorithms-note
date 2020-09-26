@@ -1,75 +1,70 @@
 package sword;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-
 /**
- 剑指 Offer 41. 数据流中的中位数
- 如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。
+ 剑指 Offer 43. 1～n整数中1出现的次数
+ 输入一个整数 n ，求1～n这n个整数的十进制表示中1出现的次数。
 
- 例如，
- [2,3,4] 的中位数是 3
+ 例如，输入12，1～12这些整数中包含1 的数字有1、10、11和12，1一共出现了5次。
 
- [2,3] 的中位数是 (2 + 3) / 2 = 2.5
+ 示例 1：
+ 输入：n = 12
+ 输出：5
 
- 设计一个支持以下两种操作的数据结构：
+ 示例 2：
+ 输入：n = 13
+ 输出：6
 
- void addNum(int num) - 从数据流中添加一个整数到数据结构中。
- double findMedian() - 返回目前所有元素的中位数。
+
+ 限制：
+ 1 <= n < 2^31
  */
 public class S041 {
 
-    /**
-     * 利用 一个最大堆、一个最小堆 实现 任何时候，都能快速的取数据流中的中位数
-     */
-    class MedianFinder {
-
-        private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        private PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-
-        /** initialize your data structure here. */
-        public MedianFinder() {
-
+    public int countDigitOne(int n) {
+        if (n <= 0) {
+            return 0;
         }
+        return countDigitOne(String.valueOf(n), 0);
+    }
 
-        public void addNum(int num) {
-            int size = maxHeap.size() + minHeap.size();
-            if ((size & 1) == 0) {
-                if (maxHeap.size() == 0 || num >= maxHeap.peek()) {
-                    minHeap.add(num);
-                } else {
-                    minHeap.add(maxHeap.remove());
-                    maxHeap.add(num);
-                }
-            } else {
-                if (minHeap.size() == 0 || num < minHeap.peek()) {
-                    maxHeap.add(num);
-                } else {
-                    maxHeap.add(minHeap.remove());
-                    minHeap.add(num);
-                }
+    public int countDigitOne(String numStr, int start) {
+        if (start >= numStr.length()) {
+            return 0;
+        }
+        int fistDigit = numStr.charAt(start) - '0';
+        int len = numStr.length() - start;
+        // 只剩下一个字符
+        if (len == 1) {
+            if (fistDigit == 0) {
+                return 0;
+            } else if (fistDigit > 0) {
+                return 1;
             }
         }
 
-        public double findMedian() {
-            int size = maxHeap.size() + minHeap.size();
-            if (size <= 0) {
-                throw new RuntimeException("没有元素");
-            }
-            if ( (size & 1) == 1) {
-                return minHeap.peek();
-            } else {
-                return (maxHeap.peek() + minHeap.peek()) / 2.0;
-            }
+        // 至少还剩下两个字符
+        int count = 0;
+        if (fistDigit > 1) {
+            count += Math.pow(10, len - 1);
+        } else if (fistDigit == 1){
+            count += Integer.parseInt(numStr.substring(start + 1)) + 1;
         }
 
+        count += fistDigit * (len - 1) * Math.pow(10, len - 2);
+        count += countDigitOne(numStr, start + 1);
+
+        return count;
     }
 
     @Test
     public void test() {
-
+        Assert.assertEquals(12, countDigitOne(20));
+        Assert.assertEquals(2, countDigitOne(10));
+        Assert.assertEquals(5, countDigitOne(12));
+        Assert.assertEquals(6, countDigitOne(13));
     }
 
 }
