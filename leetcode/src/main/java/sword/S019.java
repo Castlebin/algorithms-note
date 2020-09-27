@@ -1,5 +1,6 @@
 package sword;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -12,15 +13,61 @@ import org.junit.Test;
  */
 public class S019 {
 
-    // todo
-    public boolean isMatch(String s, String p) {
+    // 书中方法
+    // todo 执行很慢，1.8s，快超时了，不是好的方法，而且，边界条件太容易出错了
+    class Solution1 {
+        public boolean isMatch(String str, String pattern) {
+            if (str == null || pattern == null) {
+                return false;
+            }
+            return matchCore(str, pattern, 0, 0);
+        }
 
-        return false;
+        public boolean matchCore(String str, String pattern, int strStart, int patternStart) {
+            if (strStart >= str.length() && patternStart >= pattern.length()) {
+                return true;
+            }
+            if (patternStart >= pattern.length()) {
+                return false;
+            }
+            // 如果模式的当前指针的下一个字符是 *
+            if (patternStart < pattern.length() - 1
+                    && pattern.charAt(patternStart + 1) == '*') {
+                if ( strStart < str.length() && (str.charAt(strStart) == pattern.charAt(patternStart)
+                        || pattern.charAt(patternStart) == '.')) {
+                    // * 号匹配了 一次
+                    return matchCore(str, pattern, strStart + 1, patternStart + 2)
+                            // * 号 可能要匹配多次
+                            || matchCore(str, pattern, strStart + 1, patternStart)
+                            // * 号 一次也没匹配
+                            || matchCore(str, pattern, strStart, patternStart + 2);
+                } else {
+                    // * 号 一次也没匹配
+                    return matchCore(str, pattern, strStart, patternStart + 2);
+                }
+            }
+            if (strStart < str.length()
+                    && (str.charAt(strStart) == pattern.charAt(patternStart)
+                    || pattern.charAt(patternStart) == '.')
+            ) {
+                return matchCore(str, pattern, strStart + 1, patternStart + 1);
+            }
+
+            return false;
+        }
     }
 
     @Test
-    public void test() {
+    public void testSolution2() {
 
     }
+
+    @Test
+    public void testSolution1() {
+        Assert.assertFalse(new Solution1().isMatch("ab", ".*c"));
+        Assert.assertTrue(new Solution1().isMatch("a", "ab*"));
+    }
+
+
 
 }
