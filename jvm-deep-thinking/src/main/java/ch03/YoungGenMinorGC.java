@@ -26,7 +26,7 @@ public class YoungGenMinorGC {
         a3 = new byte[2 * _1M];
         System.out.println("allocate a3 success..");
 
-        a4 = new byte[4 * _1M];     // 出现一次Minor GC
+        a4 = new byte[3 * _1M];     // 出现一次Minor GC
         System.out.println("allocate a4 success..");
     }
 }
