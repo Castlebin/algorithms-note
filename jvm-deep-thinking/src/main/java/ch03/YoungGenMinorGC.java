@@ -4,7 +4,7 @@ package ch03;
  * 测试新生代的Minor GC  JDK 8
  * VM args:
 
-       -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps
+   -verbose:gc -XX:+UseSerialGC -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:+PrintGCDateStamps
 
  -XX:+PrintGCTimeStamps 显示的是jvm启动时间，还是PrintGCDateStamps比较直观点
  */
@@ -26,7 +26,7 @@ public class YoungGenMinorGC {
         a3 = new byte[2 * _1M];
         System.out.println("allocate a3 success..");
 
-        a4 = new byte[3 * _1M];     // 出现一次Minor GC
+        a4 = new byte[4 * _1M];     // 出现一次Minor GC
         System.out.println("allocate a4 success..");
     }
 }
