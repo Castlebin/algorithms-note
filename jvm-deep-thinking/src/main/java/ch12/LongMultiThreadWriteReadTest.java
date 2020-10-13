@@ -1,7 +1,8 @@
 package ch12;
 
 /**
- * 即使在 64 位系统下，对 long 或者 double 类型的普通变量 （不加 volatile） 的读写操作
+ * （即使在 64 位系统下）
+ * 对 long 或者 double 类型的普通变量 （不加 volatile） 的读写操作
  * 仍可能被分为两次 32 位操作
  *
  * (不太明白，都加了 volatile ，仍然一样)
