@@ -4,7 +4,7 @@ package ch03;
  * 长期存活的对象移动到老年代
  * VM args:
 
-  -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:MaxTenuringThreshold=1 -XX:+PrintTenuringDistribution
+  -verbose:gc -XX:+UseSerialGC -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:MaxTenuringThreshold=1 -XX:+PrintTenuringDistribution
 
  */
 public class TenuringThreshold {

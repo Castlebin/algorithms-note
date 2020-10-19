@@ -4,7 +4,7 @@ package ch03;
  * 测试新生代的Minor GC  JDK 8
  * VM args:
 
-       -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps
+   -verbose:gc -XX:+UseSerialGC -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:+PrintGCDateStamps
 
  -XX:+PrintGCTimeStamps 显示的是jvm启动时间，还是PrintGCDateStamps比较直观点
  */
