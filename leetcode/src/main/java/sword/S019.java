@@ -12,6 +12,10 @@ import org.junit.Test;
  例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但与"aa.a"和"ab*a"均不匹配。
  */
 public class S019 {
+
+    /**
+     * 83 ms，因为 每次都是新建数组，所以多了一点消耗，大体算法思路和 Solution1 一样的
+     */
     class Solution3 {
         public boolean isMatch(String str, String pattern) {
             // 如果 str 或者 pattern 有一个为 null ，说明不匹配
