@@ -12,6 +12,56 @@ import org.junit.Test;
  例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但与"aa.a"和"ab*a"均不匹配。
  */
 public class S019 {
+    class Solution3 {
+        public boolean isMatch(String str, String pattern) {
+            // 如果 str 或者 pattern 有一个为 null ，说明不匹配
+            if (str == null || pattern == null) {
+                return false;
+            }
+            // 如果正则长度为 0，字符串长度不为 0，说明不匹配
+            if (pattern.length() == 0) {
+                return str.length() == 0;
+            }
+            // 如果字符串长度为 0，则还需要看正则是否为 x*x* 格式
+            if (str.length() == 0) {
+                // 如果正则长度为奇数，一定不匹配
+                if (pattern.length() % 2 == 1) {
+                    return false;
+                }
+                // 看正则是否为 x*x*x* 格式
+                for (int i = 1; i < pattern.length(); i += 2) {
+                    if (pattern.charAt(i) != '*') {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            // 到了这一步，str 和 pattern 的长度都不为 0
+            char s = str.charAt(0);
+            char p = pattern.charAt(0);
+            // 如果 pattern 长度大于 1，且pattern的下一个字符为 *
+            if (pattern.length() > 1 && pattern.charAt(1) == '*') {
+                // 如果 pattern 和 str 的第一个字符都一样
+                // 分 看 和 不看，两种情况 ， 如 (a , a*a) 这个例子，当前就不能匹配
+                if (s == p || p == '.') {
+                    // isMatch(str.substring(1), pattern.substring(2)) 不用写，递归时会执行到，写了增加了很多执行次数，特别慢
+                    return isMatch(str.substring(1), pattern)
+                            || isMatch(str, pattern.substring(2));
+                }else {
+                    // 不一样，那么正则的这两位就废了，直接往后走
+                    return isMatch(str, pattern.substring(2));
+                }
+            } else {
+                // 如果该位字符一样，或是正则串该位是 '.',也就是能匹配任意字符，就可以往后走
+                if (s == p || p == '.') {
+                    return isMatch(str.substring(1), pattern.substring(1));
+                } else {
+                    // 否则不匹配
+                    return false;
+                }
+            }
+        }
+    }
 
     /**
      * 动态规划，非常快
@@ -53,49 +103,9 @@ public class S019 {
         }
     }
 
-    class Solution2 {
-        public boolean isMatch(String str, String pattern) {
-            // 如果字符串长度为0，需要检测下正则串
-            if (str.length() == 0) {
-                // 如果正则串长度为奇数，必定不匹配，比如 "."、"ab*",必须是 a*b*这种形式，*在奇数位上
-                if (pattern.length() % 2 != 0) return false;
-                int i = 1;
-                while (i < pattern.length()) {
-                    if (pattern.charAt(i) != '*') return false;
-                    i += 2;
-                }
-                return true;
-            }
-            // 如果字符串长度不为0，但是正则串没了，return false
-            if (pattern.length() == 0) return false;
-            // c1 和 c2 分别是两个串的当前位，c3是正则串当前位的后一位，如果存在的话，就更新一下
-            char c1 = str.charAt(0), c2 = pattern.charAt(0), c3 = 'a';
-            if (pattern.length() > 1) {
-                c3 = pattern.charAt(1);
-            }
-            // 和dp一样，后一位分为是 '*' 和不是 '*' 两种情况
-            if (c3 != '*') {
-                // 如果该位字符一样，或是正则串该位是 '.',也就是能匹配任意字符，就可以往后走
-                if (c1 == c2 || c2 == '.') {
-                    return isMatch(str.substring(1), pattern.substring(1));
-                } else {
-                    // 否则不匹配
-                    return false;
-                }
-            } else {
-                // 如果该位字符一样，或是正则串该位是 '.'，和dp一样，有看和不看两种情况
-                if (c1 == c2 || c2 == '.') {
-                    return isMatch(str.substring(1), pattern) || isMatch(str, pattern.substring(2));
-                } else {
-                    // 不一样，那么正则串这两位就废了，直接往后走
-                    return isMatch(str, pattern.substring(2));
-                }
-            }
-        }
-    }
-
     // 书中方法
     // todo 执行很慢，1.8s，快超时了，不是好的方法，而且，边界条件太容易出错了
+    //  （因为执行了多余的迭代，改进了，快很多了，变为 37ms，厉害！）
     class Solution1 {
         public boolean isMatch(String str, String pattern) {
             if (str == null || pattern == null) {
@@ -116,10 +126,11 @@ public class S019 {
                     && pattern.charAt(patternStart + 1) == '*') {
                 if ( strStart < str.length() && (str.charAt(strStart) == pattern.charAt(patternStart)
                         || pattern.charAt(patternStart) == '.')) {
-                    // * 号匹配了 一次
-                    return matchCore(str, pattern, strStart + 1, patternStart + 2)
+                    // * 号匹配了 一次  (去掉 matchCore(str, pattern, strStart + 1, patternStart + 2) ，执行快了很多)
+                    return /*matchCore(str, pattern, strStart + 1, patternStart + 2)
                             // * 号 可能要匹配多次
-                            || matchCore(str, pattern, strStart + 1, patternStart)
+                            || */
+                            matchCore(str, pattern, strStart + 1, patternStart)
                             // * 号 一次也没匹配
                             || matchCore(str, pattern, strStart, patternStart + 2);
                 } else {
@@ -145,12 +156,13 @@ public class S019 {
 
     @Test
     public void testSolution1() {
-        Assert.assertTrue(new Solution2().isMatch("ab",".*"));
-        Assert.assertFalse(new Solution2().isMatch("aaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*c"));
-        Assert.assertTrue(new Solution2().isMatch("mississippi","mis*is*ip*."));
-        Assert.assertTrue(new Solution2().isMatch("aa", "a*"));
-        Assert.assertFalse(new Solution2().isMatch("ab",".*c"));
-        Assert.assertTrue(new Solution2().isMatch("aab","c*a*b"));
+        Assert.assertTrue(new Solution3().isMatch("bbbba", ".*a*a"));
+        Assert.assertTrue(new Solution1().isMatch("ab",".*"));
+        Assert.assertFalse(new Solution1().isMatch("aaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*c"));
+        Assert.assertTrue(new Solution1().isMatch("mississippi","mis*is*ip*."));
+        Assert.assertTrue(new Solution1().isMatch("aa", "a*"));
+        Assert.assertFalse(new Solution1().isMatch("ab",".*c"));
+        Assert.assertTrue(new Solution1().isMatch("aab","c*a*b"));
     }
 
 }
