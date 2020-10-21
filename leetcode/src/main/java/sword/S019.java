@@ -23,11 +23,11 @@ public class S019 {
             if (s == null || p == null) {
                 return false;
             }
-            int m = s.length();
-            int n = p.length();
-            boolean[][] dp = new boolean[m + 1][n + 1];
+            int strLen = s.length();
+            int patternLen = p.length();
+            boolean[][] dp = new boolean[strLen + 1][patternLen + 1];
             dp[0][0] = true;
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < patternLen; i++) {
                 //如果p的第i+1个字符也就是p.charAt(i)是"*"的话，
                 //那么他就可以把p的第i个字符给消掉（也就是匹配0次）。
                 //我们只需要判断p的第i-1个字符和s的前0个字符是否匹
@@ -39,8 +39,8 @@ public class S019 {
                     dp[0][i + 1] = true;
                 }
             }
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
+            for (int i = 0; i < strLen; i++) {
+                for (int j = 0; j < patternLen; j++) {
                     if (p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') {
                         dp[i + 1][j + 1] = dp[i][j];
                     } else if (p.charAt(j) == '*') {
@@ -52,7 +52,7 @@ public class S019 {
                     }
                 }
             }
-            return dp[m][n];
+            return dp[strLen][patternLen];
         }
     }
 
