@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.net.SocketTimeoutException;
 import java.util.concurrent.CountDownLatch;
 
 public class ZkCreate {
@@ -25,6 +26,29 @@ public class ZkCreate {
         zooKeeper.create("/create", "create".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         // 再次创建，出现异常，也说明创建成功了
         zooKeeper.create("/create", "create".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+    }
+
+    /**
+     * 测试 创建节点 （异步）
+     */
+    @Test
+    public void create2() throws KeeperException, InterruptedException {
+        if (zooKeeper.exists("/create", false) != null) {
+            // 如果节点已经存在，先删除它
+            zooKeeper.delete("/create", -1);
+        }
+        zooKeeper.create("/create", "create".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT,
+                new AsyncCallback.StringCallback() {
+                    @Override
+                    public void processResult(int rc, String path, Object ctx, String name) {
+                        // 0 代表节点创建成功
+                        System.out.println(rc);
+                        System.out.println(path);
+                        System.out.println(name);
+                        // 创建节点时，传入的 context 上下文参数
+                        System.out.println(ctx);
+                    }
+                }, "I'm the context object!");
     }
 
     @Before
