@@ -5,7 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.net.SocketTimeoutException;
 import java.util.concurrent.CountDownLatch;
 
 public class ZkCreate {
