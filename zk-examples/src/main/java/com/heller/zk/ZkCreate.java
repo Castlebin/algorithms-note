@@ -1,7 +1,7 @@
 package com.heller.zk;
 
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +13,19 @@ public class ZkCreate {
     ZooKeeper zooKeeper;
     String connectString = "127.0.0.1:2181";
 
-    @Test
-    public void create1() {
-
+    /**
+     * 测试 创建节点 （同步）
+     */
+    @Test(expected = KeeperException.NodeExistsException.class)
+    public void create1() throws KeeperException, InterruptedException {
+        if (zooKeeper.exists("/create", false) != null) {
+            // 如果节点已经存在，先删除它
+            zooKeeper.delete("/create", -1);
+            System.out.println("delete exist node ");
+        }
+        zooKeeper.create("/create", "create".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        // 再次创建，出现异常，也说明创建成功了
+        zooKeeper.create("/create", "create".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
     }
 
     @Before
