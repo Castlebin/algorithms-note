@@ -13,7 +13,7 @@ import org.junit.Test;
  * 使用 curator 监听 节点变化、监听 子节点 变化
  */
 public class CuratorWatcher {
-    String IP = "localhost:2181";
+    String connectString = "localhost:2181";
     CuratorFramework client;
 
     @Before
@@ -21,7 +21,7 @@ public class CuratorWatcher {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         client = CuratorFrameworkFactory
                 .builder()
-                .connectString(IP)
+                .connectString(connectString)
                 .sessionTimeoutMs(10000)
                 .retryPolicy(retryPolicy)
                 .build();
