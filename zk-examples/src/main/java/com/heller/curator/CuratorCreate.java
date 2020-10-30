@@ -21,14 +21,14 @@ import java.util.List;
  * 使用 curator 创建节点
  */
 public class CuratorCreate {
-    String IP = "localhost:2181";
+    String connectString = "localhost:2181";
     CuratorFramework client;
 
     @Before
     public void before() {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         client = CuratorFrameworkFactory.builder()
-                .connectString(IP)
+                .connectString(connectString)
                 .sessionTimeoutMs(5000)
                 .retryPolicy(retryPolicy)
                 .namespace("create")
