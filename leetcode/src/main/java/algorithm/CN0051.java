@@ -7,7 +7,9 @@ import java.util.List;
 
 /**
  * N 皇后问题，一遍解出！
- * 但是，为什么会重复打印一个解多次？
+ * 但是，为什么会重复打印一个解多次？（用错循环了！直接从 0 开始 DFS 即可）
+ * 
+ * 即： choose(i, n, position);
  */
 public class CN0051 {
 
@@ -19,10 +21,12 @@ public class CN0051 {
 
         public void slove(int n) {
             int[] position = new int[n];
+            /** 这里错了 ！！ 好好的 DFS ， 循环是个啥意思？？哎
             for (int i = 0; i < n; i++) {
                 choose(i, n, position);
-            }
-
+            }*/
+            // 从 0 开始 DFS 即可
+            choose(0, n, position);
         }
 
         // 假设 前 i - 1 步已经满足条件，现在在第 i 行，找一列放皇后
