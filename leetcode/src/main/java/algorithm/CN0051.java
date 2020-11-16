@@ -15,11 +15,11 @@ public class CN0051 {
 
     class Solution {
         public List<List<String>> solveNQueens(int n) {
-            slove(n);
+            solve(n);
             return null;
         }
 
-        public void slove(int n) {
+        public void solve(int n) {
             int[] position = new int[n];
             /** 这里错了 ！！ 好好的 DFS ， 循环是个啥意思？？哎
             for (int i = 0; i < n; i++) {
