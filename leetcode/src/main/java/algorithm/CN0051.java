@@ -9,7 +9,7 @@ import java.util.List;
  * N 皇后问题，一遍解出！
  * 但是，为什么会重复打印一个解多次？（用错循环了！直接从 0 开始 DFS 即可）
  *
- * 即： choose(i, n, position);
+ * 即： choose(0, n, position);
  */
 public class CN0051 {
 
