@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * N 皇后问题
- * 
+ *
  * 打印下 尝试的次数、解数
  */
 public class CN0051_2 {
