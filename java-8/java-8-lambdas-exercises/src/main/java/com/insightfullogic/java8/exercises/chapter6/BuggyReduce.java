@@ -9,4 +9,9 @@ public class BuggyReduce {
                                   .reduce(5, (acc, x) -> x * acc);
     }
 
+    public static int multiplyThrough2(List<Integer> linkedListOfNumbers) {
+        return linkedListOfNumbers.parallelStream()
+                .reduce(1, (acc, x) -> acc * x) * 5;
+    }
+
 }
