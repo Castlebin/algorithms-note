@@ -34,7 +34,11 @@ public class MyLRUCache<K, V> {
                 K lastKey = linkedKeys.removeLast();
                 map.remove(lastKey);
             }
-            linkedKeys.addToHead(key);
+            if (!map.containsKey(key)) {
+                linkedKeys.addToHead(key);
+            } else {
+                linkedKeys.moveToHead(key);
+            }
             map.put(key, value);
         }
 
