@@ -49,69 +49,69 @@ public class MyLRUCache<K, V> {
         public int size() {
             return map.size();
         }
-    }
 
-    class MyLinkedList<T> {
-        private Node<T> head;
-        private Node<T> tail;
-        private int size;
+        class MyLinkedList<T> {
+            private Node<T> head;
+            private Node<T> tail;
+            private int size;
 
-        public void addToHead(T value) {
-            Node<T> node = new Node<>();
-            node.value = value;
-            if (size == 0) {
-                head = node;
-                tail = node;
-            } else {
-                node.next = head;
-                head.prev = node;
-                head = node;
-            }
-            size++;
-        }
-
-        public T removeLast() {
-            if (size == 0) {
-                return null;
-            }
-            Node<T> nextTail = tail.prev;
-            tail.prev = null;
-            Node<T> lastTail = tail;
-            tail = nextTail;
-            size--;
-            return lastTail.value;
-        }
-
-        public void moveToHead(T value) {
-            if (head == null || value == head.value) {
-                return;
-            }
-            Node<T> cur = head.next;
-            while (cur != null) {
-                if (cur.value == value) {
-                    // moveToHead
-                    Node<T> prev = cur.prev;
-                    Node<T> next = cur.next;
-
-                    if(cur == tail) {
-                        tail = tail.prev;
-                    }
-
-                    prev.next = next;
-                    next.prev = prev;
-                    head.prev = cur;
-                    cur.next = head;
-                    head = cur;
-                    break;
+            public void addToHead(T value) {
+                Node<T> node = new Node<>();
+                node.value = value;
+                if (size == 0) {
+                    head = node;
+                    tail = node;
+                } else {
+                    node.next = head;
+                    head.prev = node;
+                    head = node;
                 }
-                cur = cur.next;
+                size++;
             }
-        }
 
-        class Node<T> {
-            T value;
-            Node<T> prev;
-            Node<T> next;
+            public T removeLast() {
+                if (size == 0) {
+                    return null;
+                }
+                Node<T> nextTail = tail.prev;
+                tail.prev = null;
+                Node<T> lastTail = tail;
+                tail = nextTail;
+                size--;
+                return lastTail.value;
+            }
+
+            public void moveToHead(T value) {
+                if (head == null || value == head.value) {
+                    return;
+                }
+                Node<T> cur = head.next;
+                while (cur != null) {
+                    if (cur.value == value) {
+                        // moveToHead
+                        Node<T> prev = cur.prev;
+                        Node<T> next = cur.next;
+
+                        if(cur == tail) {
+                            tail = tail.prev;
+                        }
+
+                        prev.next = next;
+                        next.prev = prev;
+                        head.prev = cur;
+                        cur.next = head;
+                        head = cur;
+                        break;
+                    }
+                    cur = cur.next;
+                }
+            }
+
+            class Node<T> {
+                T value;
+                Node<T> prev;
+                Node<T> next;
+            }
         }
     }
 
