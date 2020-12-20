@@ -52,8 +52,6 @@ public class MyLRUCache<K, V> {
     }
 
     class MyLinkedList<T> {
-        private Node<T> list;
-
         private Node<T> head;
         private Node<T> tail;
         private int size;
@@ -62,7 +60,6 @@ public class MyLRUCache<K, V> {
             Node<T> node = new Node<>();
             node.value = value;
             if (size == 0) {
-                list = node;
                 head = node;
                 tail = node;
             } else {
