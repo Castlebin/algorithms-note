@@ -81,8 +81,7 @@ public class KMP {
      * O(N^3) 的算法
      *
      * @param pattern
-     * @return [-1, -1, -1, 0, 1, 2, 3, 3, 3, 3]
-     * [-1, -1, -1, 0, 1, 2, 3, -1, 0, 1]
+     * @return
      */
     private static int[] buildMatchSlow(String pattern) {
         int m = pattern.length();
