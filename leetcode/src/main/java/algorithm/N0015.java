@@ -39,7 +39,7 @@ public class N0015 {
         }
         int n = nums.length;
         Arrays.sort(nums);
-        for (int first = 0; nums[first] <= 0 && first < n - 2; first++) {
+        for (int first = 0; first < n - 2; first++) {
             // 不能与上一个元素相同
             if (first > 0 && nums[first] == nums[first - 1]) {
                 continue;
