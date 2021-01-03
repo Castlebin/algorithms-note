@@ -31,11 +31,34 @@ public class N0018 {
             if (p1 > 0 && nums[p1] == nums[p1 - 1]) {
                 continue;
             }
+
+            // 加上两段优化逻辑，减少无用迭代，加快速度
+            // 如果当前的最小值，已经大于目标值，后面的就更大了，所以不用看
+            int minSum1 = nums[p1] + nums[p1 + 1] + nums[p1 + 2] + nums[p1 + 3];
+            if(minSum1 > target) {
+                break;
+            }
+            // 如果当前的最大值，都小于目标值，那么前面的就更小了，也不用看
+            int maxSum1 = nums[p1] + nums[n - 3] + nums[n - 2] + nums[n - 1];
+            if(maxSum1 < target) {
+                continue;
+            }
+
             for (int p2 = p1 + 1; p2 < n - 2; p2++) {
                 // 不能与上一个元素相同，否则会出现重复解
                 if (p2 > p1 + 1 && nums[p2] == nums[p2 - 1]) {
                     continue;
                 }
+
+                int minSum2 = nums[p1] + nums[p2] + nums[p2 + 1] + nums[p2 + 2];
+                if(minSum2 > target) {
+                    break;
+                }
+                int maxSum2 = nums[p1] + nums[p2] + nums[n - 2] + nums[n - 1];
+                if(maxSum2 < target) {
+                    continue;
+                }
+
                 int p4 = n - 1;
                 int leftTargetSum = target - nums[p1] - nums[p2];
                 for (int p3 = p2 + 1; p3 < p4; p3++) {
