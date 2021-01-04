@@ -42,8 +42,11 @@ public class QS {
      * partition 里，至少有三个元素
      */
     private int partition(int[] nums, int start, int end) {
+        // 选取主元
         int index = choosePivotIndex(nums, start, end);
+        // 将主元藏到右边
         swap(nums, index, end);
+
         int p1 = start, p2 = end - 1;
         int pivot = nums[end];
         while (p1 < p2) {
