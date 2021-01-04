@@ -4,22 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.Random;
 
 import static ds.ArrayUtil.generateArray;
+import static ds.ArrayUtil.generateNonNegativeArray;
 
 public class QS {
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        String[] split = line.split("\\s+");
-        int[] nums = new int[split.length];
-        int i = 0;
-        for (String s : split) {
-            nums[i++] = Integer.parseInt(s);
-        }
-    }
 
     public void sort(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -106,7 +96,9 @@ public class QS {
     public void testSort() {
         QS quickSort = new QS();
         for (int i = 0; i < 100; i++) {
-            int[] array = generateArray(1000, 1000);
+            int n = new Random().nextInt(1000);
+            int m = new Random().nextInt(10000);
+            int[] array = generateArray(n, m);
             int[] copy = Arrays.copyOfRange(array, 0, array.length);
             int[] copy2 = Arrays.copyOfRange(array, 0, array.length);
             System.out.println("origin: " + Arrays.toString(array));
