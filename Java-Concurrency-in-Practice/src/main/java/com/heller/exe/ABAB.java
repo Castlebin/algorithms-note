@@ -11,7 +11,6 @@ public class ABAB {
     private static volatile int state;
 
     public static void main(String[] args) throws InterruptedException {
-
         new Thread(() -> {
             while (true) {
                 while (state != 0) {
@@ -30,7 +29,6 @@ public class ABAB {
                 state = 0;
             }
         }).start();
-        Thread.sleep(20000);
     }
 
 }
