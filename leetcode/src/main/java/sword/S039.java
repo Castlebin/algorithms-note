@@ -28,30 +28,35 @@ public class S039 {
      */
     class Solution3 {
         public int majorityElement(int[] nums) {
-            if (nums == null || nums.length == 0) {
-                throw new IllegalArgumentException("输入数据有误！");
+            if(nums == null || nums.length == 0) {
+                return 0;
             }
-
-            int voteNum = nums[0], voteCount = 0;
-            for (int i = 0; i < nums.length; i++) {
-                if (voteCount <= 0) {
-                    voteNum = nums[i];
-                    voteCount = 1;
+            if(nums.length == 1) {
+                return nums[0];
+            }
+            int voteNum = nums[0];
+            int voteCount = 0;
+            for(int i = 0; i < nums.length; i++) {
+                if(nums[i] == voteNum) {
+                    voteCount++;
                 } else {
-                    if (voteNum == nums[i]) {
-                        voteCount++;
-                    } else {
-                        voteCount--;
+                    voteCount--;
+                    if(voteCount <= 0) {
+                        voteNum = nums[i];
                     }
                 }
             }
 
-            if (isMajority(nums, voteNum)) {
-                return voteNum;
+            int c = 0, half = nums.length / 2 ;
+            for(int i = 0; i < nums.length; i++) {
+                if(nums[i] == voteNum) {
+                    c++;
+                    if(c > half) {
+                        return voteNum;
+                    }
+                }
             }
-
-            // 不存在
-            throw new IllegalArgumentException("不存在");
+            return 0;
         }
 
         /**
