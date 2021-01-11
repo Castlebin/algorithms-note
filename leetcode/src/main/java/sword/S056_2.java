@@ -26,8 +26,6 @@ public class S056_2 {
             int mod = count[i] % 3;
             if (mod == 1) {
                 num = num + (1 << i);
-            } else if(mod != 0) {
-                throw new IllegalStateException();
             }
         }
         return num;
