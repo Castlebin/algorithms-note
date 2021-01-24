@@ -30,9 +30,13 @@ public class CN0099 {
                 // 树的中序遍历， 加上这段代码而已。注意看两个节点的赋值算法
                 if (prev.val > cur.val) {
                     if (firstNode == null) {
+                        // 第一个节点找到了，这个时候，它后面的节点是有可能为第二个要找的节点的
                         firstNode = prev;
+                        secondNode = cur;
+                    } else {// 找到了间隔的第二个节点，说明可以退出算法了
+                        secondNode = cur;
+                        break;
                     }
-                    secondNode = cur;
                 }
 
 
