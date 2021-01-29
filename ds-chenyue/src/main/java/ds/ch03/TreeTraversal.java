@@ -1,5 +1,7 @@
 package ds.ch03;
 
+import org.junit.Test;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -46,9 +48,9 @@ public class TreeTraversal {
     }
 
     /**
-     * 层次遍历（从上外下、从左往右、一层一层来）    （借助队列实现）
+     * 层次遍历（从上往下、从左往右、一层一层来）    （借助队列实现）
      */
-    public static void levelOrderTraveral(TreeNode root) {
+    public static void levelOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -62,6 +64,28 @@ public class TreeTraversal {
             }
             if (currentNode.right != null) {
                 nodeQueue.add(currentNode.right);
+            }
+        }
+    }
+
+    /**
+     * 层序遍历，从上到下，从右到左
+     */
+    public static void levelOrderTraversalRightToLeft(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Deque<TreeNode> nodeQueue = new LinkedList<>();
+        nodeQueue.add(root);
+        while (!nodeQueue.isEmpty()) {
+            TreeNode currentNode = nodeQueue.remove();
+            System.out.println(currentNode.data);
+
+            if (currentNode.right != null) {
+                nodeQueue.add(currentNode.right);
+            }
+            if (currentNode.left != null) {
+                nodeQueue.add(currentNode.left);
             }
         }
     }
