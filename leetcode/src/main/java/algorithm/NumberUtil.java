@@ -23,7 +23,7 @@ public class NumberUtil {
         int lenOfNum1 = binaryNum1.length();
         int lenOfNum2 = binaryNum2.length();
         int maxLen = Math.max(lenOfNum1, lenOfNum2);
-        int minLen = Math.max(lenOfNum1, lenOfNum2);
+        int minLen = Math.min(lenOfNum1, lenOfNum2);
         int resultLen = maxLen + 1;
         char[] result = new char[resultLen];
         char[] charsOfNum1 = binaryNum1.toCharArray();
@@ -162,7 +162,10 @@ public class NumberUtil {
 
     @Test
     public void testAddBinaryNum() {
-        Assert.assertEquals("10000000111", addBigNum("0010000000110", "00001"));
+        //   110101
+        //  1010110
+        // 10001011
+        Assert.assertEquals("10001011", addBinaryNum("110101","1010110"));
     }
 
     @Test
