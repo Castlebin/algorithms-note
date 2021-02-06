@@ -12,7 +12,7 @@ public class NumberUtil {
     /**
      * 大数字加法 （为了算法的简单，不做输入处理和校验，不处理前置0，默认按 10 进制实现）
      */
-    public String addBigNumber(String num1, String num2) {
+    public String addBigNumberStr(String num1, String num2) {
         // 10 进制
         int SCALE = 10;
         int carry = 0;
@@ -198,7 +198,9 @@ public class NumberUtil {
             String num1 = r.nextInt(1000000000) + "";
             String num2 = r.nextInt(1000000000) + "";
             String result = addBigNum(num1, num2);
+            System.out.println(num1 + " " + num2 + " = " + result);
             Assert.assertEquals(new BigDecimal(result), new BigDecimal(num1).add(new BigDecimal(num2)));
+            Assert.assertEquals(new BigDecimal(result), new BigDecimal(addBigNumberStr(num1, num2)));
         }
     }
 
