@@ -10,6 +10,28 @@ import java.util.Random;
 public class NumberUtil {
 
     /**
+     * 大数字加法 （为了算法的简单，不做输入处理和校验，不处理前置0，默认按 10 进制实现）
+     */
+    public String addBigNumber(String num1, String num2) {
+        // 10 进制
+        int SCALE = 10;
+        int carry = 0;
+        StringBuilder res = new StringBuilder();
+        for (int p1 = num1.length() - 1, p2 = num2.length() - 1; p1 >= 0 || p2 >= 0; p1--, p2--) {
+            int n1 = p1 >= 0? num1.charAt(p1) - '0' : 0;
+            int n2 = p2 >= 0? num2.charAt(p2) - '0' : 0;
+            int added = n1 + n2 + carry;
+            int a = added >= SCALE? added - SCALE : added;
+            res.insert(0, (char)(a + '0'));
+            carry = added >= SCALE? 1 : 0;
+        }
+        if (carry > 0) {
+            res.insert(0, carry);
+        }
+        return res.toString();
+    }
+
+    /**
      * 二进制数加法（用字符串表示二进制数，只包含 0、1两个字符）
      *
      * 算法原因，当前只支持两个非负整数的加法
