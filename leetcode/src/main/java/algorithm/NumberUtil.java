@@ -10,6 +10,73 @@ import java.util.Random;
 public class NumberUtil {
 
     /**
+     * 二进制数加法（用字符串表示二进制数，只包含 0、1两个字符）
+     *
+     * 算法原因，当前只支持两个非负整数的加法
+     * 输入的两个数，都视作非负数
+     */
+    public String addBinaryNum(String binaryNum1, String binaryNum2) {
+        if (binaryNum1 == null || binaryNum1.length() == 0
+                || binaryNum2 == null || binaryNum2.length() == 0) {
+            throw new IllegalArgumentException("输入必须非空");
+        }
+        int lenOfNum1 = binaryNum1.length();
+        int lenOfNum2 = binaryNum2.length();
+        int maxLen = Math.max(lenOfNum1, lenOfNum2);
+        int minLen = Math.max(lenOfNum1, lenOfNum2);
+        int resultLen = maxLen + 1;
+        char[] result = new char[resultLen];
+        char[] charsOfNum1 = binaryNum1.toCharArray();
+        char[] charsOfNum2 = binaryNum2.toCharArray();
+        // 进位
+        int carry = 0;
+        int p1 = lenOfNum1 - 1, p2 = lenOfNum2 - 1, index = resultLen - 1;
+        for (; p1 >= 0 && p2 >= 0; p1--, p2--, index--) {
+            if(charsOfNum1[p1] < '0' || charsOfNum1[p1] > '1'
+                || charsOfNum2[p2] < '0' || charsOfNum2[p2] > '1') {
+                throw new IllegalArgumentException("输入包含非法字符");
+            }
+            int added = charsOfNum1[p1] - '0' + charsOfNum2[p2] - '0' + carry;
+            if (added >= 2) {
+                added = added - 2;
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+            result[index] = (char)(added + '0');
+        }
+        char[] leftChars = new char[0];
+        if (p1 >= 0) {
+            leftChars = Arrays.copyOf(charsOfNum1, maxLen - minLen);
+        } else if (p2 >= 0) {
+            leftChars = Arrays.copyOf(charsOfNum2, maxLen - minLen);
+        }
+        if (leftChars.length > 0) {
+            for (int p = leftChars.length - 1; p >= 0; p--, index--) {
+                if (leftChars[p] < '0' || leftChars[p] > '9') {
+                    throw new IllegalArgumentException("包含非数字字符");
+                }
+                int added = leftChars[p] - '0' + carry;
+                if (added >= 2) {
+                    added = added - 2;
+                    carry = 1;
+                } else {
+                    carry = 0;
+                }
+                result[index] = (char)(added + '0');
+            }
+        }
+        result[index] = (char)(carry + '0');
+        // 去掉开头的0
+        for(int p = 0; p < resultLen; p++) {
+            if (result[p] != '0') {
+                return new String(Arrays.copyOfRange(result, p, resultLen));
+            }
+        }
+        return "0";
+    }
+
+    /**
      * 大数字加法（用字符串来表示数字）
      * 如 "12345" 表示 12345
      *
@@ -91,6 +158,11 @@ public class NumberUtil {
             a = tmp;
         }
         return a;
+    }
+
+    @Test
+    public void testAddBinaryNum() {
+        Assert.assertEquals("10000000111", addBigNum("0010000000110", "00001"));
     }
 
     @Test
