@@ -17,16 +17,13 @@ public class NumberUtil {
         int SCALE = 10;
         int carry = 0;
         StringBuilder res = new StringBuilder();
-        for (int p1 = num1.length() - 1, p2 = num2.length() - 1; p1 >= 0 || p2 >= 0; p1--, p2--) {
+        for (int p1 = num1.length() - 1, p2 = num2.length() - 1; p1 >= 0 || p2 >= 0 || carry > 0; p1--, p2--) {
             int n1 = p1 >= 0? num1.charAt(p1) - '0' : 0;
             int n2 = p2 >= 0? num2.charAt(p2) - '0' : 0;
             int added = n1 + n2 + carry;
             int a = added >= SCALE? added - SCALE : added;
             res.insert(0, (char)(a + '0'));
             carry = added >= SCALE? 1 : 0;
-        }
-        if (carry > 0) {
-            res.insert(0, carry);
         }
         return res.toString();
     }
