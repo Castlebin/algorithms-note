@@ -1,5 +1,7 @@
 package interview;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,12 @@ import java.util.List;
 */
 public class Factorial {
 
+    @Test
+    public void test() {
+        System.out.println(factorial(50));
+        System.out.println(factorial2(50));
+    }
+
     /**
      * 求 n 的阶乘
      */
@@ -15,6 +23,22 @@ public class Factorial {
         String result = "1";
         for (int i = 1; i <= n; i++) {
             result = mul(result, String.valueOf(i));
+        }
+        return result;
+    }
+
+    /**
+     * 简单算法，实现大数加法后，用大数加法模拟乘法，实现阶乘
+     * 比上面算法简单，效率低些
+     */
+    public String factorial2(int n) {
+        String result = "1";
+        for (int curNum = 2; curNum <= n; curNum++) {
+            String lastResult = result;
+            // result 已经是一倍了，所以在原来的基础上 再加 curNum - 1 次即可
+            for (int count = 2; count <= curNum; count++) {
+                result = add(result, lastResult);
+            }
         }
         return result;
     }
