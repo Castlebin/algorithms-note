@@ -10,12 +10,6 @@ import java.util.List;
 */
 public class Factorial {
 
-    @Test
-    public void test() {
-        System.out.println(factorial(50));
-        System.out.println(factorial2(50));
-    }
-
     /**
      * 求 n 的阶乘
      */
@@ -98,6 +92,16 @@ public class Factorial {
             result.insert(0, (char) (added + '0'));
         }
         return result.toString();
+    }
+
+    @Test
+    public void test() {
+        System.out.println(factorial(5));
+        System.out.println(factorial2(5));
+        System.out.println(factorial(6));
+        System.out.println(factorial2(6));
+        System.out.println(factorial(50));
+        System.out.println(factorial2(50));
     }
 
 }
