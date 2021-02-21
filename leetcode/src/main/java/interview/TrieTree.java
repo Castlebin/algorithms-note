@@ -66,9 +66,11 @@ public class TrieTree {
     public void testTrieTree() {
         TrieTree trieTree = new TrieTree();
         trieTree.insertWord("word");
+        trieTree.insertWord("wode");
+        trieTree.insertWord("word1");
         trieTree.insertWord("wordname");
         Assert.assertTrue(trieTree.findWord("word"));
         Assert.assertFalse(trieTree.findWord("wor"));
-        Assert.assertFalse(trieTree.findWord("word1"));
+        Assert.assertTrue(trieTree.findWord("word1"));
     }
 }
