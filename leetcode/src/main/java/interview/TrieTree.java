@@ -48,13 +48,14 @@ public class TrieTree {
         if (word == null || word.length() == 0) {
             throw new IllegalArgumentException("要查找的单词不能为空");
         }
-        Map<Character, TrieTree> children = this.children;
+        TrieTree parent = this;
         TrieTree child = null;
         for(char cha : word.toCharArray()) {
+            Map<Character, TrieTree> children = parent.children;
             // 如果当前字符在树里，就继续往下迭代下一个字符
             if (children != null && children.containsKey(cha)) {
                 child = children.get(cha);
-                children = child.children;
+                parent = child;
             } else {
                 return false;
             }
