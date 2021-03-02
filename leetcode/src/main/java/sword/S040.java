@@ -13,17 +13,20 @@ import java.util.*;
 public class S040 {
 
     public int[] getLeastNumbers(int[] arr, int k) {
+        if (k <= 0) {
+            return new int[]{};
+        }
         if (arr == null || arr.length == 0 || arr.length <= k) {
             return arr;
         }
 
         PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
         for (int item : arr) {
-            if (heap.size() <= k) {
+            if (heap.size() < k) {
                 heap.add(item);
-            }
-            if (heap.size() > k) {
+            } else if (heap.peek() >= item) {
                 heap.remove();
+                heap.add(item);
             }
         }
         int[] result = new int[heap.size()];
