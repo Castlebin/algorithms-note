@@ -16,14 +16,17 @@ public class S040 {
         if (arr == null || arr.length == 0 || arr.length <= k) {
             return arr;
         }
+        if(k <= 0) {
+            return new int[]{};
+        }
 
         PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
         for (int item : arr) {
-            if (heap.size() <= k) {
+            if (heap.size() < k) {
                 heap.add(item);
-            }
-            if (heap.size() > k) {
+            } else if (heap.peek() > item) {
                 heap.remove();
+                heap.add(item);
             }
         }
         int[] result = new int[heap.size()];
