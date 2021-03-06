@@ -13,11 +13,11 @@ import java.util.*;
 public class S040 {
 
     public int[] getLeastNumbers(int[] arr, int k) {
+        if (k <= 0) {
+            return new int[]{};
+        }
         if (arr == null || arr.length == 0 || arr.length <= k) {
             return arr;
-        }
-        if(k <= 0) {
-            return new int[]{};
         }
 
         PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
