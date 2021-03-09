@@ -45,6 +45,8 @@ public class N1227 {
                 if (matrix[row][col] == 1 && row > 0 && col > 0) {
                     dp[row][col] = Math.min(dp[row - 1][col - 1], Math.min(dp[row - 1][col], dp[row][col - 1])) + 1;
                 } else {
+                    // 因为 第一行或者第一列的元素，dp[row][col] 最多为 1 ，即 与 matrix 中对应坐标的元素值相等
+                    // 另外 matrix[row][col] 为 0 时，显然 dp[row][col] = 0
                     dp[row][col] = matrix[row][col];
                 }
                 count += dp[row][col];
