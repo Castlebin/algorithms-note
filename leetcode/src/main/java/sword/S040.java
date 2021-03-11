@@ -24,7 +24,7 @@ public class S040 {
         for (int item : arr) {
             if (heap.size() < k) {
                 heap.add(item);
-            } else if (heap.peek() >= item) {
+            } else if (heap.peek() > item) {
                 heap.remove();
                 heap.add(item);
             }
