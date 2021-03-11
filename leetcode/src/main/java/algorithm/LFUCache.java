@@ -3,7 +3,7 @@ package algorithm;
 import java.util.*;
 
 /**
- * LRU 缓存
+ * LFU 缓存
  */
 public class LFUCache<K, V> {
     // 缓存 key 的最大容量，超出的话，得做逐出
