@@ -50,25 +50,36 @@ public class CN0076 {
             return "";
         }
 
+        // 保存已经匹配上了的字符
+        int matched = 0;
         String minWindow = "";
         // 开始滑动窗口算法
         while (right < str.length()) {
             char rightChar = str.charAt(right);
+
+            // 更新滑动窗口内容
             window.put(rightChar, window.getOrDefault(rightChar, 0) + 1);
+            if (window.get(rightChar).equals(needs.getOrDefault(rightChar, 0))) {
+                matched++;
+            }
 
             // 如果窗口中已经包含了所有的字符，可能需要从左边对窗口进行缩小
-            while (containsAll(window, needs)) {
+            while (matched == needs.size()) {
                 if (right - left + 1 < minWindow.length() || minWindow.equals("")) {
                     minWindow = str.substring(left, right + 1);
                 }
 
-                // 缩小窗口
+                // 缩小窗口，更新滑动窗口内容
                 char leftChar = str.charAt(left);
                 if (window.get(leftChar) > 1) {
                     window.put(leftChar, window.get(leftChar) - 1);
                 } else {
                     window.remove(leftChar);
                 }
+                if (window.getOrDefault(leftChar, 0).compareTo(needs.getOrDefault(leftChar, 0)) < 0) {
+                    matched--;
+                }
+
                 left++;
             }
 
@@ -76,16 +87,6 @@ public class CN0076 {
         }
 
         return minWindow;
-    }
-
-    public boolean containsAll(LinkedHashMap<Character, Integer> window,
-                               LinkedHashMap<Character, Integer> needs) {
-        for (Character c : needs.keySet()) {
-            if (!window.containsKey(c) || window.get(c) < needs.get(c)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Test
