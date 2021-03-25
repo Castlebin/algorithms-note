@@ -35,8 +35,12 @@ public class S062 {
             return 0;
         }
 
-        // todo
-        return 0;
+        int ans = 0;
+        for(int i = 2; i <= n; i++) {
+            ans = (ans + m) % i;
+        }
+
+        return ans;
     }
 
     @Test
