@@ -23,7 +23,7 @@ public class QuickSortForTopK {
     }
 
     private void quickSortForTopK(int[] arr, int k, int begin, int end) {
-        int pivotIndex = partition(arr, k, begin, end);
+        int pivotIndex = partition(arr, begin, end);
 
         if (arr.length == k + pivotIndex) {
             ansIndex = pivotIndex;
@@ -38,7 +38,7 @@ public class QuickSortForTopK {
         }
     }
 
-    private int partition(int[] arr, int k, int begin, int end) {
+    private int partition(int[] arr, int begin, int end) {
         int left = begin, right = end;
         int pivotIndex = left;
         int pivot = arr[pivotIndex];
