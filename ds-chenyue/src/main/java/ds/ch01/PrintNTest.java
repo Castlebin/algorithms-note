@@ -2,8 +2,6 @@ package ds.ch01;
 
 import org.junit.Test;
 
-import javax.xml.bind.SchemaOutputResolver;
-
 /**
  * 打印从1 ~ n 的整数
  */
