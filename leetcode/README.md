@@ -2,6 +2,6 @@
 
 
 ## 剑指 offer （第二版）
-[目录](./src/main/java/sword)
+[目录](src/test/java/sword)
 
 
