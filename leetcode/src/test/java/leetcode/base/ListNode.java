@@ -26,6 +26,9 @@ public class ListNode {
             index++;
         }
         // 如果，现在 cur == null , 其实说明 n 已经超过链表节点数目了
+        if (cur == null) {
+            throw new IllegalArgumentException("入参 n 超过了链表节点数目！");
+        }
         // 否则，此时 index == n , 正是要返回的节点
         return cur;
     }
