@@ -44,9 +44,9 @@ public class ListNode {
         // 处理下尾指针
         cur.next = tailNextNode;
 
-        // head 节点
+        // 实际的 head 节点
         ListNode head = preHead.next;
-        preHead.next = null; // 回收掉 preHead 节点的内存
+        // preHead.next = null; // 如果是 C 这种没有垃圾回收的语言，可能需要手动回收掉 preHead 节点的内存。
         return head;
     }
 
