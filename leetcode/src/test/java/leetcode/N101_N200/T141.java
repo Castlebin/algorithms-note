@@ -6,7 +6,7 @@ import org.junit.Test;
 import leetcode.base.ListNode;
 
 /**
- * 141. Linked List Cycle
+ * 141. Linked List Cycle     环形链表
  */
 public class T141 {
 
