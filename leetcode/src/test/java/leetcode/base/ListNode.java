@@ -13,6 +13,38 @@ public class ListNode {
     }
 
     /**
+     * 返回链表中第 N 个节点 （ N >= 0  ）
+     */
+    public ListNode getNode(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("入参 n 必须 >= 0");
+        }
+        ListNode cur = this;
+        int index = 0;
+        while (cur != null && index < n) {
+            cur = cur.next;
+            index++;
+        }
+        // 如果，现在 cur == null , 其实说明 n 已经超过链表节点数目了
+        // 否则，此时 index == n , 正是要返回的节点
+        return cur;
+    }
+
+    /**
+     * 返回链表中第 N 个节点 （ N >= 0  ）
+     *
+     * @param head 链表的头结点
+     * @param n 序号
+     * @return 需要返回的节点
+     */
+    public static ListNode getNode(ListNode head, int n) {
+        if (head == null) {
+            return null;
+        }
+        return head.getNode(n);
+    }
+
+    /**
      * 按 leetcode 的测试用例描述，构建测试用的单项链表
      *
      * @param data 链表节点数据
