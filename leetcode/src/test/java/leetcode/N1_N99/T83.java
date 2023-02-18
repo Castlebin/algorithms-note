@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import leetcode.base.ListNode;
 
-
 /**
  * 83. Remove Duplicates from Sorted List
  * 83. 删除排序链表中的重复元素
