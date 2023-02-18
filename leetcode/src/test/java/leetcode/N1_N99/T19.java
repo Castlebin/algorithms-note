@@ -13,6 +13,9 @@ import leetcode.base.ListNode;
 public class T19 {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null) {
+            return null;
+        }
         // 双指针 p1、p2 开始都指向头结点。然后 p1 先走 n 步。这样两个指针就相隔 n 个节点了
         ListNode p1 = head, p2 = head, p2Pre = null;
         for (int index = 0; index < n && p1 != null; index++) {
