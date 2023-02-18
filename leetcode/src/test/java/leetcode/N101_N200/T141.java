@@ -14,26 +14,19 @@ import leetcode.base.ListNodeUtil;
 public class T141 {
 
     public boolean hasCycle(ListNode head) {
-        if (head == null || head.next == null) {
-            return false;
-        }
+        // 快慢指针，开始时，都指向头结点
+        ListNode fast = head, slow = head;
+        // 只要还能往下走，每次快指针走 2 步，慢指针走 1 步
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
 
-        // 双指针（快慢指针），一个指针每次移动一个节点，一个移动两个节点。若干两个指针相遇了，说明链表有环
-        ListNode p1 = head;
-        ListNode p2 = head;
-        while (p1 != null && p2 != null) {
-            p1 = p1.next;
-            p2 = p2.next;
-            if (p2 != null) {
-                p2 = p2.next;
-            } else {
-                return false;
-            }
-            if (p1 == p2) {
+            // 快慢指针相遇，说明一定有环
+            if (fast == slow) {
                 return true;
             }
         }
-
+        // 不能往下走了，那说明没环
         return false;
     }
 
