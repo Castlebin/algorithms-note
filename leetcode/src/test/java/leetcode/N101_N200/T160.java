@@ -23,8 +23,11 @@ public class T160 {
     /**
      * 解法 3， 双指针
      * 时间复杂度 O(M + N)，空间复杂度 O(1)
-     *
+     * <p>
      * 两个指针交替遍历两个链表，
+     * <p>
+     * 其实它等价于  将其中一个链表首尾相接，构成环，问题变成判断另一个链表中是否存在环路，存在的话输出环路入口点的问题
+     * 重置指针这一步，相当于将链表重结构上首尾相连了。所以和拿到链表环的入口这题思路可以联系起来了
      */
     public ListNode getIntersectionNode_3(ListNode headA, ListNode headB) {
         ListNode p1 = headA, p2 = headB;
