@@ -31,7 +31,7 @@ public class T86 {
                 p2.next = cur;
                 p2 = p2.next;
             }
-            // !! 注意，这个节点已经用完了，要断开它和原来链表的连接。这三部很容易直接写成 cur = cur.next 了 !!
+            // !! 注意，这个节点已经用完了，要断开它和原来链表的连接。很容易直接写成 cur = cur.next 了 !!
             ListNode next = cur.next;
             cur.next = null; // !!
             cur = next;
