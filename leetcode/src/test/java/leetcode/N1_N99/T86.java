@@ -3,6 +3,7 @@ package leetcode.N1_N99;
 import org.junit.Test;
 
 import leetcode.base.ListNode;
+import leetcode.base.ListNodeUtil;
 
 
 /**
@@ -44,7 +45,9 @@ public class T86 {
 
     @Test
     public void test() {
-
+        ListNode l1 = ListNodeUtil.buildLinkedList(new int[] {1, 5, 4, 3, 2}, -1);
+        ListNode result = partition(l1, 3);
+        System.out.println(result);
     }
 
 }
