@@ -1,4 +1,4 @@
-package leetcode.N901_N1000;
+package leetcode.N900_N999;
 
 import org.junit.Assert;
 import org.junit.Test;
