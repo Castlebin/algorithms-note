@@ -1,6 +1,7 @@
 package leetcode.N1_N99;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
@@ -43,9 +44,43 @@ public class T46 {
         }
     }
 
+    /**
+     * 解法2：回溯算法
+     */
+    class Solution_2 {
+        public List<List<Integer>> permute(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return new ArrayList<>();
+            }
+            List<List<Integer>> res = new ArrayList<>();
+            LinkedList<Integer> track = new LinkedList<>();
+            boolean[] used = new boolean[nums.length];
+            backtrack(nums, track, used, res);
+            return res;
+        }
+
+        private void backtrack(int[] nums, LinkedList<Integer> track, boolean[] used, List<List<Integer>> res) {
+            if (track.size() == nums.length) {
+                res.add(new ArrayList<>(track));
+                return;
+            }
+            for (int index = 0; index < nums.length; index++) {
+                if (used[index]) {
+                    continue;
+                }
+                track.add(nums[index]);
+                used[index] = true;
+                backtrack(nums, track, used, res);
+                used[index] = false;
+                track.removeLast();
+            }
+        }
+    }
+
     @Test
     public void test() {
         new Solution_1().permute(new int[] {1, 2, 3});
+        new Solution_2().permute(new int[] {1, 2, 3});
     }
 
 }
