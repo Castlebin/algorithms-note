@@ -22,12 +22,9 @@ public class T46 {
                 return new ArrayList<>();
             }
             List<List<Integer>> res = new ArrayList<>();
+            // 让它有个迭代的基础
+            res.add(new ArrayList<>());
             for (int num : nums) {
-                if (res.isEmpty()) {
-                    List<Integer> init = new ArrayList<Integer>() {{add(num);}};
-                    res.add(init);
-                    continue;
-                }
                 res = permute(res, num);
             }
             return res;
