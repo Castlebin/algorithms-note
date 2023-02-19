@@ -14,7 +14,7 @@ import org.junit.Test;
 public class T46 {
 
     /**
-     * 解法1：全排列的递归解法（模拟排列组合的过程）
+     * 解法1：全排列的递归解法
      */
     class Solution_1 {
         public List<List<Integer>> permute(int[] nums) {
