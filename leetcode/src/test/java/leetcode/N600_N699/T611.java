@@ -26,7 +26,7 @@ public class T611 {
             }
             // 双指针，j 、k 分别指向 i 之后的两个元素。因为，只有 j 移动，k 才会需要移动，这里只需要 j 这一层循环
             for (int j = i + 1, k = j + 1; j <= n - 2; j++) {
-                while (k <= n - 1 && nums[i] + nums[j] > nums[k]) {
+                while (k <= n - 1 && nums[i] > nums[k] - nums[j]) {
                     k++;
                 }
                 count += k - j - 1;
@@ -70,6 +70,8 @@ public class T611 {
                 for (int k = j + 1; k <= n - 1; k++) {
                     if (nums[i] > nums[k] - nums[j]) {
                         count++;
+                    } else {
+                        break;
                     }
                 }
             }
