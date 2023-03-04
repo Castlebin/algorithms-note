@@ -14,6 +14,14 @@ public class NumUtil {
         return arr;
     }
 
+    /**
+     * 生成一个在 [rangeL, rangeR] 范围内的随机整数
+     */
+    public static int generateRandomInt(int rangeL, int rangeR) {
+        assert rangeL <= rangeR;
+        return (int) (Math.random() * (rangeR - rangeL + 1) + rangeL);
+    }
+
 
 
 
