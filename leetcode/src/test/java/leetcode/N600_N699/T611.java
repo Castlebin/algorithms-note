@@ -41,6 +41,40 @@ public class T611 {
         Assert.assertEquals(0, triangleNumber(new int[] {0, 0, 0}));
         Assert.assertEquals(4, triangleNumber(new int[] {4, 2, 3, 4}));
         Assert.assertEquals(161700, triangleNumber(NumUtil.generateRandomArray(100, 2, 2)));
+
+        for (int i = 0; i < 100; i++) {
+            int[] nums = NumUtil.generateRandomArray(100, -100, 200);
+            int countDirectly = countDirectly(nums);
+            int count = triangleNumber(nums);
+            if (countDirectly != count) {
+                System.out.println("nums = " + Arrays.toString(nums));
+                System.out.println("countDirectly = " + countDirectly);
+                System.out.println("count = " + count);
+                break;
+            }
+        }
+    }
+
+    private int countDirectly(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int count = 0;
+        int n = nums.length;
+        for (int i = 0; i <= n - 3; i++) {
+            if (nums[i] <= 0) {
+                continue;
+            }
+            for (int j = i + 1; j <= n - 2; j++) {
+                for (int k = j + 1; k <= n - 1; k++) {
+                    if (nums[i] > nums[k] - nums[j]) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
     }
 
 }
