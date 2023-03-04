@@ -57,13 +57,14 @@ public class FindLastTarget {
                 System.out.println("target = " + target);
                 System.out.println("directSearchResult = " + directSearchResult);
                 System.out.println("binarySearchResult = " + binarySearchResult);
-                continue;
+                break;
             }
             if (directSearchResult != binarySearchResult) {
                 System.out.println("nums = " + Arrays.toString(nums));
                 System.out.println("target = " + target);
                 System.out.println("directSearchResult = " + directSearchResult);
                 System.out.println("binarySearchResult = " + binarySearchResult);
+                break;
             }
         }
     }
