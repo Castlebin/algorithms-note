@@ -9,7 +9,7 @@ import common.NumUtil;
 
 /**
  * 最正统的二分搜索
- * 在数组中搜索等于 target 的元素的位置，不存在的话返回 -1
+ * 在正排序数组中搜索等于 target 的元素的位置，不存在的话返回 -1
  */
 public class BinarySearch {
 
@@ -33,10 +33,13 @@ public class BinarySearch {
     @Test
     public void test() {
         for (int testCount = 0; testCount < 1000; testCount++) {
+            // 生成测试数据
             int N = new Random().nextInt(10000);
             int[] nums = NumUtil.generateRandomArray(N, 0, 7000);
             int target = NumUtil.generateRandomArray(1, 0, 7000)[0];
             Arrays.sort(nums);
+
+            // 开始测试
             int directSearchResult = directSearch(nums, target);
             int binarySearchResult = search(nums, target);
             if (directSearchResult == -1 && binarySearchResult == -1) {
