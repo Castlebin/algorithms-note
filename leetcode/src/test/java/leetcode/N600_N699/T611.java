@@ -43,7 +43,7 @@ public class T611 {
         Assert.assertEquals(161700, triangleNumber(NumUtil.generateRandomArray(100, 2, 2)));
 
         for (int i = 0; i < 100; i++) {
-            int[] nums = NumUtil.generateRandomArray(100, -100, 200);
+            int[] nums = NumUtil.generateRandomArray(300, -100, 200);
             int countDirectly = countDirectly(nums);
             int count = triangleNumber(nums);
             if (countDirectly != count) {
