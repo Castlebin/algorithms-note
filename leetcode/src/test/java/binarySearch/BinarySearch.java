@@ -50,13 +50,14 @@ public class BinarySearch {
                 System.out.println("target = " + target);
                 System.out.println("directSearchResult = " + directSearchResult);
                 System.out.println("binarySearchResult = " + binarySearchResult);
-                continue;
+                break;
             }
             if (nums[directSearchResult] != target || nums[binarySearchResult] != target) {
                 System.out.println("nums = " + Arrays.toString(nums));
                 System.out.println("target = " + target);
                 System.out.println("directSearchResult = " + directSearchResult);
                 System.out.println("binarySearchResult = " + binarySearchResult);
+                break;
             }
         }
     }
