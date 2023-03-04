@@ -13,20 +13,20 @@ import common.NumUtil;
  */
 public class T611 {
 
-    public int triangleNumber(int[] A) {
-        if (A == null || A.length < 3) {
+    public int triangleNumber(int[] nums) {
+        if (nums == null || nums.length < 3) {
             return 0;
         }
-        Arrays.sort(A);
+        Arrays.sort(nums);
         int count = 0;
-        int n = A.length;
+        int n = nums.length;
         for (int i = 0; i <= n - 3; i++) {
-            if (A[i] <= 0) {
+            if (nums[i] <= 0) {
                 continue;
             }
             // 双指针，j 、k 分别指向 i 之后的两个元素。因为，只有 j 移动，k 才会需要移动，这里只需要 j 这一层循环
             for (int j = i + 1, k = j + 1; j <= n - 2; j++) {
-                while (k <= n - 1 && A[i] + A[j] > A[k]) {
+                while (k <= n - 1 && nums[i] + nums[j] > nums[k]) {
                     k++;
                 }
                 count += k - j - 1;
