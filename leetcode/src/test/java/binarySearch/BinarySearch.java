@@ -66,7 +66,7 @@ public class BinarySearch {
             if (inOrderNums[i] == target) {
                 return i;
             } else if (inOrderNums[i] > target) {
-                return -1;
+                break;
             }
         }
         return -1;
