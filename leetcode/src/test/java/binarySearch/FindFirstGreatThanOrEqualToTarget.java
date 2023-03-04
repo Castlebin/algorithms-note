@@ -8,7 +8,7 @@ import org.junit.Test;
 import common.NumUtil;
 
 /**
- * 在正排序数组中，寻找第一个 大于等于 target 的元素的位置，不存在的话返回 -1
+ * 在正排序数组中，寻找第一个 大于等于 target 的元素的位置，不存在的话返回 -1   (左边界、变种)
  */
 public class FindFirstGreatThanOrEqualToTarget {
 
