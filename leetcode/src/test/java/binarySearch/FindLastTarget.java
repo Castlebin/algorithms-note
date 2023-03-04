@@ -9,6 +9,8 @@ import common.NumUtil;
 
 /**
  * 在正排序数组中，寻找最后一个等于 target 的元素的位置，不存在的话返回 -1 (找右边界)
+ *
+ * 验证方法：LeetCode 34. 在排序数组中查找元素的第一个和最后一个位置
  */
 public class FindLastTarget {
 
