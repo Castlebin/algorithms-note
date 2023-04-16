@@ -31,6 +31,9 @@ public class QuickSort_1 {
         }
     }
 
+    /**
+     * 最好记的快速排序写法，一般来说，记下这一种就行了
+     */
     private int partition(int[] nums, int begin, int end) {
         // 简单的选取 begin 位置元素作为主元
         int pivotIndex = begin;
