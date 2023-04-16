@@ -10,6 +10,7 @@ import common.NumUtil;
 
 /**
  * 快速排序（随机取主元）
+ * 简单的在 QuickSort_1 上，随机选择一个元素作为主元，跟左边元素交换一下（这样转化为以左边元素作为主元的了！巧妙!）
  */
 public class QuickSort_RandomPivot {
 
@@ -34,19 +35,18 @@ public class QuickSort_RandomPivot {
     }
 
     /**
-     * 随机选取主元，只是简单的在 QuickSort_1 上，随机选择一个元素作为主元，跟左边元素交换一下（这样也是左边元素作为主元了！巧妙!）
+     * 简单的在 QuickSort_1 上，随机选择一个元素作为主元，跟左边元素交换一下（这样转化为以左边元素作为主元的了！巧妙!）
      * 其他完全一致
      */
     private int partition(int[] nums, int begin, int end) {
         // 随机选取一个作为主元，和最左边元素交换，这样，就也是取最左边元素作为主元的算法了，没其他改变！妙！
         // 其他的选取主元的方式，都可以这样改写
         int pivotIndex = choosePivotIndex(begin, end);
-        int pivot = nums[pivotIndex];
         swap(nums, begin, pivotIndex);
-        // 还是用 begin位置 作为 主元
-        pivotIndex = begin;
 
-        // 这里直接还是用的 begin （全都没有变化）
+        // 简单的选取 begin 位置元素作为主元 (全都没有变，看见没！)
+        int pivot = nums[begin];
+        // 注意！！这里直接用的 begin
         int left = begin;
         int right = end;
         while (left < right) {
@@ -60,7 +60,7 @@ public class QuickSort_RandomPivot {
                 swap(nums, left, right);
             }
         }
-        swap(nums, pivotIndex, right);
+        swap(nums, begin, right);
         return right;
     }
 
