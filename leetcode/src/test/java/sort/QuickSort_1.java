@@ -36,8 +36,7 @@ public class QuickSort_1 {
      */
     private int partition(int[] nums, int begin, int end) {
         // 简单的选取 begin 位置元素作为主元
-        int pivotIndex = begin;
-        int pivot = nums[pivotIndex];
+        int pivot = nums[begin];
         // 注意！！这里直接用的 begin
         int left = begin;
         int right = end;
@@ -52,7 +51,7 @@ public class QuickSort_1 {
                 swap(nums, left, right);
             }
         }
-        swap(nums, pivotIndex, right);
+        swap(nums, begin, right);
         return right;
     }
 
