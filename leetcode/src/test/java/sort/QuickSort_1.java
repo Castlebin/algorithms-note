@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import common.NumUtil;
 
+// QuickSort_1  最好记
 public class QuickSort_1 {
 
     public void sort(int[] nums) {

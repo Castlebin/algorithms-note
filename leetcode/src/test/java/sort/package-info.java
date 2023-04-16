@@ -9,5 +9,6 @@ package sort;
  *
  *
  * 1. 快速排序，各种写法
+ *  QuickSort_1  最好记
  *
  */
