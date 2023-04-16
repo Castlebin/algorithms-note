@@ -11,7 +11,7 @@ import common.NumUtil;
 /**
  * 快速排序（随机取主元）
  */
-public class QuickSort_randomPivot {
+public class QuickSort_RandomPivot {
 
     public void sort(int[] nums) {
         if (nums == null || nums.length <= 1) {
@@ -26,27 +26,28 @@ public class QuickSort_randomPivot {
     }
 
     public void quickSort(int[] nums, int begin, int end) {
-        if (begin >= end) {
-            return;
+        if (begin < end) {
+            int pivot = partition(nums, begin, end);
+            quickSort(nums, begin, pivot - 1);
+            quickSort(nums, pivot + 1, end);
         }
-        int pivotIndex = partition(nums, begin, end);
-        quickSort(nums, begin, pivotIndex - 1);
-        quickSort(nums, pivotIndex + 1, end);
     }
 
-    public int partition(int[] nums, int begin, int end) {
-        // 两个数的时候，就直接判断好了，用下面的流程容易出错，这样简单易懂！
-        if (begin + 1 == end) {
-            if (nums[begin] > nums[end]) {
-                swap(nums, begin, end);
-            }
-            // 这里取 begin 或者 end 都行，取 end 理论上来说更快一些，因为切分可能会更好
-            return end;
-        }
-        // 随机取主元
+    /**
+     * 随机选取主元，只是简单的在 QuickSort_1 上，随机选择一个元素作为主元，跟左边元素交换一下（这样也是左边元素作为主元了！巧妙!）
+     * 其他完全一致
+     */
+    private int partition(int[] nums, int begin, int end) {
+        // 随机选取一个作为主元，和最左边元素交换，这样，就也是取最左边元素作为主元的算法了，没其他改变！妙！
+        // 其他的选取主元的方式，都可以这样改写
         int pivotIndex = choosePivotIndex(begin, end);
         int pivot = nums[pivotIndex];
-        int left = begin + 1;
+        swap(nums, begin, pivotIndex);
+        // 还是用 begin位置 作为 主元
+        pivotIndex = begin;
+
+        // 这里直接还是用的 begin （全都没有变化）
+        int left = begin;
         int right = end;
         while (left < right) {
             while (left < end && nums[left] <= pivot) {
@@ -67,7 +68,7 @@ public class QuickSort_randomPivot {
      * 随机选取主元
      */
     public int choosePivotIndex(int begin, int end) {
-        int num = (int) Math.random() * (end - begin + 1) + begin;
+        int num = (int) (Math.random() * (end - begin + 1) + begin);
         return num;
     }
 
