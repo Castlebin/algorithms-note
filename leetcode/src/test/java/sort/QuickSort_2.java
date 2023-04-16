@@ -41,8 +41,7 @@ public class QuickSort_2 {
             return end;
         }
         // 简单的直接取左边元素作为主元
-        int pivotIndex = begin;
-        int pivot = nums[pivotIndex];
+        int pivot = nums[begin];
         // 这里用的是 begin + 1 ，所以才需要上面的 对于两个数的判断！
         int left = begin + 1;
         int right = end;
@@ -57,7 +56,7 @@ public class QuickSort_2 {
                 swap(nums, left, right);
             }
         }
-        swap(nums, pivotIndex, right);
+        swap(nums, begin, right);
         return right;
     }
 
