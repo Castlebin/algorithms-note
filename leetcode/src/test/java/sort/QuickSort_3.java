@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import common.NumUtil;
 
-public class QuickSort {
+public class QuickSort_3 {
 
     public void sort(int[] nums) {
         if (nums == null || nums.length <= 1) {
@@ -31,31 +31,23 @@ public class QuickSort {
         quickSort(nums, pivotIndex + 1, end);
     }
 
-    public int partition(int[] nums, int begin, int end) {
-        // 两个数的时候，就直接判断好了，用下面的流程容易出错，这样简单易懂！
-        if (begin + 1 == end) {
-            if (nums[begin] > nums[end]) {
-                swap(nums, begin, end);
-            }
-            // 这里取 begin 或者 end 都行，取 end 理论上来说更快一些，因为切分可能会更好
-            return end;
-        }
-        // 简单的直接取左边元素作为主元
-        int pivot = nums[begin];
-        int left = begin + 1;
-        int right = end;
-        while (left < right) {
-            while (left < end && nums[left] <= pivot) {
+    private int partition(int[] nums, int begin, int end) {
+        int pivotIndex = begin;
+        int pivot = nums[pivotIndex];
+        int left = begin + 1, right = end;
+        while (true) {
+            while (left <= right && nums[left] < pivot) {
                 left++;
             }
-            while (right > begin && nums[right] >= pivot) {
+            while (right >= left && nums[right] > pivot) {
                 right--;
             }
-            if (left < right) {
-                swap(nums, left, right);
+            if (left >= right) {
+                break;
             }
+            swap(nums, left++, right--);
         }
-        swap(nums, begin, right);
+        swap(nums, pivotIndex, right);
         return right;
     }
 
