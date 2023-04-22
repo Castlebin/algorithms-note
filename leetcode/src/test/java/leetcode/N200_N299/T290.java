@@ -19,7 +19,7 @@ import org.junit.Test;
  * s does not contain any leading or trailing spaces.
  * All the words in s are separated by a single space.
  */
-public class N290 {
+public class T290 {
 
     public boolean wordPattern(String pattern, String s) {
         char[] chars = pattern.toCharArray();

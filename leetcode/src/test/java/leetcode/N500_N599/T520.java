@@ -17,7 +17,7 @@ import org.junit.Test;
  * 1 <= word.length <= 100
  * word consists of lowercase and uppercase English letters.
  */
-public class N520 {
+public class T520 {
 
     public boolean detectCapitalUse(String word) {
         if (word.length() < 1) {

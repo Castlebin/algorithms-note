@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * 944. Delete Columns to Make Sorted
  */
-public class N944 {
+public class T944 {
 
     public int minDeletionSize(String[] strs) {
         int count = 0;
