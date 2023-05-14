@@ -1,7 +1,7 @@
 package sword.sa;
 
 /**
- * https://leetcode.cn/study-plan/lcof/?progress=c3qqp4d
+ * https://leetcode.cn/study-plan/lcof/
  *
  * 剑指 Offer
  * 力扣 (LeetCode)
