@@ -27,7 +27,7 @@ public class T013 {
             List<int[]> newQueue = new ArrayList<>();
             for (int[] pos : queue) {
                 int row = pos[0], col = pos[1];
-                if (visited[row][col] || posNumAdd(row) + posNumAdd(col) > k) {
+                if (visited[row][col] || calDigitSum(row) + calDigitSum(col) > k) {
                     continue;
                 }
                 visited[row][col] = true;
@@ -51,7 +51,7 @@ public class T013 {
         return count;
     }
 
-    private int posNumAdd(int num) {
+    private int calDigitSum(int num) {
         int res = 0;
         while (num > 0) {
             int mod = num % 10;
