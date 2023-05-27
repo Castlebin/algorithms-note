@@ -1,4 +1,4 @@
-package sword;
+package sword.sa;
 
 import org.junit.Assert;
 import org.junit.Test;
