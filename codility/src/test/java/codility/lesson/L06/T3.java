@@ -22,7 +22,7 @@ public class T3 {
         Arrays.sort(A);
         for (int i = 0; i <= A.length - 3; i++) {
             // 两短边大于第三边，则可以组成一个三角形
-            if (A[i] + A[i + 1] > A[i + 2]) {
+            if (A[i] > A[i + 2] - A[i + 1]) {// 防止溢出
                 return 1;
             }
         }
