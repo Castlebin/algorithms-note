@@ -15,6 +15,8 @@ import org.junit.Test;
 public class T4 {
     /**
      * 还有个时间复杂度为 O(N) 的算法，没有理解，👁
+     *
+     * TODO 尝试理解该算法
      */
     class Solution {
         public int solution(int[] A) {
@@ -67,6 +69,8 @@ public class T4 {
     /**
      * 使用了排序，平均时间复杂度 O(N * log(N)).
      * 这个算法还能理解
+     *
+     * TODO 重点理解该算法
      */
     public int solution(int[] A) {
         long[] startPoints = new long[A.length];
