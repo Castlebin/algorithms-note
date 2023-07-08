@@ -2,7 +2,6 @@ package codility.lesson.L11;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,50 +18,12 @@ import org.junit.Test;
 public class T01 {
 
     /**
-     * 用两个 Map 来减少重复计算，有那么一点点优化，变化不大。哎
-     *
-     * Correctness 100 % ，Performance 25 % 。综合：Task Score：66 %
-     */
-    class Solution_1 {// Detected time complexity: O(N ** 2)
-        public int[] solution(int[] A) {
-            int n = A.length;
-            int[] result = new int[n];
-            // 首先，用一个 map，统计每个数字出现的次数
-            Map<Integer, Integer> numCountMap = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                int num = A[i];
-                if (!numCountMap.containsKey(num)) {
-                    numCountMap.put(num, 1);
-                } else {
-                    numCountMap.put(num, numCountMap.get(num) + 1);
-                }
-            }
-            // 再用一个 map，记录每个数字的计算结果，避免相同数字的重复计算
-            Map<Integer, Integer> numResultCountMap = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                int num = A[i];
-                if (numResultCountMap.containsKey(num)) {
-                    // 这个数字是重复数字，已经计算过了，直接拿答案
-                    result[i] = numResultCountMap.get(num);
-                    continue;
-                }
-                // 计算一个数字的答案（没有被计算过）
-                for (Map.Entry<Integer, Integer> entry : numCountMap.entrySet()) {
-                    if (num % entry.getKey() != 0) {
-                        result[i] += entry.getValue();
-                    }
-                }
-            }
-            return result;
-        }
-    }
-
-    /**
      * 完全的暴力解法，时间复杂度 O(N ^ 2)。
      *
      * Correctness 100 % ，Performance 0 % 。综合：Task Score：55 %
      */
     class Solution_0 {// Detected time complexity: O(N ** 2)
+
         public int[] solution(int[] A) {
             int n = A.length;
             int[] result = new int[n];
@@ -77,9 +38,51 @@ public class T01 {
         }
     }
 
+    /**
+     * 利用 Map 计数，以及因式分解的数学原理，减少计算次数。计数的是除数的个数，用 N 减去即可得到 非除数的个数
+     *
+     * Correctness 100 % ，Performance 100 % 。综合：Task Score：100 %
+     */
+    class Solution_2 {// Detected time complexity: O(N * log(N)) or O(N ** 2) 。应该是 O( N * sqrt(N) )
+
+        public int[] solution(int[] A) {
+            int N = A.length;
+
+            // 计算每个数字出现的次数
+            Map<Integer, Integer> countMap = new HashMap<>();
+            for (int num : A) {
+                countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+            }
+
+            // 对每个数字，计算它的除数的个数
+            Map<Integer, Integer> divisorCountMap = new HashMap<>();
+            for (int num : countMap.keySet()) {// 减少计算次数.    O(N)
+                int divisorCount = 0;
+                for (int i = 1; i * i <= num; i++) {// 减少计算次数。因为如果对一个数进行因式分解，比如有一个因数，会是小于等于 sqrt(n)
+                    if (num % i == 0) {
+                        divisorCount += countMap.getOrDefault(i, 0); // 直接用 getOrDefault() ，避免了判断
+                        if (i * i != num) {// 减少计算次数，最多一次可以判断两个数。两个因子相同的话，不能重复计算
+                            divisorCount += countMap.getOrDefault(num / i, 0);
+                        }
+                    }
+                }
+                divisorCountMap.put(num, divisorCount);
+            }
+
+            // 现在很简单了。对于每个数，N 减去它的除数的个数，就是 不是除数 的个数
+            int[] result = new int[N];
+            for (int i = 0; i < N; i++) {
+                result[i] = N - divisorCountMap.get(A[i]);
+            }
+
+            return result;
+        }
+    }
+
     @Test
     public void test() {
-        Assert.assertArrayEquals(new int[] {2, 4, 3, 2, 0}, new Solution_1().solution(new int[] {3, 1, 2, 3, 6}));
+        Assert.assertArrayEquals(new int[] {0}, new Solution_2().solution(new int[] {2}));
+        Assert.assertArrayEquals(new int[] {2, 4, 3, 2, 0}, new Solution_2().solution(new int[] {3, 1, 2, 3, 6}));
     }
 
 }
