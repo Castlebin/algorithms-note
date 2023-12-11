@@ -16,15 +16,18 @@ public class T1 {
         if (A == null || A.length == 0 || (K % A.length == 0)) {
             return A;
         }
+
         int f = A.length - (K % A.length);
+
         rotate(A, 0, f - 1);
         rotate(A, f, A.length - 1);
         rotate(A, 0, A.length - 1);
+
         return A;
     }
 
     private void rotate(int[] A, int start, int end) {
-        for (int i = start; start < end; start++, end--) {
+        for (; start < end; start++, end--) {
             int tmp = A[start];
             A[start] = A[end];
             A[end] = tmp;
