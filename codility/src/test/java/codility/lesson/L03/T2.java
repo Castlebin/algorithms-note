@@ -26,6 +26,22 @@ public class T2 {
     }
 
     /**
+     * 位运算方法求解
+     * 时间复杂度 O(N)，空间复杂度 O(1)
+     *
+     * 原理很简单，因为 num ^ num = 0，所以将所有数字和 1 ~ N 的数字异或，最后的结果就是缺失的数字
+     */
+    public int solution_1(int[] A) {
+        int n = A.length + 1;
+        int result = n;
+        for (int i = 0; i < A.length; i++) {
+            result ^= A[i];
+            result ^= i + 1;
+        }
+        return result;
+    }
+
+    /**
      * 申请大小为 N + 1 的额外空间的数组，标记数字是否出现
      * 时间复杂度 O(N)，空间复杂度 O(N)
      */
