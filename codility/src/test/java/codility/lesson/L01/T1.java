@@ -31,10 +31,11 @@ public class T1 {
 
     @Test
     public void test() {
-        Assert.assertEquals(2, solution(9)); // 9 = 0b1001
+        Assert.assertEquals(1, solution(0B101));  // 5 = 0B101
+        Assert.assertEquals(2, solution(9));      // 9 = 0b1001
         Assert.assertEquals(2, solution(0b1001)); // 9 = 0b1001
-        Assert.assertEquals(1, solution(20)); // 20 = 0b10100
-        Assert.assertEquals(0, solution(15)); // 15 = 0b1111
+        Assert.assertEquals(1, solution(20));     // 20 = 0b10100
+        Assert.assertEquals(0, solution(15));     // 15 = 0b1111
     }
 
 }
