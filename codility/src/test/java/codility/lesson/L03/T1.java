@@ -13,12 +13,12 @@ import org.junit.Test;
 public class T1 {
 
     public int solution(int X, int Y, int D) {
-        int sub = Y - X;
-        int step = sub / D;
-        if (sub % D > 0) {
-            step++;
+        int distances = Y - X;
+        int steps = distances / D;
+        if (distances % D > 0) {
+            steps++;
         }
-        return step;
+        return steps;
     }
 
     @Test
