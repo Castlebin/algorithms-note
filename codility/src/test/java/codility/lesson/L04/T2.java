@@ -32,6 +32,17 @@ public class T2 {
         return set.isEmpty() ? 1 : 0;
     }
 
+    /**
+     * 用 与或 运算  (如果是排列，那么数组和 1 ~ N 的数字异或的结果应该是 0)
+     */
+    public int solution_1(int[] A) {
+        int result = 0;
+        for (int i = 0; i < A.length; i++) {
+            result ^= (i + 1) ^ A[i];
+        }
+        return result == 0 ? 1 : 0;
+    }
+
     @Test
     public void test() {
         Assert.assertEquals(1, solution(new int[] {4, 1, 3, 2}));
