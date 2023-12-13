@@ -10,6 +10,7 @@ import org.junit.Test;
  https://app.codility.com/programmers/lessons/5-prefix_sums/genomic_range_query/
 
  巧妙的使用 前缀和 思想。时间复杂度 O(N)
+ 灵活使用前缀和思想，多个前缀和。分别求出 A、C、G 个数的前缀和。然后依次分别看区间内是否有 A、C、G
  */
 public class T3 {
 
