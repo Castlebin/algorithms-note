@@ -33,7 +33,7 @@ public class T4 {
         if (A.length == 2) {
             return 0;
         }
-        double minAvg = (A[0] + A[1]) / 2;
+        double minAvg = (A[0] + A[1]) / 2.0;
         int index = 0;
         for (int i = 1; i < A.length - 2; i++) {
             long sum = (long) (A[i]) + A[i + 1];
