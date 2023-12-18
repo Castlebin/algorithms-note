@@ -15,7 +15,7 @@ import org.junit.Test;
 public class T4 {
     /**
      * 还有个时间复杂度为 O(N) 的算法，没有理解，👁
-     * <p>
+     *
      * TODO 尝试理解该算法
      */
     class Solution {
@@ -25,8 +25,7 @@ public class T4 {
 
             for (int i = 0; i < n; i++) {
                 int right;
-                //if i+A[i]<= n-1, that's it, extract this i+A[i], let sum[i+A[i]]++, means there is one disk that
-                // i+A[i]
+                //if i+A[i]<= n-1, that's it, extract this i+A[i], let sum[i+A[i]]++, means there is one disk that i+A[i]
                 if (n - i - 1 >= A[i]) {
                     right = i + A[i];
                 } else {
@@ -52,9 +51,7 @@ public class T4 {
                 }
 
                 if (left > 0) {
-                    ans -= sum[left
-                            - 1];//Find the number that is smaller than 1-A[i], sum[n-1] will never be used as we
-                    // only need sum[n-1-1] at most.
+                    ans -= sum[left - 1];//Find the number that is smaller than 1-A[i], sum[n-1] will never be used as we only need sum[n-1-1] at most.
                 }
             }
 
