@@ -6,16 +6,16 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- NumberOfDiscIntersections
-
- Compute the number of intersections in a sequence of discs.
-
- https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
+ * NumberOfDiscIntersections
+ * <p>
+ * Compute the number of intersections in a sequence of discs.
+ * <p>
+ * https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
  */
 public class T4 {
     /**
      * 还有个时间复杂度为 O(N) 的算法，没有理解，👁
-     *
+     * <p>
      * TODO 尝试理解该算法
      */
     class Solution {
@@ -79,11 +79,13 @@ public class T4 {
             startPoints[i] = (long) i - A[i]; // 防止溢出
             endPoints[i] = (long) i + A[i]; // 防止溢出
         }
+        // 将 startPoints 和 endPoints 分别排序
         Arrays.sort(startPoints);
         Arrays.sort(endPoints);
         int count = 0;
         int j = 1;
         for (int i = 0; i < A.length; i++) {
+            // 画图可知，如果 endPoints[i] >= startPoints[j]，则说明有交集
             while (j < A.length && endPoints[i] >= startPoints[j]) {
                 count += j - i;
                 j++;
@@ -96,26 +98,34 @@ public class T4 {
     }
 
     /**
-     * 直接的暴力算法，时间复杂度 O(N * N)
+     直接的暴力算法，时间复杂度 O(N * N)
+
+     两个圆相交的充要条件是：两圆心的距离小于等于两圆半径之和
      */
     public int solution_1(int[] A) {
-        final int MAX = 10_000_000;
-        int count = 0;
-        for (int i = 0; i < A.length; i++) {
-            for (int j = i + 1; j < A.length; j++) {
-                long iStart = i - (long) A[i], iEnd = i + (long) A[i];
-                long jStart = j - (long) A[j], jEnd = j + (long) A[j];
-                // 判断两条线段有重叠部分的条件 第一条线段的结束大于等于第二条的开始，并且第二条的结束大于等于第一条的结束
-                if ((iEnd >= jStart && jEnd >= iEnd) || (jEnd >= iStart && iEnd >= jEnd)) {
-                    count++;
-                    if (count >= MAX) {
+        int MAX = 10_000_000;
+        int N = A.length;
+        int intersectCount = 0;
+
+        for (int i = 0; i < N; i++) {
+            for (int j = i + 1; j < N; j++) {
+                // 两圆心的距离
+                long distance = j - i;
+                // 两圆半径之和
+                long sumOfRadius = (long) A[i] + A[j];
+                // 如果两圆心的距离小于等于两圆半径之和，则两圆相交
+                if (distance <= sumOfRadius) {
+                    intersectCount++;
+                    if (intersectCount > MAX) {
                         return -1;
                     }
                 }
             }
         }
-        return count;
+
+        return intersectCount;
     }
+
 
     @Test
     public void test() {
