@@ -6,92 +6,129 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * NumberOfDiscIntersections
- * <p>
- * Compute the number of intersections in a sequence of discs.
- * <p>
- * https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
+ NumberOfDiscIntersections
+
+ Compute the number of intersections in a sequence of discs.
+
+ https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
  */
 public class T4 {
     /**
      * 还有个时间复杂度为 O(N) 的算法，没有理解，👁
      *
-     * TODO 尝试理解该算法
+     * TODO 理解该算法
      */
-    class Solution {
-        public int solution(int[] A) {
-            int n = A.length;
-            int[] sum = new int[n];
+    public int solution_3(int[] A) {
+        int n = A.length;
+        int[] sum = new int[n];
 
-            for (int i = 0; i < n; i++) {
-                int right;
-                //if i+A[i]<= n-1, that's it, extract this i+A[i], let sum[i+A[i]]++, means there is one disk that i+A[i]
-                if (n - i - 1 >= A[i]) {
-                    right = i + A[i];
-                } else {
-                    right = n - 1;
-                }
-
-                sum[right]++;
+        for (int i = 0; i < n; i++) {
+            int right;
+            //if i+A[i]<= n-1, that's it, extract this i+A[i], let sum[i+A[i]]++, means there is one disk that i+A[i]
+            if (n - i - 1 >= A[i]) {
+                right = i + A[i];
+            } else {
+                right = n - 1;
             }
 
-            for (int i = 1; i < n; i++) {
-                sum[i] += sum[i - 1];  //sum[i] means that there are sum[i] number of values that <= i;
+            sum[right]++;
+        }
+
+        for (int i = 1; i < n; i++) {
+            sum[i] += sum[i - 1];  //sum[i] means that there are sum[i] number of values that <= i;
+        }
+
+        long ans = (long) n * (n - 1) / 2;
+
+        for (int i = 0; i < n; i++) {
+            int left;
+
+            if (A[i] > i) {
+                left = 0;
+            } else {
+                left = i - A[i];// Find the positive i-A[i].
             }
 
-            long ans = (long) n * (n - 1) / 2;
+            if (left > 0) {
+                ans -= sum[left - 1];//Find the number that is smaller than 1-A[i], sum[n-1] will never be used as we only need sum[n-1-1] at most.
+            }
+        }
 
-            for (int i = 0; i < n; i++) {
-                int left;
+        if (ans > 10000000) {
+            return -1;
+        }
 
-                if (A[i] > i) {
-                    left = 0;
-                } else {
-                    left = i - A[i];// Find the positive i-A[i].
-                }
+        return (int) ans;
+    }
 
-                if (left > 0) {
-                    ans -= sum[left - 1];//Find the number that is smaller than 1-A[i], sum[n-1] will never be used as we only need sum[n-1-1] at most.
-                }
+
+    public int solution_2(int[] A) {
+        int MAX = 10_000_000;
+
+        int N = A.length;
+        long[] startPoints = new long[N];
+        long[] endPoints = new long[N];
+
+        for (int i = 0; i < N; i++) {
+            startPoints[i] = (long) i - A[i];
+            endPoints[i] = (long) i + A[i];
+        }
+
+        Arrays.sort(startPoints);
+        Arrays.sort(endPoints);
+
+        int intersectCount = 0;
+        int activeDiscs = 0;
+
+        for (int startPoinIndex = 0, endPointIndex = 0; startPoinIndex < N; startPoinIndex++) {
+            while (endPointIndex < N && endPoints[endPointIndex] < startPoints[startPoinIndex]) {
+                activeDiscs--;
+                endPointIndex++;
             }
 
-            if (ans > 10000000) {
+            intersectCount += activeDiscs;
+            activeDiscs++;
+
+            if (intersectCount > MAX) {
                 return -1;
             }
-
-            return (int) ans;
         }
+
+        return intersectCount;
     }
 
     /**
-     * 使用了排序，平均时间复杂度 O(N * log(N)).
-     * 这个算法还能理解
-     *
-     * TODO 重点理解该算法
+     使用了排序，平均时间复杂度 O(N * log(N))
+
+     TODO 重点理解该算法
      */
     public int solution(int[] A) {
+        int MAX = 10_000_000;
+
         long[] startPoints = new long[A.length];
         long[] endPoints = new long[A.length];
         for (int i = 0; i < A.length; i++) {
             startPoints[i] = (long) i - A[i]; // 防止溢出
             endPoints[i] = (long) i + A[i]; // 防止溢出
         }
+
         // 将 startPoints 和 endPoints 分别排序
         Arrays.sort(startPoints);
         Arrays.sort(endPoints);
-        int count = 0;
-        int j = 1;
-        for (int i = 0; i < A.length; i++) {
-            // 画图可知，如果 endPoints[i] >= startPoints[j]，则说明有交集
-            while (j < A.length && endPoints[i] >= startPoints[j]) {
-                count += j - i;
-                j++;
-                if (count > 10_000_000) {
+
+        int intersectCount = 0;
+        for (int endPointIndex = 0, startPointIndex = 1; endPointIndex < A.length; endPointIndex++) {
+            // 画图可知，如果 endPoints[endPointIndex] >= startPoints[startPointIndex]，则说明有交集
+            while (startPointIndex < A.length && endPoints[endPointIndex] >= startPoints[startPointIndex]) {
+                intersectCount += startPointIndex - endPointIndex;
+                startPointIndex++;
+
+                if (intersectCount > MAX) {
                     return -1;
                 }
             }
         }
-        return count;
+        return intersectCount;
     }
 
     /**
@@ -101,6 +138,7 @@ public class T4 {
      */
     public int solution_1(int[] A) {
         int MAX = 10_000_000;
+
         int N = A.length;
         int intersectCount = 0;
 
