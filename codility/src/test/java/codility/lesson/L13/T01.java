@@ -58,7 +58,7 @@ public class T01 {
                     continue; // 说明 index 位置不可达，所以也没法从它跳到 nextIndex
                 }
 
-                if (minSteps[nextIndex] == -1) {
+                if (minSteps[nextIndex] == -1) {// 还没有计算过
                     minSteps[nextIndex] = minSteps[index] + 1;
                 } else {
                     // 说明已经计算过了，取最小值
