@@ -20,7 +20,8 @@ public class T02 {
         fibs[0] = 0;
         fibs[1] = 1;
         for (int index = 2; index < fibs.length; index++) {
-            fibs[index] = (fibs[index - 1] + fibs[index - 2]) % (1 << 30); // 注意，因为结果要对 2^B[i] 取模，所以这里对 2^30 取模，用位运算。否则答案是不准确的
+            // 注意，因为结果要对 2^B[i] 取模，所以这里对 2^30 取模。否则答案会不通过
+            fibs[index] = (fibs[index - 1] + fibs[index - 2]) % (1 << 30);
         }
         int[] result = new int[A.length];
         for (int index = 0; index < A.length; index++) {
