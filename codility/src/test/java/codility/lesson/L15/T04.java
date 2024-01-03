@@ -46,7 +46,7 @@ public class T04 {
 
     @Test
     public void test() {
-        Assert.assertEquals(4, solution(new int[] {10, 2, 5, 1, 8, 12}));
+        Assert.assertEquals(3, solution(new int[] {-8, 4, 5, -10, 3}));
     }
 
 }
