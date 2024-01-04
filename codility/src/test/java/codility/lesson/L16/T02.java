@@ -9,6 +9,8 @@ import org.junit.Test;
  Tie adjacent ropes to achieve the maximum number of ropes of length >= K.
 
  （本题表达不清，实际上需要说明，要求绑定后的长度 >= K，但是每次这个长度都应该尽量小（到达这个长度就停止累加））
+
+ （（这个题目看起来有问题啊））
  */
 public class T02 {
 
@@ -28,6 +30,9 @@ public class T02 {
     @Test
     public void test() {
         Assert.assertEquals(3, solution(4, new int[] {1, 2, 3, 4, 1, 1, 3}));
+
+        // 这个题目有问题啊，至少这个解法是有问题的，当前这个例子，输出为 1 ？？？理论上来说，应该是 10 啊
+        System.out.println(solution(10, new int[]{9, 1,1,1,1,1,1,1,1,1,1})); // 9 后面 10个 1
     }
 
 }
