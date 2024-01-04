@@ -18,7 +18,7 @@ public class T01 {
             return 0;
         }
 
-        // 初始化非重叠片段计数为1，初始化前一个片段的结束位置为第一个片段的结束位置
+        // 初始化非重叠片段计数为 1，初始化前一个片段的结束位置为第一个片段的结束位置
         int nonOverlappingCount = 1;
         int prevEnd = B[0];
 
@@ -26,7 +26,7 @@ public class T01 {
         for (int i = 1; i < N; i++) {
             // 如果当前片段的起始位置大于前一个片段的结束位置
             if (A[i] > prevEnd) {
-                // 将非重叠片段计数加1，更新前一个片段的结束位置为当前片段的结束位置
+                // 将非重叠片段计数加 1，更新前一个片段的结束位置为当前片段的结束位置
                 nonOverlappingCount++;
                 prevEnd = B[i];
             }
