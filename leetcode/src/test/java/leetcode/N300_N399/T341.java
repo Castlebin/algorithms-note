@@ -23,6 +23,7 @@ class NestedIterator implements Iterator<Integer> {
         }
         this.iterator = data.iterator();
     }
+
     private void traverse(NestedInteger nested, List<Integer> data) {
         if (nested.isInteger()) {
             data.add(nested.getInteger());
@@ -47,10 +48,10 @@ class NestedIterator implements Iterator<Integer> {
 public class T341 {
     @Test
     public void test() {
-        List<NestedInteger> nestedList = NestedIntegerUtil.buildNestedIntegerList(new Object[]{
-                new int[]{1,1},
+        List<NestedInteger> nestedList = NestedIntegerUtil.buildNestedIntegerList(new Object[] {
+                new int[] {1, 1},
                 2,
-                new int[]{1,1}
+                new int[] {1, 1}
         });
         // nestedList.forEach(t -> System.out.println(t.toString()));
 
