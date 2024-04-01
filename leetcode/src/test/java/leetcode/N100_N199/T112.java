@@ -53,4 +53,18 @@ public class T112 {
         Assert.assertTrue(hasPathSum(root, 22));
     }
 
+    public boolean hasPathSum_1(TreeNode root, int targetSum) {
+        if (root == null) {
+            return false;
+        }
+        if (root.left == null && root.right == null && targetSum == root.val) {
+            return true;
+        }
+        boolean leftRes = hasPathSum_1(root.left, targetSum - root.val);
+        if (leftRes) {
+            return true;
+        }
+        return hasPathSum_1(root.right, targetSum - root.val);
+    }
+
 }
