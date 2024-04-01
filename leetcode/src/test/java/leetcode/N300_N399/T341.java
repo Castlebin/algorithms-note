@@ -23,7 +23,7 @@ class NestedIterator implements Iterator<Integer> {
         }
         this.iterator = data.iterator();
     }
-    void traverse(NestedInteger nested, List<Integer> data) {
+    private void traverse(NestedInteger nested, List<Integer> data) {
         if (nested.isInteger()) {
             data.add(nested.getInteger());
         } else {
