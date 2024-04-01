@@ -9,15 +9,15 @@ public class NestedIntegerImpl implements NestedInteger {
 
     public NestedIntegerImpl(Object data) {
         Class<?> clazz = data.getClass();
-        if (clazz.isPrimitive()) {
+        if (data instanceof Integer) {
             num = (int) data;
         } else if (clazz.isArray()) {
             nested = new ArrayList<>();
-            for (Object d : (Object[]) data) {
+            for (Object d : (int[]) data) {
                 nested.add(new NestedIntegerImpl(d));
             }
         } else {
-            throw new IllegalArgumentException("数据必须是整数或者数组类型！");
+            throw new IllegalArgumentException("数据类型不合法");
         }
     }
 
@@ -35,4 +35,21 @@ public class NestedIntegerImpl implements NestedInteger {
     public List<NestedInteger> getList() {
         return nested;
     }
+
+    @Override
+    public String toString() {
+        if (this.isInteger()) {
+            return this.getInteger().toString();
+        }
+        StringBuilder sb = new StringBuilder("[");
+        for (NestedInteger ni : this.getList()) {
+            sb.append(ni.toString() + ", ");
+        }
+        if (sb.charAt(sb.length() - 1) == ' ') {
+            sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }
