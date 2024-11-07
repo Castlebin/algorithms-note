@@ -1,9 +1,6 @@
 package leetcode.N100_N199;
 
-import java.util.ArrayList;
-import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 import org.junit.Assert;
@@ -24,24 +21,22 @@ public class T117 {
         if (root == null) {
             return null;
         }
-        LinkedList<Node> queue = new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            LinkedList<Node> nextQueue = new LinkedList<>();
-            List<Node> curLevel = new ArrayList<>(queue);
-            for (int index = 0; index < curLevel.size(); index++) {
-                Node node = curLevel.get(index);
-                if (index < curLevel.size() - 1) {
-                    node.next = curLevel.get(index + 1);
+            int size = queue.size();
+            for (int index = 0; index < size; index++) {
+                Node node = queue.poll();
+                if (index < size - 1) {
+                    node.next = queue.peek();
                 }
                 if (node.left != null) {
-                    nextQueue.add(node.left);
+                    queue.add(node.left);
                 }
                 if (node.right != null) {
-                    nextQueue.add(node.right);
+                    queue.add(node.right);
                 }
             }
-            queue = nextQueue;
         }
 
         return root;
