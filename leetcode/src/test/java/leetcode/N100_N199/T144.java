@@ -2,6 +2,7 @@ package leetcode.N100_N199;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import leetcode.base.TreeNode;
 
@@ -24,7 +25,7 @@ public class T144 {
     // 解法 2：迭代
     public List<Integer> preorderTraversal_2(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        List<TreeNode> stack = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
             while (cur != null) {
@@ -34,7 +35,7 @@ public class T144 {
                 stack.add(cur);
                 cur = cur.left;
             }
-            cur = stack.remove(stack.size() - 1);
+            cur = stack.pop();
             cur = cur.right;
         }
         return res;
