@@ -21,8 +21,10 @@ public class T589 {
             return;
         }
         res.add(root.val);
-        for (Node node : root.children) {
-            preorder(node, res);
+        if (root.children != null) {
+            for (Node node : root.children) {
+                preorder(node, res);
+            }
         }
     }
 
