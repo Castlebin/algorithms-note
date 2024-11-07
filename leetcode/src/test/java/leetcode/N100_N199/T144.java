@@ -21,6 +21,24 @@ import leetcode.base.TreeNode;
  * 144. 二叉树的前序遍历
  */
 public class T144 {
+    // 解法 2：迭代
+    public List<Integer> preorderTraversal_2(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        List<TreeNode> stack = new ArrayList<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                // 前序遍历，先访问根节点
+                res.add(cur.val);
+
+                stack.add(cur);
+                cur = cur.left;
+            }
+            cur = stack.remove(stack.size() - 1);
+            cur = cur.right;
+        }
+        return res;
+    }
 
     // 解法 1：递归
     public List<Integer> preorderTraversal_1(TreeNode root) {
