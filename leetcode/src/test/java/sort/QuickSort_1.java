@@ -37,8 +37,7 @@ public class QuickSort_1 {
      */
     private int partition(int[] nums, int begin, int end) {
         // 简单的选取 begin 位置元素作为主元
-        int pivotIndex = begin;
-        int pivot = nums[pivotIndex];
+        int pivot = nums[begin];
         // 注意！！这里直接用的 begin
         int left = begin;
         int right = end;
@@ -49,6 +48,8 @@ public class QuickSort_1 {
             while (right > begin && nums[right] >= pivot) {
                 right--;
             }
+            // 注意，交换时，一定要是 left < right ，因为我们要达到的效果就是，分区，左边的元素小于右边的
+            // 所以，一定是得保证 left < right 才交换元素
             if (left < right) {
                 swap(nums, left, right);
             }
