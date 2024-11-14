@@ -54,6 +54,9 @@ public class QuickSort_1 {
                 swap(nums, left, right);
             }
         }
+        // 结束之后，right 位置因为已经走了循环内的第二个循环，所以 nums[right] < pivot 了
+        // 而 right 位置左边的元素都已经小于 pivot，它右边的元素都已经大于等于 pivot
+        // 此时将 pivot 元素放到 right 位置
         swap(nums, begin, right);
         return right;
     }
