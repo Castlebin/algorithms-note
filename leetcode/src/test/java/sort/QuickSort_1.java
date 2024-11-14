@@ -39,6 +39,7 @@ public class QuickSort_1 {
         // 简单的选取 begin 位置元素作为主元
         int pivotIndex = begin;
         int pivot = nums[pivotIndex];
+        // 注意！！这里直接用的 begin
         int left = begin;
         int right = end;
         while (left < right) {
