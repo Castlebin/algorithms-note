@@ -22,9 +22,9 @@ public class QuickSort_1 {
         if (begin >= end) {
             return;
         }
-        int pivot = partition(nums, begin, end);
-        quickSort(nums, begin, pivot - 1);
-        quickSort(nums, pivot + 1, end);
+        int pivotIndex = partition(nums, begin, end);
+        quickSort(nums, begin, pivotIndex - 1);
+        quickSort(nums, pivotIndex + 1, end);
     }
 
     /**
