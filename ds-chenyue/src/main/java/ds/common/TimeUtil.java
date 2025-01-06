@@ -1,4 +1,4 @@
-package common;
+package ds.common;
 
 public class TimeUtil {
 
