@@ -19,7 +19,7 @@ public class TimeUtil {
      * @param n 次数
      * @return
      */
-    public static double timeCostN(Runnable runnable, int n) {
+    public static double timeCost(Runnable runnable, int n) {
         long start = System.currentTimeMillis();
         for (int i = 0; i < n; i++) {
             runnable.run();
