@@ -6,4 +6,9 @@ package util;
 public class ListNode<E> {
     private E val;
     private ListNode<E> next;
+
+    public ListNode(E val) {
+        this.val = val;
+    }
+
 }
