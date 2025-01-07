@@ -7,4 +7,8 @@ public class DoubleListNode<E> {
     private E val;
     private DoubleListNode<E> prev;
     private DoubleListNode<E> next;
+
+    public DoubleListNode(E val) {
+        this.val = val;
+    }
 }
