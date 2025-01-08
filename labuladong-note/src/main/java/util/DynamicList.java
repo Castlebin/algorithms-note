@@ -1,7 +1,7 @@
 package util;
 
 /**
- * 一个简单的动态数组接口
+ * 一个简单的动态数组（列表）接口，仿照 List 的接口设计
  */
 public interface DynamicList<E> {
 
@@ -23,12 +23,7 @@ public interface DynamicList<E> {
     /**
      * 删除指定元素
      **/
-    boolean remove(E e);
-
-    /**
-     * 删除尾部元素
-     */
-    E removeLast();
+    boolean remove(Object o);
 
     /**
      * 获取指定位置的元素
@@ -38,7 +33,7 @@ public interface DynamicList<E> {
     /**
      * 为指定位置的元素赋值
      */
-    void set(int index, E e);
+    E set(int index, E e);
 
     /**
      * 获取元素个数
@@ -58,11 +53,11 @@ public interface DynamicList<E> {
     /**
      * 查找元素的索引
      */
-    int indexOf(E e);
+    int indexOf(Object o);
 
     /**
      * 判断是否包含某个元素
      */
-    boolean contains(E e);
+    boolean contains(Object o);
 
 }
