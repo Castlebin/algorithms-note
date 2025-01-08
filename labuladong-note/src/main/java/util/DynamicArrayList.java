@@ -33,8 +33,9 @@ public class DynamicArrayList<E> implements DynamicList<E> {
     @Override
     public boolean add(E e) {
         // 如果数组已满，扩容 (扩容时，需要将原数组的元素复制到新数组)
+        // （注意，要考虑初始时，elementData.length 为 0 的情况，扩容时直接乘以 2 显然不行，因为还是 0）
         if (size == elementData.length) {
-            resize(size * 2);
+            resize(elementData.length * 2);
         }
         elementData[size] = e;
         size++;
@@ -50,7 +51,7 @@ public class DynamicArrayList<E> implements DynamicList<E> {
 
         // 如果数组已满，扩容 (扩容时，需要将原数组的元素复制到新数组)
         if (size == elementData.length) {
-            resize(size * 2);
+            resize(elementData.length * 2);
         }
         // 将 index 位置及其后面的元素后移一位
         System.arraycopy(elementData, index, elementData, index + 1, size - index);
@@ -102,7 +103,7 @@ public class DynamicArrayList<E> implements DynamicList<E> {
         // 将 index 位置后面的元素前移一位
         System.arraycopy(elementData, index + 1, elementData, index, size - index - 1);
         // 将最后一个元素置为 null，并将 size 减 1
-        elementData[size] = null;
+        elementData[size - 1] = null;
         size--;
         // 如果元素个数小于数组容量的 1/4，缩容
         if (size < elementData.length / 4) {
