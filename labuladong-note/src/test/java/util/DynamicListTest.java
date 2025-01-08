@@ -159,4 +159,47 @@ public class DynamicListTest {
             assertEquals(Integer.valueOf(15 + i), list.get(i));
         }
     }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddAtInvalidIndex() {
+        list.add(1);
+        list.add(5, 2);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class) 
+    public void testAddAtNegativeIndex() {
+        list.add(1);
+        list.add(-1, 2);
+    }
+
+    @Test
+    public void testSetElement() {
+        list.add(1);
+        list.add(2);
+        assertEquals(Integer.valueOf(1), list.set(0, 3));
+        assertEquals(Integer.valueOf(3), list.get(0));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSetAtInvalidIndex() {
+        list.add(1);
+        list.set(5, 2);
+    }
+
+    @Test
+    public void testEmptyListOperations() {
+        assertTrue(list.isEmpty());
+        assertEquals(0, list.size());
+        assertFalse(list.contains(1));
+        assertEquals(-1, list.indexOf(1));
+    }
+
+    @Test
+    public void testAddRemoveAdd() {
+        list.add(1);
+        list.remove(0);
+        list.add(2);
+        assertEquals(1, list.size());
+        assertEquals(Integer.valueOf(2), list.get(0));
+    }
 }
