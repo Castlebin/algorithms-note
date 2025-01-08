@@ -36,7 +36,8 @@ public class DynamicArrayList<E> implements DynamicList<E> {
         if (size == elementData.length) {
             resize(size * 2);
         }
-        elementData[size++] = e;
+        elementData[size] = e;
+        size++;
         return true;
     }
 
@@ -45,9 +46,8 @@ public class DynamicArrayList<E> implements DynamicList<E> {
      */
     @Override
     public void add(int index, E e) {
-        if (!isPositionIndex(index)) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        checkPositionIndex(index);
+
         // 如果数组已满，扩容 (扩容时，需要将原数组的元素复制到新数组)
         if (size == elementData.length) {
             resize(size * 2);
@@ -79,19 +79,31 @@ public class DynamicArrayList<E> implements DynamicList<E> {
         return index >= 0 && index <= size;
     }
 
+    private void checkElementIndex(int index) {
+        if (!isElementIndex(index)) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
+
+    private void checkPositionIndex(int index) {
+        if (!isPositionIndex(index)) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
+
     /**
      * 删除指定位置的元素
      */
     @Override
     public E remove(int index) {
-        if (!isElementIndex(index)) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        checkElementIndex(index);
+
         E oldValue = elementData(index);
         // 将 index 位置后面的元素前移一位
         System.arraycopy(elementData, index + 1, elementData, index, size - index - 1);
         // 将最后一个元素置为 null，并将 size 减 1
-        elementData[--size] = null;
+        elementData[size] = null;
+        size--;
         // 如果元素个数小于数组容量的 1/4，缩容
         if (size < elementData.length / 4) {
             resize(elementData.length / 2);
@@ -117,9 +129,8 @@ public class DynamicArrayList<E> implements DynamicList<E> {
      */
     @Override
     public E get(int index) {
-        if (!isElementIndex(index)) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        checkElementIndex(index);
+
         return elementData(index);
     }
 
@@ -137,9 +148,8 @@ public class DynamicArrayList<E> implements DynamicList<E> {
      */
     @Override
     public E set(int index, E e) {
-        if (!isElementIndex(index)) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        checkElementIndex(index);
+
         E oldValue = elementData(index);
         elementData[index] = e;
         return oldValue;
@@ -183,6 +193,7 @@ public class DynamicArrayList<E> implements DynamicList<E> {
             }
         } else {
             for (int i = 0; i < size; i++) {
+                // 注意这里使用 equals 方法判断是否相等 （而不是 ==），因为元素类型是泛型 E （参考 java 标准库的实现）
                 if (o.equals(elementData[i])) {
                     return i;
                 }

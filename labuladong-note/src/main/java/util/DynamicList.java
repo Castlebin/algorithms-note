@@ -31,7 +31,7 @@ public interface DynamicList<E> {
     E get(int index);
 
     /**
-     * 为指定位置的元素赋值
+     * 为指定位置的元素赋值。返回值为原来的元素（oldValue）
      */
     E set(int index, E e);
 
