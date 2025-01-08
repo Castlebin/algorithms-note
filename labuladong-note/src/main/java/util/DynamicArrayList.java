@@ -14,7 +14,7 @@ public class DynamicArrayList<E> implements DynamicList<E> {
     private int size;
 
     public DynamicArrayList() {
-        this.elementData = EMPTY_ELEMENTDATA;
+        this(DEFAULT_CAPACITY);
     }
 
     public DynamicArrayList(int capacity) {
