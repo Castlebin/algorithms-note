@@ -17,13 +17,13 @@ public class DynamicArrayList<E> implements DynamicList<E> {
         this(DEFAULT_CAPACITY);
     }
 
-    public DynamicArrayList(int capacity) {
-        if (capacity > 0) {
-            this.elementData = new Object[capacity];
-        } else if (capacity == 0) {
+    public DynamicArrayList(int initialCapacity) {
+        if (initialCapacity > 0) {
+            this.elementData = new Object[initialCapacity];
+        } else if (initialCapacity == 0) {
             this.elementData = EMPTY_ELEMENTDATA;
         } else {
-            throw new IllegalArgumentException("Illegal Capacity: " + capacity);
+            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
         }
     }
 
@@ -59,14 +59,14 @@ public class DynamicArrayList<E> implements DynamicList<E> {
         size++;
     }
 
-    private void resize(int newCapacity) {
-        if (newCapacity < 0) {
-            throw new IllegalArgumentException("Illegal Capacity: " + newCapacity);
+    private void resize(int minCapacity) {
+        if (minCapacity < 0) {
+            throw new IllegalArgumentException("Illegal Capacity: " + minCapacity);
         }
-        if (newCapacity == 0) {
-            newCapacity = 1;
+        if (minCapacity == 0) {
+            minCapacity = 1;
         }
-        Object[] newElementData = new Object[newCapacity];
+        Object[] newElementData = new Object[minCapacity];
         System.arraycopy(elementData, 0, newElementData, 0, size);
         elementData = newElementData;
     }
