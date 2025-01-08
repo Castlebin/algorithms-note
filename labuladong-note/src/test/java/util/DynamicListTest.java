@@ -1,16 +1,21 @@
 package util;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class DynamicListTest {
+@Ignore
+public abstract class DynamicListTest {
 
-    private DynamicList<Integer> list;
+    protected DynamicList<Integer> list;
+
+    // 添加抽象方法，由具体的测试类实现
+    protected abstract DynamicList<Integer> createList();
 
     @Before
     public void setUp() {
-        list = new DynamicArrayList<>(); // 假设有一个实现类 DynamicArrayList
+        list = createList();  // 使用工厂方法创建具体实现
     }
 
     @Test
