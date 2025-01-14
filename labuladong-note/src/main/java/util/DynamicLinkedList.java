@@ -58,7 +58,14 @@ public class DynamicLinkedList<E> implements DynamicList<E> {
     public void add(int index, E e) {
         checkPositionIndex(index);
 
-        Node<E> prev = getNode(index);
+        Node<E> prev;
+        if (index == 0) {
+            prev = dummyHead;
+        } else if (index == size) {
+            prev = dummyTail.prev;
+        } else {
+            prev = getNode(index).prev;
+        }
         Node<E> next = prev.next;
         Node<E> node = new Node<>(e, prev, next);
         prev.next = node;
@@ -107,7 +114,7 @@ public class DynamicLinkedList<E> implements DynamicList<E> {
     private Node<E> getNode(int index) {
         Node<E> cur;
         if (index <= size / 2) {
-            cur = dummyHead;
+            cur = dummyHead.next;
             for (int i = 0; i < index; i++) {
                 cur = cur.next;
             }
@@ -195,12 +202,14 @@ public class DynamicLinkedList<E> implements DynamicList<E> {
                 if (cur.val == null) {
                     return i;
                 }
+                cur = cur.next;
             }
         } else {
             for (int i = 0; i < size; i++) {
                 if (cur.val.equals(o)) {
                     return i;
                 }
+                cur = cur.next;
             }
         }
         return -1;

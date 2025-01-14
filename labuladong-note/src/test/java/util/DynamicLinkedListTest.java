@@ -6,7 +6,7 @@ public class DynamicLinkedListTest extends DynamicListTest {
      */
     @Override
     protected DynamicList<Integer> createList() {
-        return new DynamicArrayList<>();
+        return new DynamicLinkedList<>();
     }
 
 }
