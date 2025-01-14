@@ -112,6 +112,8 @@ public class DynamicLinkedList<E> implements DynamicList<E> {
     }
 
     private Node<E> getNode(int index) {
+        checkElementIndex(index);
+
         Node<E> cur;
         if (index <= size / 2) {
             cur = dummyHead.next;
