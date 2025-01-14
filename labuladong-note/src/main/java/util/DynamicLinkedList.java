@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * 双向链表
+ */
 public class DynamicLinkedList<E> implements DynamicList<E> {
     /**
      * 为了方便操作，定义私有属性，虚拟头结点、尾结点
