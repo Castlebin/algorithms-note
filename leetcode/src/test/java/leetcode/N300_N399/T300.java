@@ -10,6 +10,9 @@ import org.junit.Test;
  */
 public class T300 {
 
+    /**
+     * 最典型的 动态规划 解法，算法复杂度：O(N^2)
+     */
     public int lengthOfLIS(int[] nums) {
         int N = nums.length;
         // 典型的动态规划解法。定义 dp[i] 为以 nums[i] 作为结尾的最长递增子序列的长度
@@ -28,6 +31,30 @@ public class T300 {
             res = Math.max(res, dp[i]);
         }
         return res;
+    }
+
+    /**
+     * 思考：如果定义 dp[i] 为到 nums[i] 处最长的递增子序列的长度，是否可以。( 这样结果直接是是返回 dp[N - 1] )
+     */
+    public int lengthOfLIS_2(int[] nums) {
+        int N = nums.length;
+        // 定义 dp[i] 为到 nums[i] 处最长的递增子序列的长度
+        int[] dp = new int[N];
+        // 同样的道理，dp[i] 都可以先赋值为 1
+        Arrays.fill(dp, 1);
+
+        // 看一下是否可以 （尝试推导一下）
+        for (int i = 1; i < N; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1); // 发现不行，因为这个时候其实没法决定 nums[i] 能否加入成为一个更长的子序列
+                    // !!不能确定递推公式！！失败
+                }
+            }
+        }
+
+        // 直接返回 dp[N - 1]
+        return dp[N - 1];
     }
 
     @Test
