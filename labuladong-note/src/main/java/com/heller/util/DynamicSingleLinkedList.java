@@ -1,4 +1,4 @@
-package util;
+package com.heller.util;
 
 public class DynamicSingleLinkedList<E> implements DynamicList<E> {
     private Node<E> dummyHead;

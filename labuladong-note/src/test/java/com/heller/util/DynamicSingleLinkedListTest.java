@@ -1,4 +1,4 @@
-package util;
+package com.heller.util;
 
 public class DynamicSingleLinkedListTest extends DynamicListTest {
     /**
