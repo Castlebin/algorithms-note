@@ -1,4 +1,4 @@
-package util;
+package com.heller.util;
 
 /**
  * 一个简单的动态数组（列表）接口，仿照 List 的接口设计

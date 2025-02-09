@@ -1,4 +1,4 @@
-package util;
+package com.heller.util;
 
 import org.junit.Before;
 import org.junit.Ignore;
