@@ -18,7 +18,7 @@ public class T300 {
     public int lengthOfLIS_3(int[] nums) {
         List<Integer> top = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            int pos = findFirstGreatOrEqualThan(top, nums[i]);
+            int pos = findFirstGreatThanOrEqualTo(top, nums[i]);
             if (pos == -1) { // 没找到，说明要新起一堆
                 top.add(nums[i]);
             } else { // 找到了，将它放入这堆的堆顶
@@ -28,7 +28,7 @@ public class T300 {
         return top.size();
     }
     // nums是一个递增的排序数组，在 nums 中查找第一个 大于等于 target 的位置。没有的话返回 -1 （也可以选择返回 nums.size() ，在使用返回值的时候，自己注意判断好就行）
-    public int findFirstGreatOrEqualThan(List<Integer> nums, int target) {
+    public int findFirstGreatThanOrEqualTo(List<Integer> nums, int target) {
         int left = 0, right = nums.size() - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
