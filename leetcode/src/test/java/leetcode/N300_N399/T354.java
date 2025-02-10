@@ -35,7 +35,7 @@ public class T354 {
         for (int i = 0; i < N; i++) {
             int height = envelopes[i][1];
             // 使用二分查找在 top 列表中寻找插入 height 值的位置。即查找第一个大于等于 height 的数字的位置 (左侧)
-            int pos = findFirstGreatOrEqualThan(top, height);
+            int pos = findFirstGreatThanOrEqualTo(top, height);
             if (pos == -1) { // 没找到，说明应该新起一堆
                 top.add(height);
             } else {
@@ -46,7 +46,7 @@ public class T354 {
     }
 
     // nums是一个递增的排序数组，在 nums 中查找第一个 大于等于 target 的位置。没有的话返回 -1 （也可以选择返回 nums.size() ，在使用返回值的时候，自己注意判断好就行）
-    public int findFirstGreatOrEqualThan(List<Integer> nums, int target) {
+    public int findFirstGreatThanOrEqualTo(List<Integer> nums, int target) {
         int left = 0, right = nums.size() - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
