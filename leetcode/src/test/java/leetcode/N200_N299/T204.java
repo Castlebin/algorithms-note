@@ -1,13 +1,10 @@
 package leetcode.N200_N299;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import leetcode.base.ListNode;
 
 /**
  204. 计数质数
