@@ -3,9 +3,6 @@ package sword.sa;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  剑指 Offer 13. 机器人的运动范围
  地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。
