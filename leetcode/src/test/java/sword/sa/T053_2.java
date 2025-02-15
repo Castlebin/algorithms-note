@@ -26,7 +26,7 @@ public class T053_2 {
             return nums.length;
         }
         // 缺失的是中间的某个数
-        int left = 0, right = nums.length - 1, n = nums.length;
+        int left = 0, right = nums.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] == mid) {// 很好，在自己该待的位置上。所以，应该去右边找
