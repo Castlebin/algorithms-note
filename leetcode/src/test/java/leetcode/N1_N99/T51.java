@@ -35,7 +35,6 @@ public class T51 {
         }
         Set<Integer> used = new HashSet<>(track);
         // 为新的一行选择皇后的位置
-        int row = track.size();
         for (int pos = 0; pos < n; pos++) {
             // 保证这一列没有被选择过
             if (used.contains(pos)) {
