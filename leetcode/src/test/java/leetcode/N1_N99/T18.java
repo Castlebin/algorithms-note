@@ -82,6 +82,12 @@ public class T18 {
             long sum = nums[left] + nums[right];
             if (sum == target) {
                 // 其实也可以在这里处理重复。但我选择在最后处理
+                /** 在这里处理的方式
+                 if (left > start && nums[left] == nums[left - 1]) {
+                     left++;
+                     continue;
+                 }
+                 */
                 res.add(new int[]{left, right});
                 left++;
                 right--;
