@@ -7,6 +7,10 @@ import java.util.List;
  * 969. 煎饼排序
  */
 public class T969 {
+    /**
+     * 最直观的算法 （可能不是 翻转步骤最少 的解法）
+     * 每次通过最多两次翻转，将当前最大值移动到正确的位置
+     */
     public List<Integer> pancakeSort(int[] arr) {
         List<Integer> res = new ArrayList<>();
         // 从后往前遍历，每次操作，都是将当前 [0, index] 中的最大值移动到 index 位置
