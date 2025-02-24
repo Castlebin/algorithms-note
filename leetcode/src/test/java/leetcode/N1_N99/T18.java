@@ -91,7 +91,7 @@ public class T18 {
                 res.add(new int[]{left, right});
                 left++;
                 right--;
-                // 在这里处理重复，防止下一个解和当前解重复
+                // 在这里处理重复，防止下一个解和当前解重复  (效率比在上面要略高)
                 while (left < nums.length && nums[left] == nums[left - 1]) {
                     left++;
                 }
