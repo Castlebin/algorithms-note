@@ -1,10 +1,10 @@
 package ds.sort;
 
-import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import org.junit.Test;
 
 public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 

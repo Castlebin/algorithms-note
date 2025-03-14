@@ -1,13 +1,14 @@
 package ds.ch10;
 
-import ds.ch09.InsertSort;
-import org.junit.Assert;
-import org.junit.Test;
+import static ds.ArrayUtil.generateNonNegativeArray;
+import static ds.ArrayUtil.swap;
 
 import java.util.Arrays;
 
-import static ds.ArrayUtil.generateNonNegativeArray;
-import static ds.ArrayUtil.swap;
+import org.junit.Assert;
+import org.junit.Test;
+
+import ds.ch09.InsertSort;
 
 public class QuickSort3 {
 
@@ -39,6 +40,25 @@ public class QuickSort3 {
         swap(array, pivotIndex, i - 1);
         pivotIndex = i - 1;
         return pivotIndex;
+    }
+
+    @Test
+    public void test() {
+        int[] array1 = new int[] {5, 2, 3, 1};
+        sort(array1);
+        Assert.assertArrayEquals(new int[] {1, 2, 3, 5}, array1);
+
+        int[] array2 = new int[] {5, 1, 1, 2, 0, 0};
+        sort(array2);
+        Assert.assertArrayEquals(new int[] {0, 0, 1, 1, 2, 5}, array2);
+
+        int[] array3 = new int[] {-4, 0, 7, 4, 9, -5, -1, 0, -7, -1};
+        sort(array3);
+        Assert.assertArrayEquals(new int[] {-7, -5, -4, -1, -1, 0, 0, 4, 7, 9}, array3);
+
+        int[] array4 = new int[] {4, 981, 10, -17, 0, -20, 29, 50, 8, 43, -5};
+        sort(array4);
+        Assert.assertArrayEquals(new int[] {-20, -17, -5, 0, 4, 8, 10, 29, 43, 50, 981}, array4);
     }
 
     @Test

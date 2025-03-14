@@ -6,24 +6,24 @@ package ds.sort;
 public class ThreeWayQuickSort<T extends Comparable<T>> extends QuickSort<T> {
 
     @Override
-    protected void sort(T[] nums, int l, int h) {
-        if (h <= l) {
+    protected void sort(T[] nums, int begin, int end) {
+        if (end <= begin) {
             return;
         }
-        int lt = l, i = l + 1, gt = h;
-        T v = nums[l];
-        while (i <= gt) {
-            int cmp = nums[i].compareTo(v);
+        int left = begin, index = begin + 1, right = end;
+        T v = nums[begin];
+        while (index <= right) {
+            int cmp = nums[index].compareTo(v);
             if (cmp < 0) {
-                swap(nums, lt++, i++);
+                swap(nums, left++, index++);
             } else if (cmp > 0) {
-                swap(nums, i, gt--);
+                swap(nums, index, right--);
             } else {
-                i++;
+                index++;
             }
         }
-        sort(nums, l, lt - 1);
-        sort(nums, gt + 1, h);
+        sort(nums, begin, left - 1);
+        sort(nums, right + 1, end);
     }
 
 }
