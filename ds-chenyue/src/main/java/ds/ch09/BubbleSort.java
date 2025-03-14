@@ -1,12 +1,12 @@
 package ds.ch09;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static ds.ArrayUtil.generateNonNegativeArray;
+import static ds.ArrayUtil.swap;
 
 import java.util.Arrays;
 
-import static ds.ArrayUtil.generateNonNegativeArray;
-import static ds.ArrayUtil.swap;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class BubbleSort {
 
@@ -46,7 +46,7 @@ public class BubbleSort {
             System.out.println("sorted: " + Arrays.toString(array));
             Arrays.sort(copy);
 
-            Assert.assertArrayEquals("相等", array, copy);
+            Assert.assertArrayEquals(array, copy);
         }
     }
 

@@ -128,7 +128,7 @@ public class QS {
             Arrays.sort(copy2);
             System.out.println("sorted: " + Arrays.toString(copy));
 
-            Assert.assertArrayEquals("相等", copy, copy2);
+            Assert.assertArrayEquals(copy, copy2);
         }
     }
 

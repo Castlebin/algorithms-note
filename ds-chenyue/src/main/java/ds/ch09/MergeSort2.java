@@ -1,11 +1,11 @@
 package ds.ch09;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static ds.ArrayUtil.generateNonNegativeArray;
 
 import java.util.Arrays;
 
-import static ds.ArrayUtil.generateNonNegativeArray;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * 归并排序，非递归算法
@@ -92,8 +92,8 @@ public class MergeSort2 {
             System.out.println("copy  sorted: " + Arrays.toString(copy));
             System.out.println("copy2 sorted: " + Arrays.toString(copy2));
 
-            Assert.assertArrayEquals("相等", array, copy);
-            Assert.assertArrayEquals("相等", array, copy2);
+            Assert.assertArrayEquals(array, copy);
+            Assert.assertArrayEquals(array, copy2);
         }
     }
 

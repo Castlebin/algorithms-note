@@ -1,14 +1,15 @@
 package ds.ch10;
 
-import ds.ch09.InsertSort;
-import org.junit.Assert;
-import org.junit.Test;
+import static ds.ArrayUtil.generateNonNegativeArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static ds.ArrayUtil.generateNonNegativeArray;
+import org.junit.Assert;
+import org.junit.Test;
+
+import ds.ch09.InsertSort;
 
 /**
  * 基数排序
@@ -128,8 +129,8 @@ public class RadixSortLSD {
             System.out.println("sorted: " + Arrays.toString(array));
             Arrays.sort(copy);
 
-            Assert.assertArrayEquals("相等", array, copy);
-            Assert.assertArrayEquals("相等", array, copy2);
+            Assert.assertArrayEquals(array, copy);
+            Assert.assertArrayEquals(array, copy2);
         }
     }
 

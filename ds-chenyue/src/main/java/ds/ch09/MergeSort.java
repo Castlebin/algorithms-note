@@ -1,11 +1,11 @@
 package ds.ch09;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static ds.ArrayUtil.generateNonNegativeArray;
 
 import java.util.Arrays;
 
-import static ds.ArrayUtil.generateNonNegativeArray;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class MergeSort {
 
@@ -73,8 +73,8 @@ public class MergeSort {
             System.out.println("sorted: " + Arrays.toString(array));
             Arrays.sort(copy);
 
-            Assert.assertArrayEquals("相等", array, copy);
-            Assert.assertArrayEquals("相等", array, copy2);
+            Assert.assertArrayEquals(array, copy);
+            Assert.assertArrayEquals(array, copy2);
         }
     }
 

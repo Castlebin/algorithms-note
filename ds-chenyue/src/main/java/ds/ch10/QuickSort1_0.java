@@ -99,8 +99,8 @@ public class QuickSort1_0 {
             System.out.println("sorted: " + Arrays.toString(array));
             Arrays.sort(copy);
 
-            Assert.assertArrayEquals("相等", array, copy);
-            Assert.assertArrayEquals("相等", array, copy2);
+            Assert.assertArrayEquals(array, copy);
+            Assert.assertArrayEquals(array, copy2);
         }
     }
 
