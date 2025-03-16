@@ -1,5 +1,8 @@
 package leetcode.N200_N299;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * 200. 岛屿数量
  * https://leetcode.cn/problems/number-of-islands/
@@ -36,6 +39,28 @@ public class T200 {
         fill(grid, row + 1, col);
         fill(grid, row, col - 1);
         fill(grid, row, col + 1);
+    }
+
+    @Test
+    public void test() {
+        char[][] grid = {
+                {'1', '1', '0', '0', '0'},
+                {'1', '1', '0', '0', '0'},
+                {'0', '0', '1', '0', '0'},
+                {'0', '0', '0', '1', '1'}
+        };
+        Assert.assertEquals(3, numIslands(grid));
+    }
+
+    @Test
+    public void test_1() {
+        char[][] grid = {
+                {'1', '1', '1', '1', '0'},
+                {'1', '1', '0', '1', '0'},
+                {'1', '1', '0', '0', '0'},
+                {'0', '0', '0', '0', '0'}
+        };
+        Assert.assertEquals(1, numIslands(grid));
     }
 
 }
