@@ -1,7 +1,8 @@
 package leetcode.N1_N99;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -19,21 +20,21 @@ public class T56 {
             return a1[0] != a2[0] ? a1[0] - a2[0] : a1[1] - a2[1];
         });
 
-        Stack<int[]> stack = new Stack<>();
-        stack.push(intervals[0]);
+        List<int[]> list = new ArrayList<>(intervals.length);
+        list.add(intervals[0]);
         for (int index = 1; index < intervals.length; index++) {
             int[] cur = intervals[index];
-            int[] prev = stack.peek();
+            int[] prev = list.get(list.size() - 1);
             if (cur[0] <= prev[1]) { // 相交
                 prev[1] = Math.max(prev[1], cur[1]);
             } else {
-                stack.push(cur);
+                list.add(cur);
             }
         }
 
-        int[][] result = new int[stack.size()][];
-        for (int index = 0; !stack.isEmpty(); index++) {
-            result[index] = stack.pop();
+        int[][] result = new int[list.size()][];
+        for (int index = 0; index < result.length; index++) {
+            result[index] = list.get(index);
         }
         return result;
     }
