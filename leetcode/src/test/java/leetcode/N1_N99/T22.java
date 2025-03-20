@@ -40,7 +40,7 @@ public class T22 {
             return;
         }
 
-        // 现在是为第 2 * n - leftRemain - rightRmain 个位置做选择
+        // 现在是为第 2 * n - leftRemain - rightRemain 个位置做选择
         int pos = 2 * n - leftRemain - rightRemain;
         // 选择左括号
         trace[pos] = '(';
